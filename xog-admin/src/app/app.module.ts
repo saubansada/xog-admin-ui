@@ -6,11 +6,14 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
 import { ForgetpasswordComponent } from './components/forgetpassword/forgetpassword.component';
 import { PhoneotpComponent } from './components/phoneotp/phoneotp.component';
+import { HomeComponent } from './components/home/home.component';
+import { SidenavbarComponent } from './components/sidenavbar/sidenavbar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     routingComponents,
+    SidenavbarComponent,
   ],
   imports: [
     BrowserModule,

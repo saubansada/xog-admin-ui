@@ -1,0 +1,43 @@
+body {
+  background-color: #f7f7f7;
+}
+
+.sidenav-bar {
+  width: 32%;
+  height: 100vh;
+  overflow-x: auto;
+  background-color: #f7f7f7 !important;
+}
+
+.sidenav-bar::-webkit-scrollbar {
+  display: none;
+}
+
+.sidenav-logo {
+  width: 40px;
+  margin: 10px 0px;
+}
+
+.sidemenu {
+  margin-top: 10px;
+}
+
+.sidemenu-grid {
+
+  color: black;
+  border-radius: 6px;
+  padding: 8px;
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+
+.sidemenu-grid.uk-active,.sidemenu-grid:hover {
+  background-color: white;
+  color: #0920fb;
+}
+
+.sidemenu-grid>span {
+  margin-top: 3px;
+  font-size: 16pt;
+}
+
