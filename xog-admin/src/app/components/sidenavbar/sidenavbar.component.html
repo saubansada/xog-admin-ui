@@ -1,64 +1,62 @@
-<div class="uk-child-width-1-2@s uk-child-width-1-6@m uk-text-center uk-grid-collapse" uk-grid>
-  <div>
-    <div class="uk-card sidenav-bar uk-padding-small uk-card-body">
-      <img src="assets/img/icon.png" alt="" class="sidenav-logo">
-      <div class="sidemenu">
-        <div class="sidemenu-grid" routerLink="" uk-tooltip="title: Dashboard; pos: right">
-          <span class="material-icons-round">
+
+<div class="uk-card sidenav-bar uk-card-body">
+  <img src="assets/img/icon.png" alt="" class="sidenav-logo">
+  <div class="uk-width-1-1@s uk-width-1-1@m uk-margin-top">
+    <ul class="uk-nav-default sidenav-menu uk-nav-parent-icon" uk-nav>
+      <li class="uk-active"><a routerLink=""><span class="material-icons-outlined">
             home
-          </span>
-        </div>
-        <div class="sidemenu-grid uk-active" routerLink="" uk-tooltip="title: Orders; pos: right" >
-          <span class="material-icons-round">
+          </span> Dashboard</a></li>
+      <li><a routerLink="/orders" ><span class="material-icons-outlined">
             local_mall
-            </span>
-        </div>
-        <div class="sidemenu-grid" routerLink="" uk-tooltip="title: Customers; pos: right">
-          <span class="material-icons-round">
-            group
-            </span>
-        </div>
-        <div class="sidemenu-grid" routerLink="" uk-tooltip="title: Products; pos: right">
-          <span class="material-icons-round">
+          </span> Orders</a></li>
+      <li class="uk-parent">
+        <a href="#"><span class="material-icons-outlined">
+            people
+          </span> Customers <span class="material-icons-outlined chev-down">
+            navigate_next
+          </span></a>
+        <ul class="uk-nav-sub">
+          <li class="sidenav-dropdown"><a href="#">Payment Request</a></li>
+          <li class="sidenav-dropdown"><a href="#">Payment Request</a></li>
+        </ul>
+      </li>
+      <li class="uk-parent">
+        <a href="#"><span class="material-icons-outlined">
             storefront
-            </span>
-        </div>
-        <div class="sidemenu-grid" routerLink="" uk-tooltip="title: Manage Apps; pos: right">
-          <span class="material-icons-round">
+          </span> Products <span class="material-icons-outlined chev-down">
+            navigate_next
+          </span></a>
+        <ul class="uk-nav-sub">
+          <li class="sidenav-dropdown"><a href="#">Payment Request</a></li>
+          <li class="sidenav-dropdown"><a href="#">Payment Request</a></li>
+        </ul>
+      </li>
+      <li class="uk-parent">
+        <a href="#"><span class="material-icons-outlined">
             travel_explore
-            </span>
-        </div>
-        <div class="sidemenu-grid" routerLink="" uk-tooltip="title: Offers; pos: right">
-          <span class="material-icons-round">
-            local_offer
-            </span>
-        </div>
-        <div class="sidemenu-grid" routerLink="" uk-tooltip="title: Users; pos: right">
-          <span class="material-icons-round">
-            folder_shared
-            </span>
-        </div>
-        <div class="sidemenu-grid" routerLink="" uk-tooltip="title: Finance; pos: right">
-          <span class="material-icons-round">
-            account_balance
-            </span>
-        </div>
-        <div class="sidemenu-grid" routerLink="" uk-tooltip="title: Drivers; pos: right">
-          <span class="material-icons-round">
-            delivery_dining
-            </span>
-        </div>
-        <div class="sidemenu-grid" routerLink="" uk-tooltip="title: Reports; pos: right">
-          <span class="material-icons-round">
-            insights
-            </span>
-        </div>
-        <div class="sidemenu-grid" routerLink="" uk-tooltip="title: Settings; pos: right">
-          <span class="material-icons-round">
-            settings_applications
-            </span>
-        </div>
-      </div>
-    </div>
+          </span> Manage Apps <span class="material-icons-outlined chev-down">
+            navigate_next
+          </span></a>
+        <ul class="uk-nav-sub">
+          <li class="sidenav-dropdown"><a href="#">Payment Request</a></li>
+          <li class="sidenav-dropdown"><a href="#">Payment Request</a></li>
+        </ul>
+      </li>
+      <li><a href="#"><span class="material-icons-round">
+        local_offer
+      </span> Offers</a></li>
+      <li><a href="#"><span class="material-icons-round">
+        folder_shared
+      </span> Users</a></li>
+      <li><a href="#"><span class="material-icons-round">
+        account_balance
+      </span> Finance</a></li>
+      <li><a href="#"><span class="material-icons-round">
+        insights
+      </span> Reports</a></li>
+      <li><a href="#"><span class="material-icons-round">
+        settings_suggest
+      </span> Settings</a></li>
+    </ul>
   </div>
 </div>

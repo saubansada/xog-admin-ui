@@ -1,12 +1,8 @@
-body {
-  background-color: #f7f7f7;
-}
-
 .sidenav-bar {
-  width: 32%;
+  background-color: #f7f7f7;
   height: 100vh;
   overflow-x: auto;
-  background-color: #f7f7f7 !important;
+  padding: 0px;
 }
 
 .sidenav-bar::-webkit-scrollbar {
@@ -14,30 +10,53 @@ body {
 }
 
 .sidenav-logo {
-  width: 40px;
-  margin: 10px 0px;
+  width: 45px;
+  margin-top: 20px;
 }
 
-.sidemenu {
-  margin-top: 10px;
+.sidenav-menu>li {
+  padding: 0px 10px;
+  margin-bottom: 5px;
 }
 
-.sidemenu-grid {
-
+.sidenav-menu>li>a {
   color: black;
-  border-radius: 6px;
-  padding: 8px;
-  cursor: pointer;
-  margin-bottom: 10px;
+  font-size: 10pt;
+  font-family: 'Poppins', sans-serif;
 }
 
-.sidemenu-grid.uk-active,.sidemenu-grid:hover {
-  background-color: white;
-  color: #0920fb;
+.sidenav-menu>li>a::after {
+  display: none;
 }
 
-.sidemenu-grid>span {
-  margin-top: 3px;
-  font-size: 16pt;
+.sidenav-menu>li>a>span:first-child {
+  font-size: 14pt !important;
+  margin-right: 20px;
+  padding: 10px;
+  background-color: #ffffff;
+  color: black !important;
+  border-radius: 10px;
 }
 
+.sidenav-menu>li:hover>a>span:first-child,.sidenav-menu>li.uk-active>a>span:first-child,.sidenav-menu>li.uk-open>a>span:first-child {
+  color: #0920fb !important;
+}
+
+.sidenav-menu>li>a>span.chev-down {
+  color: black;
+  font-size: 12pt;
+  margin-left: 30px;
+}
+
+.sidenav-menu>li.uk-open>a>span.chev-down {
+  transform: rotate(90deg);
+}
+
+.sidenav-dropdown {
+  padding: 5px;
+}
+
+.sidenav-dropdown>a {
+  color: black;
+  font-size: 9pt;
+}

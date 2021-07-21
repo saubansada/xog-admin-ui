@@ -1,0 +1,41 @@
+.topnav-bar>div>ul>li>a {
+  text-transform: capitalize;
+  color: black;
+  font-size: 10pt;
+}
+
+.topnav-bar>div>ul>li>a>span {
+  color: black;
+  font-size: 14pt;
+}
+
+.uk-navbar-dropdown {
+  margin-top: 0px !important;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+}
+
+.uk-navbar-dropdown>ul>li {
+  padding: 5px 15px;
+  margin: 4px;
+}
+
+.uk-navbar-dropdown>ul>li>a {
+  color: black;
+  font-size: 10pt;
+}
+
+.uk-navbar-dropdown>ul>li.logout {
+  background-color: #f80202;
+  color: white !important;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+}
+
+.uk-navbar-dropdown>ul>li.logout>a {
+  color: white;
+}
+
+.uk-navbar-dropdown>ul>li.logout>a>span {
+  font-size: 10pt;
+}

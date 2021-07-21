@@ -1,0 +1,70 @@
+<div class="uk-text-center uk-grid-collapse" uk-grid>
+  <div class="uk-width-1-6@m">
+    <app-sidenavbar></app-sidenavbar>
+  </div>
+  <div class="uk-width-expand@m">
+    <div class="uk-card uk-padding-remove uk-card-body main-container">
+      <app-topnav></app-topnav>
+      <div class="uk-width-expand@m">
+        <div class="uk-card uk-padding-small uk-card-body">
+          <p class="container-header uk-margin-remove">
+            Order List
+
+          </p>
+          <ul class="uk-breadcrumb xo-breadcrumb uk-align-left uk-margin-remove">
+            <li><a href="#">Home</a></li>
+            <li class="uk-active"><a href="#">Orders</a></li>
+          </ul>
+          <br>
+          <form class="uk-grid-small uk-margin-small-top" uk-grid>
+            <div class="uk-width-1-2@s">
+              <div class="uk-inline uk-width-1-1 xo-searchbar">
+                <a class="uk-form-icon uk-form-icon-flip" href="#"><span class="material-icons-outlined">
+                    search
+                  </span></a>
+                <input class="uk-input uk-width-1-1 " placeholder="Search" type="text">
+              </div>
+            </div>
+            <div class="uk-width-1-4@s">
+              <input class="uk-input" type="date" placeholder="50">
+            </div>
+            <div class="uk-width-1-4@s">
+              <div class="uk-form-controls">
+                <select class="uk-select" id="form-horizontal-select">
+                  <option>All Orders</option>
+                  <option>Option 02</option>
+                </select>
+              </div>
+            </div>
+          </form>
+          <table class="uk-table uk-table-small uk-table-divider primary-table">
+            <thead>
+                <tr>
+                  <th></th>
+                    <th>I'd</th>
+                    <th>Mobile</th>
+                    <th>Name</th>
+                    <th>Total</th>
+                    <th>Del Charge</th>
+                    <th>Wallet</th>
+                    <th>G. Total</th>
+                    <th>P. Mode</th>
+                    <th>Delivery Time</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><label><input class="uk-checkbox" type="checkbox"> </label>
+                    </td>
+                    <td>#819913889</td>
+                    <td>Table Data</td>
+                </tr>
+            </tbody>
+        </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

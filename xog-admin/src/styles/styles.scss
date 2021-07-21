@@ -10,6 +10,71 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
 
-label,p,input,button {
+label,p,input,button,a,select,td,th {
   font-family: 'Poppins', sans-serif !important;
+}
+
+.main-container {
+  overflow-x: auto;
+  height: 100vh;
+}
+
+.container-header {
+  font-size: 14pt;
+  text-align: left;
+  color: black;
+  font-weight: 500;
+}
+
+.xo-breadcrumb>li>a {
+  color: black;
+  font-weight: 500;
+  font-size: 9pt;
+}
+
+.xo-breadcrumb>li.uk-active>a {
+  color: #0920fb;
+}
+
+.uk-input,.uk-select {
+  background-color: white;
+  border: 1px solid black;
+  font-size: 10pt;
+  color: black !important;
+}
+
+.uk-input:focus,.uk-select:focus {
+  border: none;
+  border-bottom: 1px solid #0920fb;
+}
+
+a.uk-form-icon {
+  color: black;
+  font-size: 9pt;
+}
+
+.uk-input::placeholder {
+  font-size: 10pt;
+}
+
+th {
+  text-transform: none !important;
+}
+
+.primary-table >thead>tr>th {
+  font-size: 10pt;
+  color: black;
+}
+
+.primary-table>tbody>tr>td{
+  font-size: 10pt;
+  text-align: left;
+}
+
+.primary-table>tbody>tr>td:first-child>label>input.uk-checkbox:checked {
+  background-color: #0920fb !important;
+}
+
+.primary-table>tbody>tr>td {
+  color: black;
 }
