@@ -32,30 +32,27 @@ label,p,input,button,a,select,td,th {
   font-size: 9pt;
 }
 
-.xo-breadcrumb>li.uk-active>a {
-  color: #0920fb;
+.xo-breadcrumb>li.uk-active>a>span {
+  color: black;
+  font-size: 10px;
 }
 
-.uk-input,.uk-select {
-  background-color: white;
-  border: 1px solid black;
+.xo-searchbar>input{
+  border: none;
   font-size: 10pt;
   color: black !important;
 }
 
-.uk-input:focus,.uk-select:focus {
-  border: none;
-  border-bottom: 1px solid #0920fb;
-}
-
-a.uk-form-icon {
-  color: black;
-  font-size: 9pt;
-}
-
-.uk-input::placeholder {
+.xo-searchbar>input::placeholder {
   font-size: 10pt;
+  color: grey;
 }
+
+.xo-searchbar>a {
+  font-size: 10pt !important;
+  color: #0920fb;
+}
+
 
 th {
   text-transform: none !important;
@@ -66,15 +63,62 @@ th {
   color: black;
 }
 
+.primary-table>thead>tr {
+  background-color: #f7f7f7;
+  border-bottom:10px solid white;
+}
+
 .primary-table>tbody>tr>td{
-  font-size: 10pt;
+  font-size: 9.5pt;
   text-align: left;
 }
 
+.primary-table>tbody>tr>td:first-child>label>input.uk-checkbox {
+  border: 1px solid black;
+  border-radius: 4px;
+}
+
 .primary-table>tbody>tr>td:first-child>label>input.uk-checkbox:checked {
+  border: none !important;
   background-color: #0920fb !important;
 }
 
-.primary-table>tbody>tr>td {
+.primary-table>tbody>tr>td   {
   color: black;
+  padding: 10px;
+}
+
+
+.primary-table>tbody>tr:hover{
+  cursor: pointer;
+  background-color: #f1f1f1;
+}
+
+.primary-table>tbody>tr>td>span.xo-icon {
+  font-size: 13pt;
+}
+
+.primary-table-drop {
+  background-color:#f7f7f7;
+  border-radius: 4px;
+}
+
+.primary-table-drop>li {
+  padding: 3px 15px;
+}
+
+.primary-table-drop>li>a {
+  color: black;
+  font-size: 9pt;
+}
+
+.primary-table-drop>li>a:hover {
+  color: #0920fb;
+}
+
+.success-badge {
+  background-color: #009c2720;
+  padding: 4px 10px !important;
+  color: #009c27 !important;
+  border-radius: 2px;
 }

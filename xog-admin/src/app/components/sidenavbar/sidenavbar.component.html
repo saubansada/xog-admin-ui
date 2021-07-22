@@ -6,9 +6,19 @@
       <li class="uk-active"><a routerLink=""><span class="material-icons-outlined">
             home
           </span> Dashboard</a></li>
-      <li><a routerLink="/orders" ><span class="material-icons-outlined">
-            local_mall
-          </span> Orders</a></li>
+          <li class="uk-parent">
+            <a href="#"><span class="material-icons-outlined">
+                local_mall
+              </span> Orders <span class="material-icons-outlined chev-down">
+                navigate_next
+              </span></a>
+            <ul class="uk-nav-sub">
+              <li class="sidenav-dropdown"><a routerLink="/orders">Orders</a></li>
+              <li class="sidenav-dropdown"><a href="#">Return</a></li>
+              <li class="sidenav-dropdown"><a href="#">Cancelled</a></li>
+              <li class="sidenav-dropdown"><a href="#">Refund</a></li>
+            </ul>
+          </li>
       <li class="uk-parent">
         <a href="#"><span class="material-icons-outlined">
             people

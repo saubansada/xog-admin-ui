@@ -1,0 +1,25 @@
+.form-input {
+  background: none;
+  border: none;
+}
+
+#order-details-modal>div {
+  width: 75%;
+  border-radius: 4px;
+  background-color: #eef1fb;
+}
+
+#order-details-modal>div>button.uk-modal-close-outside {
+  color: white;
+}
+
+.od-products-grid {
+  background-color: white;
+  border-radius: 6px;
+}
+
+.od-products-table>thead>tr>th {
+  text-align: left;
+  font-size: 10pt;
+  color: black;
+}

@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { NgxDaterangepickerMd } from 'ngx-daterangepicker-material';
+import { FormsModule } from '@angular/forms';
+import { NgSelectModule } from '@ng-select/ng-select';
 import { AppRoutingModule, routingComponents } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
@@ -17,7 +19,10 @@ import { OrdersComponent } from './components/orders/orders.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    NgSelectModule,
+    NgxDaterangepickerMd.forRoot(),
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
