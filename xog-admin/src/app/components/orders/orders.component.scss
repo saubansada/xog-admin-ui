@@ -4,9 +4,13 @@
 }
 
 #order-details-modal>div {
-  width: 75%;
-  border-radius: 4px;
+  width: 85% !important;
+  border-radius: 8px;
   background-color: #eef1fb;
+}
+
+#order-details-modal>div::-webkit-scrollbar {
+  display: none;
 }
 
 #order-details-modal>div>button.uk-modal-close-outside {
@@ -15,11 +19,182 @@
 
 .od-products-grid {
   background-color: white;
-  border-radius: 6px;
+  border-radius: 8px;
 }
+
 
 .od-products-table>thead>tr>th {
   text-align: left;
+  font-size: 10pt;
+  color: black;
+}
+
+.od-products-table>tbody>tr>td:first-child {
+  width: 5%;
+  color: black;
+  text-align: left;
+  font-size: 10pt;
+}
+
+.od-product-img {
+  width: 10%;
+}
+
+.od-product-img>img {
+  width: 20px;
+}
+
+.od-product-name {
+  width: 55%;
+  text-align: left;
+  font-size: 10pt;
+  color: black;
+}
+
+.od-product-name>span {
+  font-size: 9.5pt;
+  color: #0920fb;
+  font-weight: 500;
+}
+
+.od-product-qty {
+  font-size: 10pt;
+  color: black;
+  text-align: left;
+  width: 7%;
+}
+
+.od-product-price {
+  font-size: 10pt;
+  color: black;
+  text-align: left;
+  width: 7%;
+}
+
+.od-product-cancel {
+  width: 7%;
+}
+
+.od-product-cancel>span {
+  color: #830202;
+  font-size: 10pt;
+}
+
+.od-info-grid {
+  background-color: white;
+  border-radius: 8px;
+}
+
+.od-info-title {
+  font-size: 9.5pt;
+  color: grey;
+  text-align: left;
+  margin-bottom: 2px;
+}
+
+.od-info-title>span {
+  color: #0920fb !important;
+  font-size: 9.5pt;
+  padding: 5px 15px;
+  border-radius: 5px;
+  font-weight: 600;
+  background-color: #0920fb10;
+}
+
+.od-customer-no {
+  font-size: 11pt;
+  color: #000000;
+  margin-top: 4px;
+  margin-bottom: 2px;
+  text-align: left;
+}
+
+.od-customer-name {
+  margin-top: 4px;
+  font-size: 10pt;
+  color: black;
+  font-weight: 500;
+  margin-top: 4px;
+  text-align: left;
+  text-transform: capitalize;
+  margin-bottom: 2px;
+}
+
+.od-customer-address {
+  margin-top: 4px;
+  text-align: left;
+  width: 60%;
+  font-size: 10pt;
+  margin-bottom:2px ;
+  color: #696969;
+}
+
+.od-order-time {
+  font-size: 10pt;
+  margin-top: 4px;
+  color: black;
+  text-align: left;
+  margin-bottom: 2px;
+}
+
+.od-order-time>span:first-child {
+  font-size: 11pt;
+}
+
+.od-delivery-type {
+  text-align: left;
+  margin-top: 6px;
+}
+
+.od-delivery-type>span.od-delivery-time {
+  font-size: 10pt;
+  padding: 5px 15px;
+  border-radius: 4px;
+  background-color: #009c2710;
+  color: #009c27;
+}
+
+.od-delivery-type>span.od-order-type {
+  color: #0920fb;
+  background-color: #0920fb30;
+  padding: 2px 10px;
+  font-size: 9pt;
+  border-radius: 4px;
+  font-weight: 500;
+}
+
+.od-invoice-table>tbody>tr>td:first-child {
+  text-align: left;
+  font-size: 10pt;
+  color: black;
+}
+
+.od-invoice-table>tbody>tr>td:last-child {
+  color: #0920fb;
+  font-size: 11pt;
+  text-align: right;
+  font-family: 'Roboto', sans-serif !important;
+}
+
+.od-payable-amount {
+  padding: 7pt;
+  color: #0920fb;
+  border:1px solid #0920fb;
+  font-size: 10pt;
+  font-family: 'Roboto', sans-serif !important;
+  border-radius: 8px;
+}
+
+.od-payable-amount>span {
+  font-family:'Poppins', sans-serif;
+}
+
+p.od-type-status{
+  text-align: left;
+  font-size: 9pt;
+}
+
+span.od-payment-type {
   font-size: 10pt;
   color: black;
 }
