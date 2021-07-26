@@ -32,12 +32,9 @@
             <div class="uk-width-1-4@s">
               <div class="uk-form-controls">
                 <select class="uk-select xo-select" id="form-stacked-select">
-                  <option>All Status</option>
-                  <option>Pending</option>
-                  <option>Confirmed</option>
-                  <option>Packaging</option>
-                  <option>Out for Delivery</option>
-                  <option>Delivered</option>
+                  <option>Refund Status</option>
+                  <option>Refundable</option>
+                  <option>Non Refundable</option>
                 </select>
               </div>
             </div>
@@ -46,16 +43,16 @@
             <thead>
               <tr>
                 <th></th>
-                <th>I'd</th>
-                <th>Mobile</th>
+                <th>Return I'd</th>
+                <th>Order I'd</th>
                 <th>Name</th>
-                <th>Address</th>
-                <th>Type</th>
-                <th>P. Mode</th>
-                <th>Delivery Time</th>
+                <th>Phone</th>
+                <th>Refund Type</th>
+                <th>Refund Amt</th>
+                <th>Payment Status</th>
                 <th>Total ₹</th>
+                <th>Type</th>
                 <th>Status</th>
-                <th>P. status</th>
                 <th class="uk-text-right">Action</th>
               </tr>
             </thead>
@@ -64,16 +61,15 @@
                 <td><label><input class="uk-checkbox" type="checkbox"> </label>
                 </td>
                 <td>#819913889</td>
-                <td>9900141870</td>
+                <td class="xo-red-color">#988199221</td>
                 <td>Abdul</td>
-                <td>Magdoom colony...</td>
-                <td>Delivery</td>
-                <td>UPI & Wallet</td>
-                <td>15.07.2022- <span>4:00 to 12:00</span> </td>
-                <td>1489
-                </td>
+                <td>9900141870</td>
+                <td>Non</td>
+                <td>0</td>
+                <td><span class="uk-badge moderate-badge">Un-Paid</span></td>
+                <td>1489 </td>
+                <td>Return</td>
                 <td>Pending</td>
-                <td> <span class="uk-badge success-badge">Paid</span> </td>
                 <td class="uk-text-right">
                   <span class="material-icons-outlined xo-icon">
                     more_vert
@@ -153,110 +149,45 @@
       <div class="uk-width-1-3@m">
         <div class="uk-card od-info-grid uk-padding-small uk-card-body">
           <div class="od-invoice-grid">
-
-            <ul class="uk-subnav uk-subnav-pill uk-flex-center od-switcher"
-              uk-switcher="animation: uk-animation-slide-left-medium, uk-animation-slide-right-medium">
-              <li><a href="#">Order Details</a></li>
-              <li><a href="#">Cancelled/Return</a></li>
-            </ul>
-
-            <ul class="uk-switcher uk-margin">
-              <li>
                 <p class="od-info-title">Invoice for <span class="uk-float-right">#819913889</span></p>
                 <p class="od-customer-no">+91-9900141870</p>
                 <p class="od-customer-name">Abdul Kumshey</p>
                 <p class="od-customer-address">Magdoom colony azad street, Basha Manzil.</p>
-                <p class="od-order-time">14.07.2021 - <span>21:00</span></p>
                 <p class="od-delivery-type"> <span class="od-delivery-time">26.07.2021 | 2:00 - 4:00</span> <span
-                    class="od-order-type uk-float-right">Self Pickup</span></p>
+                    class="od-order-type uk-float-right">Delivery</span></p>
                 <hr class="uk-divider-icon uk-margin-remove-bottom">
                 <table class="uk-table uk-table-small od-invoice-table uk-margin-remove-top uk-table-divider">
                   <tbody>
                     <tr>
-                      <td>Bill Amount</td>
-                      <td>₹ 390</td>
+                      <td>Total Amount</td>
+                      <td>₹ 1481</td>
                     </tr>
                     <tr>
-                      <td>Delivery Charges</td>
-                      <td>₹ 60</td>
+                      <td>Refund Status</td>
+                      <td>Non</td>
                     </tr>
                     <tr>
-                      <td>Wallet Used</td>
-                      <td>₹ 40</td>
+                      <td>Type</td>
+                      <td>Cancel</td>
                     </tr>
                   </tbody>
                 </table>
-                <p class="od-payable-amount"> <span>Total Payable:</span> ₹ 40</p>
-                <p class="od-type-status"><span class="od-payment-status moderate-badge">Partial Paid</span> <span
+                <p class="od-payable-amount"> <span>Refund Amount:</span> ₹ 0</p>
+                <p class="od-type-status"><span class="od-payment-status moderate-badge">Un Paid</span> <span
                     class="od-payment-type uk-float-right">COD & Wallet</span></p>
                 <form class="uk-grid-small" uk-grid>
                   <div class="uk-width-1-1">
                     <select class="uk-select xo-select" id="form-horizontal-select">
                       <option>Pending</option>
                       <option>Confirmed</option>
+                      <option>Refund Request</option>
+                      <option>Cancel </option>
                     </select>
                   </div>
                   <div class="uk-width-1-1@s">
                     <button class="uk-button uk-width-1-1 xo-button-primary">Update</button>
                   </div>
                 </form>
-              </li>
-              <li class="uk-active">
-                <table class="uk-table uk-table-small uk-table-divider">
-                  <thead class="odr-table-heading">
-                    <tr>
-                      <th>#</th>
-                      <th>Product Name with unit</th>
-                      <th>Qty.</th>
-                      <th></th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td class="odr-slno">1</td>
-                      <td class="odr-productname">Aashirvaad Organic Whole Wheat Atta 5 KG </td>
-                      <td class="odr-qty">1</td>
-                      <td class="odr-cancel"><span class="material-icons-round">
-                          cancel
-                        </span></td>
-                    </tr>
-                    <tr>
-                      <td class="odr-slno">1</td>
-                      <td class="odr-productname">Aashirvaad Organic Whole Wheat Atta 5 KG </td>
-                      <td class="odr-qty">1</td>
-                      <td class="odr-cancel"><span class="material-icons-round">
-                          cancel
-                        </span></td>
-                    </tr>
-                  </tbody>
-                </table>
-                <div class="odr-details-grid uk-padding-remove">
-                  <table class="uk-table uk-table-small odr-payment-table">
-                    <tbody>
-                      <tr>
-                        <td>total bill amount</td>
-                        <td>₹ 1489</td>
-                      </tr>
-                      <tr>
-                        <td>Return/Cancel Amount</td>
-                        <td class="xo-red-color">₹ 574</td>
-                      </tr>
-                      <tr>
-                        <td>Paid Amount</td>
-                        <td>₹ 1489</td>
-                      </tr>
-                      <tr>
-                        <td>Refund Amount</td>
-                        <td>₹ 574</td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-                <div class="uk-width-1-1@s">
-                  <button class="uk-button uk-width-1-1 xo-button-primary">Return/Cancel</button>
-                </div>
-              </li>
-            </ul>
           </div>
         </div>
       </div>

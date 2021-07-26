@@ -11,7 +11,7 @@ import { TopnavComponent } from './components/topnav/topnav.component';
 
 
 const routes: Routes = [
-  {path: '', component: HomeComponent},
+  {path: '', component: ReturnOrdersComponent },
   {path: 'login', component: LoginComponent},
   {path: 'fg', component: ForgetpasswordComponent},
   {path: 'enter-otp', component: PhoneotpComponent},
