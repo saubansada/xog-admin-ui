@@ -11,11 +11,13 @@ import { PhoneotpComponent } from './components/phoneotp/phoneotp.component';
 import { HomeComponent } from './components/home/home.component';
 import { SidenavbarComponent } from './components/sidenavbar/sidenavbar.component';
 import { OrdersComponent } from './components/orders/orders.component';
+import { ReturnOrdersComponent } from './components/return-orders/return-orders.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    routingComponents
+    routingComponents,
+    ReturnOrdersComponent
   ],
   imports: [
     BrowserModule,

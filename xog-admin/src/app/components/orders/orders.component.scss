@@ -5,6 +5,7 @@
 
 #order-details-modal>div {
   width: 85% !important;
+  overflow: auto;
   border-radius: 8px;
   background-color: #eef1fb;
 }
@@ -78,6 +79,20 @@
 .od-product-cancel>span {
   color: #830202;
   font-size: 10pt;
+}
+
+.od-switcher>li{
+  background-color: white !important;
+  border-radius: 4px;
+}
+
+.od-switcher>li.uk-active>a {
+  background-color: #0920fb;
+}
+
+.od-switcher>li>a {
+  font-size: 9pt;
+  text-transform: capitalize;
 }
 
 .od-info-grid {
@@ -197,4 +212,62 @@ p.od-type-status{
 span.od-payment-type {
   font-size: 10pt;
   color: black;
+}
+
+.odr-table-heading>tr>th {
+  font-size: 9pt;
+  color: #494949;
+  text-align: left;
+}
+
+.odr-slno {
+  width: 3% !important;
+  color: black;
+  font-size: 9pt;
+  text-align: left;
+}
+
+.odr-productname {
+  font-size: 9pt;
+  width: 80% !important;
+  color: black;
+  text-align: left;
+}
+
+.odr-qty {
+  font-size: 10pt;
+  width: 7%;
+  color: black;
+  text-align: left;
+}
+
+.odr-cancel {
+  font-size: 9pt;
+  width: 10%;
+  color: #830202;
+}
+
+.odr-cancel>span {
+  font-size: 11pt;
+}
+
+.odr-details-grid {
+  border-radius: 6px;
+  background-color:#f7f7f7 ;
+}
+
+.odr-payment-table>tbody>tr>td:first-child {
+  font-size: 9pt;
+  text-align: left;
+  color: black;
+  text-transform: capitalize;
+}
+
+.odr-payment-table>tbody>tr>td:last-child {
+  color: #000000;
+  text-align: right;
+  font-size: 10pt;
+  font-family: 'Roboto', sans-serif !important;
+  font-weight: 500;
+  text-transform: capitalize;
 }

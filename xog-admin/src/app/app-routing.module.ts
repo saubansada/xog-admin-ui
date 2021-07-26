@@ -5,8 +5,10 @@ import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
 import { OrdersComponent } from './components/orders/orders.component';
 import { PhoneotpComponent } from './components/phoneotp/phoneotp.component';
+import { ReturnOrdersComponent } from './components/return-orders/return-orders.component';
 import { SidenavbarComponent } from './components/sidenavbar/sidenavbar.component';
 import { TopnavComponent } from './components/topnav/topnav.component';
+
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -14,7 +16,8 @@ const routes: Routes = [
   {path: 'fg', component: ForgetpasswordComponent},
   {path: 'enter-otp', component: PhoneotpComponent},
   {path: 'home', component: HomeComponent},
-  {path: 'orders', component: OrdersComponent}
+  {path: 'orders', component: OrdersComponent},
+  {path: 'returns', component: ReturnOrdersComponent }
 ];
 
 @NgModule({
@@ -23,4 +26,4 @@ const routes: Routes = [
 })
 export class AppRoutingModule { }
 
-export const routingComponents = [LoginComponent, ForgetpasswordComponent, PhoneotpComponent, HomeComponent, SidenavbarComponent, OrdersComponent, TopnavComponent]
+export const routingComponents = [LoginComponent, ForgetpasswordComponent, PhoneotpComponent, HomeComponent, SidenavbarComponent, OrdersComponent, TopnavComponent, ReturnOrdersComponent]
