@@ -20,7 +20,14 @@
 }
 
 
-label,p,input,button,a,select,td,th {
+label,
+p,
+input,
+button,
+a,
+select,
+td,
+th {
   font-family: 'Poppins', sans-serif !important;
 }
 
@@ -47,7 +54,7 @@ label,p,input,button,a,select,td,th {
   font-size: 10px;
 }
 
-.xo-searchbar>input{
+.xo-searchbar>input {
   border: none;
   font-size: 10pt;
   color: black !important;
@@ -71,13 +78,15 @@ label,p,input,button,a,select,td,th {
   border-radius: 6px;
 }
 
-th.month.drp-animate,th.month {
+th.month.drp-animate,
+th.month {
   font-size: 11pt;
   color: #000000 !important;
   font-weight: 600;
 }
 
-.md-drppicker td.available:hover, .md-drppicker th.available:hover {
+.md-drppicker td.available:hover,
+.md-drppicker th.available:hover {
   border-radius: 4px !important;
 }
 
@@ -87,11 +96,15 @@ th.month.drp-animate,th.month {
   color: black !important;
 }
 
-.md-drppicker td.off, .md-drppicker td.off.end-date, .md-drppicker td.off.in-range, .md-drppicker td.off.start-date {
+.md-drppicker td.off,
+.md-drppicker td.off.end-date,
+.md-drppicker td.off.in-range,
+.md-drppicker td.off.start-date {
   color: #9c9c9c !important;
 }
 
-.md-drppicker td.active, .md-drppicker td.active:hover {
+.md-drppicker td.active,
+.md-drppicker td.active:hover {
   background-color: #0920fb !important;
   color: white !important;
 }
@@ -133,17 +146,17 @@ th {
   text-transform: none !important;
 }
 
-.primary-table >thead>tr>th {
+.primary-table>thead>tr>th {
   font-size: 10pt;
   color: black;
 }
 
 .primary-table>thead>tr {
   background-color: #f7f7f7;
-  border-bottom:10px solid white;
+  border-bottom: 10px solid white;
 }
 
-.primary-table>tbody>tr>td{
+.primary-table>tbody>tr>td {
   font-size: 9.5pt;
   text-align: left;
 }
@@ -158,13 +171,13 @@ th {
   background-color: #0920fb !important;
 }
 
-.primary-table>tbody>tr>td   {
+.primary-table>tbody>tr>td {
   color: black;
   padding: 10px;
 }
 
 
-.primary-table>tbody>tr:hover{
+.primary-table>tbody>tr:hover {
   cursor: pointer;
   background-color: #f1f1f1;
 }
@@ -174,7 +187,7 @@ th {
 }
 
 .primary-table-drop {
-  background-color:#f7f7f7;
+  background-color: #f7f7f7;
   border-radius: 4px;
 }
 
@@ -208,8 +221,8 @@ th {
 }
 
 .danger-badge {
-  background-color: #ff000020;
-  color: #ff0000;
+  background-color: #ff000020 !important;
+  color: #ff0000 !important;
   padding: 4px 10px;
   border-radius: 4px;
   text-transform: capitalize;
@@ -220,4 +233,56 @@ th {
   border-radius: 6px;
   color: white;
   text-transform: none;
+}
+
+.xo-switcher.uk-subnav {
+  background: none;
+  margin-left: 0px;
+}
+
+.xo-switcher.uk-subnav>li {
+  padding-left: 0px;
+  padding-right: 0px;
+  background-color: #f7f7f7;
+  text-align: center !important;
+}
+
+.xo-switcher.uk-subnav>li:first-child {
+  border-top-left-radius: 8px;
+  border-bottom-left-radius: 8px;
+}
+
+.xo-switcher.uk-subnav>li:last-child,.xo-switcher.uk-subnav>li:last-child:first-child {
+  border-bottom-right-radius: 8px;
+  border-top-right-radius: 8px;
+}
+
+.xo-switcher.uk-subnav>li>a {
+  text-align: center !important;
+  text-transform: capitalize;
+  font-size: 9.5pt;
+  text-align: center;
+  color: #000000;
+}
+
+.xo-switcher.uk-subnav>li.uk-active>a {
+  color: white;
+}
+
+.xo-switcher.uk-subnav>li:first-child.uk-active>a,.xo-switcher.uk-subnav>li:first-child:hover>a {
+  background-color: #0920fb !important;
+  border-top-left-radius: 8px;
+  color: white;
+  border-bottom-left-radius: 8px;
+}
+
+.xo-switcher.uk-subnav>li:last-child.uk-active>a {
+  background-color: #0920fb;
+  color: white;
+  border-top-right-radius: 8px;
+  border-bottom-right-radius: 8px;
+}
+
+.xo-switcher.uk-subnav>li.uk-active>a {
+  background-color: #0920fb;
 }

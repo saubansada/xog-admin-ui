@@ -8,13 +8,13 @@
       <div class="uk-width-expand@m">
         <div class="uk-card uk-padding-small uk-card-body">
           <p class="container-header uk-margin-remove">
-            Return List
+            Refunds List
 
           </p>
           <ul class="uk-breadcrumb xo-breadcrumb uk-align-left uk-margin-remove">
-            <li><a href="#">Home</a></li>
-            <li><a href="#">Orders</a></li>
-            <li class="uk-active"><a href="#">Return</a></li>
+            <li><a routerLink="/home">Home</a></li>
+            <li><a routerLink="/orders">Orders</a></li>
+            <li class="uk-active"><a routerLink="/refunds" >Refunds</a></li>
           </ul>
           <br>
           <form class="uk-grid-small uk-margin-small-top" uk-grid>
@@ -33,8 +33,10 @@
               <div class="uk-form-controls">
                 <select class="uk-select xo-select" id="form-stacked-select">
                   <option>Refund Status</option>
-                  <option>Refundable</option>
-                  <option>Non Refundable</option>
+                  <option>Pending</option>
+                  <option>Confirmed</option>
+                  <option>Hold</option>
+                  <option>Cancel</option>
                 </select>
               </div>
             </div>
@@ -43,13 +45,12 @@
             <thead>
               <tr>
                 <th></th>
-                <th>Return I'd</th>
+                <th>Refund I'd</th>
                 <th>Order I'd</th>
                 <th>Name</th>
                 <th>Phone</th>
-                <th>Refund Type</th>
                 <th>Refund Amt</th>
-                <th>Payment Status</th>
+                <th>Refund Status</th>
                 <th>Total ₹</th>
                 <th>Type</th>
                 <th>Status</th>
@@ -64,8 +65,7 @@
                 <td class="xo-red-color">#988199221</td>
                 <td>Abdul</td>
                 <td>9900141870</td>
-                <td>Non</td>
-                <td>0</td>
+                <td>1489</td>
                 <td><span class="uk-badge moderate-badge">Un-Paid</span></td>
                 <td>1489 </td>
                 <td>Return</td>
@@ -86,12 +86,6 @@
                     </div>
                   </div>
                 </td>
-              </tr>
-              <tr>
-                <td><label><input class="uk-checkbox" type="checkbox"> </label>
-                </td>
-                <td>#819913889</td>
-                <td>Table Data</td>
               </tr>
             </tbody>
           </table>
@@ -149,45 +143,50 @@
       <div class="uk-width-1-3@m">
         <div class="uk-card od-info-grid uk-padding-small uk-card-body">
           <div class="od-invoice-grid">
-            <p class="od-info-title">Invoice for <span class="uk-float-right">#819913889</span></p>
-            <p class="od-customer-no">+91-9900141870</p>
-            <p class="od-customer-name">Abdul Kumshey</p>
-            <p class="od-customer-address">Magdoom colony azad street, Basha Manzil.</p>
-            <p class="od-delivery-type"> <span class="od-delivery-time">26.07.2021 | 2:00 - 4:00</span> <span
-                class="od-order-type uk-float-right">Delivery</span></p>
-            <hr class="uk-divider-icon uk-margin-remove-bottom">
-            <table class="uk-table uk-table-small od-invoice-table uk-margin-remove-top uk-table-divider">
-              <tbody>
-                <tr>
-                  <td>Total Amount</td>
-                  <td>₹ 1481</td>
-                </tr>
-                <tr>
-                  <td>Refund Status</td>
-                  <td>Non</td>
-                </tr>
-                <tr>
-                  <td>Type</td>
-                  <td>Cancel</td>
-                </tr>
-              </tbody>
-            </table>
-            <p class="od-payable-amount"> <span>Refund Amount:</span> ₹ 0</p>
-            <p class="od-type-status"><span class="od-payment-status moderate-badge">Un Paid</span> <span
-                class="od-payment-type uk-float-right">COD & Wallet</span></p>
-            <form class="uk-grid-small" uk-grid>
-              <div class="uk-width-1-1">
-                <select class="uk-select xo-select" id="form-horizontal-select">
-                  <option>Pending</option>
-                  <option>Confirmed</option>
-                  <option>Refund Request</option>
-                  <option>Cancel </option>
-                </select>
-              </div>
-              <div class="uk-width-1-1@s">
-                <button class="uk-button uk-width-1-1 xo-button-primary">Update</button>
-              </div>
-            </form>
+                <p class="od-info-title">Invoice for <span class="uk-float-right">#819913889</span></p>
+                <p class="od-customer-no">+91-9900141870</p>
+                <p class="od-customer-name">Abdul Kumshey</p>
+                <p class="od-delivery-type"> <span class="od-delivery-time">28.07.2021</span> <span
+                    class="od-order-type uk-float-right">Admin</span></p>
+                <hr class="uk-divider-icon uk-margin-remove-bottom">
+                <table class="uk-table uk-table-small od-invoice-table uk-margin-remove-top uk-table-divider">
+                  <tbody>
+                    <tr>
+                      <td>Total Amount</td>
+                      <td>₹ 1481</td>
+                    </tr>
+                    <tr>
+                      <td>Refund Status</td>
+                      <td>Pending</td>
+                    </tr>
+                    <tr>
+                      <td>Type</td>
+                      <td>Cancel</td>
+                    </tr>
+                  </tbody>
+                </table>
+                <p class="od-payable-amount"> <span>Refund Amount:</span> ₹ 1489</p>
+                <form class="uk-grid-small" uk-grid>
+                  <div class="uk-width-1-1">
+                    <select class="uk-select xo-select" id="form-horizontal-select">
+                      <option>Pending</option>
+                      <option>Confirmed</option>
+                      <option>Cancel </option>
+                      <option>Hold </option>
+                    </select>
+                  </div>
+                  <div class="uk-width-1-1">
+                    <select class="uk-select xo-select" id="form-horizontal-select">
+                      <option>Select Reason</option>
+                      <option>Due to some technical Difficulties we </option>
+                      <option>Cancel </option>
+                      <option>Hold </option>
+                    </select>
+                  </div>
+                  <div class="uk-width-1-1@s">
+                    <button class="uk-button uk-width-1-1 xo-button-primary">Update</button>
+                  </div>
+                </form>
           </div>
         </div>
       </div>

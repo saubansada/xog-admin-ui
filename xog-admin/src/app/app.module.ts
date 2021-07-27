@@ -12,12 +12,16 @@ import { HomeComponent } from './components/home/home.component';
 import { SidenavbarComponent } from './components/sidenavbar/sidenavbar.component';
 import { OrdersComponent } from './components/orders/orders.component';
 import { ReturnOrdersComponent } from './components/return-orders/return-orders.component';
+import { RefundComponent } from './components/refund/refund.component';
+import { CustomersComponent } from './components/customers/customers.component';
+import { ProductsComponent } from './components/products/products.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     routingComponents,
-    ReturnOrdersComponent
+    CustomersComponent,
+    ProductsComponent
   ],
   imports: [
     BrowserModule,

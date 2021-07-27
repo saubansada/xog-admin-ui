@@ -3,7 +3,7 @@
   <img src="assets/img/icon.png" alt="" class="sidenav-logo">
   <div class="uk-width-1-1@s uk-width-1-1@m uk-margin-top">
     <ul class="uk-nav-default sidenav-menu uk-nav-parent-icon" uk-nav>
-      <li class="uk-active"><a routerLink=""><span class="material-icons-outlined">
+      <li class="uk-active"><a routerLink="/home"><span class="material-icons-outlined">
             home
           </span> Dashboard</a></li>
           <li class="uk-parent">
@@ -14,20 +14,14 @@
               </span></a>
             <ul class="uk-nav-sub">
               <li class="sidenav-dropdown"><a routerLink="/orders">Orders</a></li>
-              <li class="sidenav-dropdown"><a routerLink="/returns">Return</a></li>
-              <li class="sidenav-dropdown"><a routerLink="">Refund</a></li>
+              <li class="sidenav-dropdown"><a routerLink="/returns">Return / Cancel</a></li>
+              <li class="sidenav-dropdown"><a routerLink="/refunds">Refund</a></li>
             </ul>
           </li>
-      <li class="uk-parent">
-        <a href="#"><span class="material-icons-outlined">
+      <li>
+        <a routerLink="/customers" ><span class="material-icons-outlined">
             people
-          </span> Customers <span class="material-icons-outlined chev-down">
-            navigate_next
-          </span></a>
-        <ul class="uk-nav-sub">
-          <li class="sidenav-dropdown"><a href="#">Payment Request</a></li>
-          <li class="sidenav-dropdown"><a href="#">Payment Request</a></li>
-        </ul>
+          </span> Customers </a>
       </li>
       <li class="uk-parent">
         <a href="#"><span class="material-icons-outlined">
@@ -36,8 +30,12 @@
             navigate_next
           </span></a>
         <ul class="uk-nav-sub">
-          <li class="sidenav-dropdown"><a href="#">Payment Request</a></li>
-          <li class="sidenav-dropdown"><a href="#">Payment Request</a></li>
+          <li class="sidenav-dropdown"><a href="#">Products</a></li>
+          <li class="sidenav-dropdown"><a href="#">Add Products</a></li>
+          <li class="sidenav-dropdown"><a href="#">Upload Csv</a></li>
+          <li class="sidenav-dropdown"><a href="#">Categories</a></li>
+          <li class="sidenav-dropdown"><a href="#">Sub-Categories</a></li>
+          <li class="sidenav-dropdown"><a href="#">Brands</a></li>
         </ul>
       </li>
       <li class="uk-parent">
