@@ -204,6 +204,16 @@ th {
   color: #0920fb;
 }
 
+
+.primary-table>tbody>tr>td.od-product-img {
+  width: 10%;
+}
+
+.primary-table>tbody>tr>td.od-product-img>img {
+  width: 20px;
+}
+
+
 .success-badge {
   background-color: #009c2720;
   padding: 4px 10px !important;
