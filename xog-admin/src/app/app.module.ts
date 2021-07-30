@@ -15,13 +15,17 @@ import { ReturnOrdersComponent } from './components/return-orders/return-orders.
 import { RefundComponent } from './components/refund/refund.component';
 import { CustomersComponent } from './components/customers/customers.component';
 import { ProductsComponent } from './components/products/products.component';
+import { AddProductsComponent } from './components/add-products/add-products.component';
+import { ProductsCsvComponent } from './components/products-csv/products-csv.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     routingComponents,
     CustomersComponent,
-    ProductsComponent
+    ProductsComponent,
+    AddProductsComponent,
+    ProductsCsvComponent
   ],
   imports: [
     BrowserModule,
