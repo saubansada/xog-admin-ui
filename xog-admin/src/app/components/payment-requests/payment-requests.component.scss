@@ -1,0 +1,8 @@
+@import url(../return-orders/return-orders.component.scss);
+
+
+#order-details-modal>div {
+  width: 35% !important;
+  z-index: 2 !important;
+  position: relative;
+}
