@@ -17,15 +17,39 @@ import { CustomersComponent } from './components/customers/customers.component';
 import { ProductsComponent } from './components/products/products.component';
 import { AddProductsComponent } from './components/add-products/add-products.component';
 import { ProductsCsvComponent } from './components/products-csv/products-csv.component';
+import { CategoriesComponent } from './components/categories/categories.component';
+import { AddCategoryComponent } from './components/add-category/add-category.component';
+import { SubCategoriesComponent } from './components/sub-categories/sub-categories.component';
+import { AddSubComponent } from './components/add-sub/add-sub.component';
+import { BrandsComponent } from './components/brands/brands.component';
+import { AddBrandsComponent } from './components/add-brands/add-brands.component';
+import { OffersComponent } from './components/offers/offers.component';
+import { AddOffersComponent } from './components/add-offers/add-offers.component';
+import { UsersComponent } from './components/users/users.component';
+import { AddUsersComponent } from './components/add-users/add-users.component';
+import { PaymentHistoryComponent } from './components/payment-history/payment-history.component';
+import { WalletHistoryComponent } from './components/wallet-history/wallet-history.component';
+import { PaymentRequestsComponent } from './components/payment-requests/payment-requests.component';
+import { AddWalletComponent } from './components/add-wallet/add-wallet.component';
+import { FinanceStatsComponent } from './components/finance-stats/finance-stats.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     routingComponents,
-    CustomersComponent,
-    ProductsComponent,
-    AddProductsComponent,
-    ProductsCsvComponent
+    SubCategoriesComponent,
+    AddSubComponent,
+    BrandsComponent,
+    AddBrandsComponent,
+    OffersComponent,
+    AddOffersComponent,
+    UsersComponent,
+    AddUsersComponent,
+    PaymentHistoryComponent,
+    WalletHistoryComponent,
+    PaymentRequestsComponent,
+    AddWalletComponent,
+    FinanceStatsComponent
   ],
   imports: [
     BrowserModule,

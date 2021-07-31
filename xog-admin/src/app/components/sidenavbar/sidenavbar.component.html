@@ -33,9 +33,9 @@
           <li class="sidenav-dropdown"><a routerLink="/products" >Products</a></li>
           <li class="sidenav-dropdown"><a routerLink="/add-products">Add Products</a></li>
           <li class="sidenav-dropdown"><a routerLink="/upload-csv">Upload Csv</a></li>
-          <li class="sidenav-dropdown"><a href="#">Categories</a></li>
-          <li class="sidenav-dropdown"><a href="#">Sub-Categories</a></li>
-          <li class="sidenav-dropdown"><a href="#">Brands</a></li>
+          <li class="sidenav-dropdown"><a routerLink="/categories">Categories</a></li>
+          <li class="sidenav-dropdown"><a routerLink="/sub-categories">Sub-Categories</a></li>
+          <li class="sidenav-dropdown"><a routerLink="/brands">Brands</a></li>
         </ul>
       </li>
       <li class="uk-parent">
@@ -49,15 +49,26 @@
           <li class="sidenav-dropdown"><a href="#">Payment Request</a></li>
         </ul>
       </li>
-      <li><a href="#"><span class="material-icons-round">
+      <li><a routerLink="/offers"><span class="material-icons-round">
         local_offer
       </span> Offers</a></li>
-      <li><a href="#"><span class="material-icons-round">
+      <li><a routerLink="/users"><span class="material-icons-round">
         folder_shared
       </span> Users</a></li>
-      <li><a href="#"><span class="material-icons-round">
-        account_balance
-      </span> Finance</a></li>
+      <li class="uk-parent">
+        <a href="#"><span class="material-icons-round">
+          account_balance
+        </span> Finance <span class="material-icons-outlined chev-down">
+            navigate_next
+          </span></a>
+        <ul class="uk-nav-sub">
+          <li class="sidenav-dropdown"><a routerLink="/products" >Payment History</a></li>
+          <li class="sidenav-dropdown"><a routerLink="/add-products">Wallet History</a></li>
+          <li class="sidenav-dropdown"><a routerLink="/upload-csv">Payment Request</a></li>
+          <li class="sidenav-dropdown"><a routerLink="/categories">Add Wallet</a></li>
+          <li class="sidenav-dropdown"><a routerLink="/sub-categories">Stats</a></li>
+        </ul>
+      </li>
       <li><a href="#"><span class="material-icons-round">
         insights
       </span> Reports</a></li>

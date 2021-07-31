@@ -259,8 +259,15 @@ th {
 .xo-button-primary {
   background-color: #0920fb;
   border-radius: 6px;
+  font-size: 9.5pt;
   color: white;
   text-transform: none;
+  border: 1px solid #0920fb;
+}
+
+.xo-button-primary:hover {
+  color: #0920fb !important;
+  background: none;
 }
 
 .xo-switcher.uk-subnav {
