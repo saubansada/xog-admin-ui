@@ -1,0 +1,100 @@
+ <div class="uk-width-expand@m">
+   <div class="uk-card uk-padding-small uk-card-body">
+     <p class="container-header uk-margin-remove">
+       Product List
+
+     </p>
+     <ul class="uk-breadcrumb xo-breadcrumb uk-align-left  uk-margin-small-bottom">
+       <li><a href="#">Home</a></li>
+       <li><a href="#">Orders</a></li>
+       <li class="uk-active"><a href="#">Return</a></li>
+     </ul>
+     <br>
+     <form class="uk-grid-small uk-margin-small-top" uk-grid>
+       <div class="uk-width-1-2@s">
+         <div class="uk-inline uk-width-1-1 xo-searchbar">
+           <a class="uk-form-icon" href="#"><span class="material-icons-outlined">
+               search
+             </span></a>
+           <input class="uk-input uk-width-1-1 " placeholder="Search by number, name or address" type="text">
+         </div>
+       </div>
+       <div class="uk-width-1-6@s">
+         <input class="uk-input xo-datepicker" type="text" placeholder="Pick date" ngxDaterangepickerMd>
+       </div>
+       <div class="uk-width-1-6@s">
+         <div class="uk-form-controls">
+           <select class="uk-select xo-select" id="form-stacked-select">
+             <option>Categories</option>
+             <option>Refundable</option>
+             <option>Non Refundable</option>
+           </select>
+         </div>
+       </div>
+       <div class="uk-width-1-6@s">
+         <div class="uk-form-controls">
+           <select class="uk-select xo-select" id="form-stacked-select">
+             <option>Availibility</option>
+             <option>Refundable</option>
+             <option>Non Refundable</option>
+           </select>
+         </div>
+       </div>
+     </form>
+     <table class="uk-table uk-table-small primary-table">
+       <thead>
+         <tr>
+           <th></th>
+           <th>#</th>
+           <th>I'd</th>
+           <th>Image</th>
+           <th>P. Name</th>
+           <th>Price</th>
+           <th>% Price</th>
+           <th>% Percentage</th>
+           <th>Quantity</th>
+           <th>Availibility</th>
+           <th class="uk-text-right">Action</th>
+         </tr>
+       </thead>
+       <tbody>
+         <tr>
+           <td><label><input class="uk-checkbox" type="checkbox"> </label>
+           </td>
+           <td>12</td>
+           <td>#988199221</td>
+           <td class="uk-text-left od-product-img">
+             <img src="assets/img/products/aashirvad.jpg" alt="">
+           </td>
+           <td>Aashirvad attta.....</td>
+           <td>298</td>
+           <td>260</td>
+           <td>35%</td>
+           <td>5 Kg</td>
+           <td>Available </td>
+           <td class="uk-text-right">
+             <span class="material-icons-outlined xo-icon">
+               more_vert
+             </span>
+             <div uk-drop="pos: bottom-left">
+               <div class="uk-card uk-card-body uk-width-auto uk-align-right uk-padding-remove">
+                 <div class="uk-width-1-1@s uk-width-1-1@m">
+                   <ul class="uk-nav uk-nav-default primary-table-drop">
+                     <li><a href="">View</a></li>
+                     <li><a href="#">Delete</a></li>
+                   </ul>
+                 </div>
+               </div>
+             </div>
+           </td>
+         </tr>
+         <tr>
+           <td><label><input class="uk-checkbox" type="checkbox"> </label>
+           </td>
+           <td>#819913889</td>
+           <td>Table Data</td>
+         </tr>
+       </tbody>
+     </table>
+   </div>
+ </div>
