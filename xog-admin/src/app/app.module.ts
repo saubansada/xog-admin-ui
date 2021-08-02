@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgxDaterangepickerMd } from 'ngx-daterangepicker-material';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { AppRoutingModule, routingComponents } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { LoginComponent } from './views/login/login.component';
-import { ForgetpasswordComponent } from './views/forgetpassword/forgetpassword.component';
-import { PhoneotpComponent } from './views/phoneotp/phoneotp.component';
+import { LoginComponent } from './auth/login/login.component';
+import { ForgetpasswordComponent } from './auth/forgetpassword/forgetpassword.component';
+import { PhoneotpComponent } from './auth/phoneotp/phoneotp.component';
 import { HomeComponent } from './views/home/home.component';
 import { OrdersComponent } from './views/orders/orders.component';
 import { ReturnOrdersComponent } from './views/return-orders/return-orders.component';
@@ -33,14 +33,18 @@ import { AddWalletComponent } from './views/add-wallet/add-wallet.component';
 import { FinanceStatsComponent } from './views/finance-stats/finance-stats.component';
 import { SidenavbarComponent } from './components/sidenavbar/sidenavbar.component';
 import { TopnavComponent } from './components/topnav/topnav.component';
+import { MainLayoutComponent } from './layouts/main-layout/main-layout.component';
+import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   imports: [
     BrowserModule,
     AppRoutingModule,
     NgSelectModule,
+    BrowserAnimationsModule,
     NgxDaterangepickerMd.forRoot(),
-    FormsModule
+    ReactiveFormsModule
   ],
   declarations: [
     AppComponent,
@@ -72,7 +76,9 @@ import { TopnavComponent } from './components/topnav/topnav.component';
     AddProductsComponent,
     ProductsCsvComponent,
     CategoriesComponent,
-    AddCategoryComponent
+    AddCategoryComponent,
+    MainLayoutComponent,
+    AuthLayoutComponent
   ],
   providers: [],
   bootstrap: [AppComponent]

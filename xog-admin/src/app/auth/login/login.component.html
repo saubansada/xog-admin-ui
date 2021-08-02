@@ -1,0 +1,36 @@
+<div class="uk-card login-grid uk-card-body">
+  <div class="uk-child-width-1-2@s uk-child-width-1-1@m uk-text-center" uk-grid>
+    <div>
+      <div class="uk-card login-form-grid uk-align-center uk-margin-large uk-card-body  ">
+        <img src="assets/img/icon.png" class="login-logo" alt="">
+
+        <form class="uk-form-stacked uk-margin-medium-top" [formGroup]="formInstance"
+          (ngSubmit)="formInstance.valid && submitForm()">
+
+          <div class="uk-margin-small">
+            <label class="uk-form-label uk-align-left login-label" for="form-stacked-text">Email</label>
+            <div class="uk-form-controls form-stacked-text">
+              <input class="uk-input login-input" formControlName="UserName" placeholder="mial@example.com">
+            </div>
+          </div>
+
+          <div>
+
+            <label class="uk-form-label uk-align-left login-label" for="form-stacked-text">Password</label>
+            <div class="uk-inline uk-width-1-1">
+              <span class="uk-form-icon uk-form-icon-flip material-icons login-input-icon"
+                (click)="visibility()">visibility</span>
+              <input class="uk-input login-input form-stacked-text" formControlName="Password"
+                [attr.type]="showPassword ? 'text' : 'password'" placeholder="*******">
+            </div>
+          </div>
+
+          <button type="submit" class="uk-button uk-width-1-1 login-btn uk-margin">Sign in</button>
+          
+          <p class="forget-password">Don't have an account : <a routerLink="/forgetpassword"
+              class="uk-button-text">Forget password?</a> </p>
+
+        </form>
+      </div>
+    </div>
+  </div>

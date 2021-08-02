@@ -38,7 +38,9 @@
   border-radius: 10px;
 }
 
-.sidenav-menu>li:hover>a>span:first-child,.sidenav-menu>li.uk-active>a>span:first-child,.sidenav-menu>li.uk-open>a>span:first-child {
+.sidenav-menu>li:hover>a>span:first-child,
+.sidenav-menu>li.uk-active>a>span:first-child,
+.sidenav-menu>li.uk-open>a>span:first-child {
   color: #0920fb !important;
 }
 
@@ -52,6 +54,13 @@
   transform: rotate(90deg);
 }
 
+.is-closed>ul .uk-nav-sub,
+.is-closed>ul span.menu-title,
+.is-closed>ul span.chev-down {
+  display: none !important;
+}
+ 
+
 .sidenav-dropdown {
   padding: 5px;
   margin-left: 20px;
@@ -60,4 +69,8 @@
 .sidenav-dropdown>a {
   color: black;
   font-size: 9.5pt;
+}
+
+.uk-nav-sub {
+  margin-left: 20px;
 }

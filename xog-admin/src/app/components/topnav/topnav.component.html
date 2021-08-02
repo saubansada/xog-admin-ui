@@ -2,9 +2,9 @@
 
   <div class="uk-navbar-left">
 
-    <ul class="uk-navbar-nav">
-        <li class="uk-active"><a href="#"><span style="font-size: 16pt;" class="material-icons-sharp">
-          menu_open
+    <ul class="uk-navbar-nav" (click)="toggle()">
+        <li class="uk-active"><a><span style="font-size: 16pt;" class="material-icons-sharp">
+          {{ open ? "menu_open" : "menu" }}
           </span></a></li>
     </ul>
 
