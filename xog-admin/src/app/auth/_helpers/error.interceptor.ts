@@ -4,7 +4,6 @@ import { Observable, throwError, Subject, of } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { AuthenticationService } from '../_services/authentication.service';
 import { Router } from '@angular/router';
-import { MatSnackBar } from '@angular/material/snack-bar';
 import { ErrorInterceptorService } from 'src/app/shared/services/error-interceptor.service';
 import { Result } from 'src/app/shared/base.component';
 
@@ -30,7 +29,7 @@ export class ErrorInterceptor implements HttpInterceptor {
 
                 this.authenticationService.logout();
 
-                this._router.navigate(['/login']);
+                this._router.navigate(['/auth/login']);
 
                 setTimeout(() => {
                     this.errorIntrcptr.httpErrorOccurred.next("Please Login Again");

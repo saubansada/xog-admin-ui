@@ -12,28 +12,35 @@ export class AuthenticationService {
     public currentUser: Observable<any>;
 
     constructor(private http: HttpClient) {
-        this.currentUserSubject = new BehaviorSubject<any>(JSON.parse(localStorage.getItem('currentUser')));
+
+        this.currentUserSubject = new BehaviorSubject<any>(JSON.parse(localStorage.getItem('currentUser') ?? "{}"));
+        
         this.currentUser = this.currentUserSubject.asObservable();
     }
 
     public get currentUserValue(): any {
+
         return this.currentUserSubject.value;
     }
 
     login(username: string, password: string): Observable<any> { 
 
-        const myheader = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded')
+        const myheader = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded');
+
         let body = new HttpParams();
+
         body = body.set('UserName', username);
         body = body.set('Password', password);
         body = body.set('grant_type', "password");
-        //return of({});
+        
         return this.http.post<any>(`${environment.appAuthUrl}`, body, {
             headers: myheader
         }).pipe(map(user => {
-            // store user details and jwt token in local storage to keep user logged in between page refreshes
+
             localStorage.setItem('currentUser', JSON.stringify(user));
+
             this.currentUserSubject.next(user);
+
             return user;
         }));
     }
@@ -45,15 +52,19 @@ export class AuthenticationService {
             "FullName": fullName, "PhoneNumber" : phoneNumber, 
             "Email": username, "Password": password, "ConfirmPassword": confirm })
             .pipe(map(user => {
+
                  localStorage.setItem('currentUser', JSON.stringify(user));
                 
                 this.currentUserSubject.next(user);
+                
                 return user;
             }));
     }
 
     logout() { 
+
         localStorage.removeItem('currentUser');
+
         this.currentUserSubject.next(null); 
     }
 }

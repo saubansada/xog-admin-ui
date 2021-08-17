@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-forgetpassword',
@@ -8,6 +9,9 @@ import { Component, OnInit } from '@angular/core';
 export class ForgetpasswordComponent implements OnInit {
 
   constructor() { }
+
+  
+  assetUrl: string = environment.assetsUrl;
 
   ngOnInit(): void {
   }

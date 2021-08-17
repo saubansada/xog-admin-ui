@@ -1,8 +1,11 @@
 <div class="uk-card login-grid uk-card-body">
   <div class="uk-child-width-1-2@s uk-child-width-1-1@m uk-text-center" uk-grid>
+
     <div>
-      <div class="uk-card login-form-grid uk-align-center uk-margin-large uk-card-body  ">
-        <img src="assets/img/icon.png" class="login-logo" alt="">
+
+      <div class="uk-card login-form-grid uk-align-center uk-margin-large uk-card-body">
+
+        <img [attr.src]="assetUrl + '/icon.png'" class="login-logo" alt="">
 
         <form class="uk-form-stacked uk-margin-medium-top" [formGroup]="formInstance"
           (ngSubmit)="formInstance.valid && submitForm()">
@@ -31,6 +34,9 @@
               class="uk-button-text">Forget password?</a> </p>
 
         </form>
+
       </div>
+
     </div>
+
   </div>

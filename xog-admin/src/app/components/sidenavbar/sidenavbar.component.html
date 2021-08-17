@@ -1,13 +1,13 @@
 <div class="uk-card sidenav-bar uk-card-body">
 
-  <img src="assets/img/icon.png" alt="" class="sidenav-logo">
+  <img [attr.src]="assetUrl + 'assets/img/icon.png'" alt="" class="sidenav-logo">
 
   <div [ngClass]="{ 'uk-width-1-1@s uk-width-1-1@m uk-margin-top' : true, 'is-closed' : !open }">
 
     <ul class="uk-nav-default sidenav-menu uk-nav-parent-icon" uk-nav>
 
       <li class="uk-active">
-        <a routerLink="/home">
+        <a routerLink="/">
           <span class="material-icons-outlined">
             home
           </span> 
@@ -103,7 +103,7 @@
 
       <li class="uk-parent">
 
-        <a href="#">
+        <a routerLink="/finance">
           <span class="material-icons-round">
             account_balance
           </span>
@@ -123,7 +123,7 @@
       </li>
 
       <li>
-        <a href="#">
+        <a routerLink="/insights">
           <span class="material-icons-round">
             insights
           </span>
@@ -132,7 +132,7 @@
       </li>
 
       <li>
-        <a href="#">
+        <a routerLink="/settings">
           <span class="material-icons-round">
             settings_suggest
           </span> 

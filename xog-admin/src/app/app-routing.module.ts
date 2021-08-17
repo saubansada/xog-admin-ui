@@ -12,7 +12,7 @@ import { CategoriesComponent } from './views/categories/categories.component';
 import { CustomersComponent } from './views/customers/customers.component';
 import { FinanceStatsComponent } from './views/finance-stats/finance-stats.component';
 import { ForgetpasswordComponent } from './auth/forgetpassword/forgetpassword.component';
-import { HomeComponent } from './views/home/home.component';
+import { DashboardComponent } from './views/dashboard/dashboard.component';
 import { LoginComponent } from './auth/login/login.component';
 import { OffersComponent } from './views/offers/offers.component';
 import { OrdersComponent } from './views/orders/orders.component';
@@ -30,13 +30,19 @@ import { SidenavbarComponent } from './components/sidenavbar/sidenavbar.componen
 import { TopnavComponent } from './components/topnav/topnav.component';
 import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component';
 import { MainLayoutComponent } from './layouts/main-layout/main-layout.component';
+import { RoleGuardService } from './auth/_helpers/role.guard';
+import { Role } from './auth/_models/role';
 
 
 const routes: Routes = [
   {
-    path: '', component: MainLayoutComponent, children: [
+    path: '', component: MainLayoutComponent, 
+    canActivate: [RoleGuardService],
+    data: { roles: [Role.Admin] },
+    children: [
+      { path: '', component: DashboardComponent },
+      { path: 'dashboard', redirectTo: '' },
       { path: 'subcategory', component: SubCategoriesComponent },
-      { path: 'home', component: HomeComponent },
       { path: 'orders', component: OrdersComponent },
       { path: 'returns', component: ReturnOrdersComponent },
       { path: 'refunds', component: RefundComponent },
@@ -58,17 +64,20 @@ const routes: Routes = [
       { path: 'wallet-history', component: WalletHistoryComponent },
       { path: 'payment-request', component: PaymentRequestsComponent },
       { path: 'add-wallet', component: AddWalletComponent },
-      { path: 'finance-stats', component: FinanceStatsComponent }
+      { path: 'finance-stats', component: FinanceStatsComponent },
+      {
+        path: '**', redirectTo: '/auth/login'
+      }
     ]
   },
   {
-    path: '', component: AuthLayoutComponent, children: [
-      { path: 'login', component: LoginComponent },      
+    path: 'auth', component: AuthLayoutComponent, children: [
+      { path: '', redirectTo: 'login', pathMatch: "full" },
+      { path: 'login', component: LoginComponent },
       { path: 'forgetpassword', component: ForgetpasswordComponent },
       { path: 'enter-otp', component: PhoneotpComponent },
     ]
   }
-
 ];
 
 @NgModule({
@@ -77,4 +86,4 @@ const routes: Routes = [
 })
 export class AppRoutingModule { }
 
-export const routingComponents = [LoginComponent, ForgetpasswordComponent, PhoneotpComponent, HomeComponent, OrdersComponent, ReturnOrdersComponent, RefundComponent, CustomersComponent, ProductsComponent, TopnavComponent, SidenavbarComponent, AddProductsComponent, ProductsCsvComponent, CategoriesComponent, AddCategoryComponent, SubCategoriesComponent, AddSubComponent, BrandsComponent, AddBrandsComponent, OffersComponent, AddOffersComponent, UsersComponent, AddUsersComponent, PaymentHistoryComponent, PaymentRequestsComponent, WalletHistoryComponent, AddWalletComponent, FinanceStatsComponent]
+export const routingComponents = [LoginComponent, ForgetpasswordComponent, PhoneotpComponent, DashboardComponent, OrdersComponent, ReturnOrdersComponent, RefundComponent, CustomersComponent, ProductsComponent, TopnavComponent, SidenavbarComponent, AddProductsComponent, ProductsCsvComponent, CategoriesComponent, AddCategoryComponent, SubCategoriesComponent, AddSubComponent, BrandsComponent, AddBrandsComponent, OffersComponent, AddOffersComponent, UsersComponent, AddUsersComponent, PaymentHistoryComponent, PaymentRequestsComponent, WalletHistoryComponent, AddWalletComponent, FinanceStatsComponent]

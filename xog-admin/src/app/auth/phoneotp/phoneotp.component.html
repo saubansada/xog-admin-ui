@@ -1,7 +1,7 @@
 <div class="uk-child-width-1-2@s uk-grid-match uk-child-width-1-2@m uk-grid-collapse uk-text-center" uk-grid>
   <div>
     <div class="uk-card uk-padding-remove  uk-card-body">
-      <img src="assets/img/login-1.jpg" alt="" class="login-img">
+      <img [attr.src]="assetsUrl + '/login-1.jpg'" alt="" class="login-img">
     </div>
   </div>
   <div>
@@ -9,7 +9,7 @@
       <div class="uk-child-width-1-2@s uk-child-width-1-1@m uk-text-center" uk-grid>
         <div>
           <div class="uk-card login-form-grid uk-align-center uk-margin-large uk-card-body  ">
-            <img src="assets/img/icon.png" class="login-logo" alt="">
+            <img [attr.src]="assetsUrl + '/icon.png'" class="login-logo" alt="">
 
             <form class="uk-form-stacked uk-margin-medium-top">
 

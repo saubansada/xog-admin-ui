@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-phoneotp',
@@ -7,6 +8,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PhoneotpComponent implements OnInit {
 
+  assetsUrl: string = environment.assetsUrl;
+  
   constructor() { }
 
   ngOnInit(): void {

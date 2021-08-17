@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, NgModuleFactoryLoader, SystemJsNgModuleLoader } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgxDaterangepickerMd } from 'ngx-daterangepicker-material';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -8,7 +8,7 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './auth/login/login.component';
 import { ForgetpasswordComponent } from './auth/forgetpassword/forgetpassword.component';
 import { PhoneotpComponent } from './auth/phoneotp/phoneotp.component';
-import { HomeComponent } from './views/home/home.component';
+import { DashboardComponent } from './views/dashboard/dashboard.component';
 import { OrdersComponent } from './views/orders/orders.component';
 import { ReturnOrdersComponent } from './views/return-orders/return-orders.component';
 import { RefundComponent } from './views/refund/refund.component';
@@ -36,6 +36,9 @@ import { TopnavComponent } from './components/topnav/topnav.component';
 import { MainLayoutComponent } from './layouts/main-layout/main-layout.component';
 import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { JwtInterceptor } from './auth/_helpers/jwt.interceptor';
+import { ErrorInterceptor } from './auth/_helpers/error.interceptor';
 
 @NgModule({
   imports: [
@@ -44,7 +47,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     NgSelectModule,
     BrowserAnimationsModule,
     NgxDaterangepickerMd.forRoot(),
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   declarations: [
     AppComponent,
@@ -66,7 +70,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     LoginComponent,
     ForgetpasswordComponent,
     PhoneotpComponent,
-    HomeComponent,
+    DashboardComponent,
     SidenavbarComponent,
     OrdersComponent,
     ReturnOrdersComponent,
@@ -80,7 +84,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     MainLayoutComponent,
     AuthLayoutComponent
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

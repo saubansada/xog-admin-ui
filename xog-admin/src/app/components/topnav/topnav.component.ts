@@ -1,4 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthenticationService } from 'src/app/auth/_services/authentication.service';
 
 @Component({
   selector: 'app-topnav',
@@ -11,7 +13,7 @@ export class TopnavComponent implements OnInit {
 
   @Output() openChange: EventEmitter<boolean> = new EventEmitter<boolean>();
 
-  constructor() { }
+  constructor(private authService: AuthenticationService, private router: Router) { }
 
   ngOnInit(): void {
   }
@@ -19,5 +21,10 @@ export class TopnavComponent implements OnInit {
   toggle() {
     this.open = !this.open;
     this.openChange.emit(this.open);
+  }
+
+  logOut() {
+    this.authService.logout();
+    this.router.navigate(['/auth/login']);
   }
 }

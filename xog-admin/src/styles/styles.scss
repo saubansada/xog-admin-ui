@@ -20,7 +20,7 @@
 }
 
 .xo-clear-btn {
-  background-color: #9b400b ;
+  background-color: #9b400b;
   height: 44px;
   color: white;
   border-radius: 8px;
@@ -287,7 +287,8 @@ th {
   border-bottom-left-radius: 8px;
 }
 
-.xo-switcher.uk-subnav>li:last-child,.xo-switcher.uk-subnav>li:last-child:first-child {
+.xo-switcher.uk-subnav>li:last-child,
+.xo-switcher.uk-subnav>li:last-child:first-child {
   border-bottom-right-radius: 8px;
   border-top-right-radius: 8px;
 }
@@ -304,7 +305,8 @@ th {
   color: white;
 }
 
-.xo-switcher.uk-subnav>li:first-child.uk-active>a,.xo-switcher.uk-subnav>li:first-child:hover>a {
+.xo-switcher.uk-subnav>li:first-child.uk-active>a,
+.xo-switcher.uk-subnav>li:first-child:hover>a {
   background-color: #0920fb !important;
   border-top-left-radius: 8px;
   color: white;
