@@ -17,12 +17,11 @@ export interface IProductItem {
   Description: String,
   ProductImages: String[],
   CartCount: number;
-
 }
 
 export class ICartItem { 
-  ProductId: number;
-  CartCount: number; 
+  ProductId!: number;
+  CartCount!: number; 
 }
 
 

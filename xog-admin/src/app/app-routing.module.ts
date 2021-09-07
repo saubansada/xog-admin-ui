@@ -36,7 +36,7 @@ import { Role } from './auth/_models/role';
 
 const routes: Routes = [
   {
-    path: '', component: MainLayoutComponent, 
+    path: '', component: MainLayoutComponent,
     canActivate: [RoleGuardService],
     data: { roles: [Role.Admin] },
     children: [
@@ -51,9 +51,11 @@ const routes: Routes = [
       { path: 'add-products', component: AddProductsComponent },
       { path: 'upload-csv', component: ProductsCsvComponent },
       { path: 'categories', component: CategoriesComponent },
-      { path: 'add-category', component: AddCategoryComponent },
+      { path: 'categories/add', component: AddCategoryComponent },
+      { path: 'categories/edit', component: AddCategoryComponent },
       { path: 'sub-categories', component: SubCategoriesComponent },
-      { path: 'add-sub', component: AddSubComponent },
+      { path: 'sub-categories/add', component: AddSubComponent },
+      { path: 'sub-categories/edit', component: AddSubComponent },
       { path: 'add-brands', component: AddBrandsComponent },
       { path: 'brands', component: BrandsComponent },
       { path: 'offers', component: OffersComponent },

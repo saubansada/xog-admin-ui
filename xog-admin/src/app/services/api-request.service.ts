@@ -1,17 +1,16 @@
 import { Injectable, Injector } from '@angular/core';
 import { Observable, Subject, throwError } from 'rxjs';
 import { HttpClient } from "@angular/common/http";
-import { map, catchError } from "rxjs/operators";
-import { ErrorInterceptorService } from "../services/error-interceptor.service";
+import { map, catchError } from "rxjs/operators"; 
 import { ResponseObject, Result } from "../models/common";
+import { ErrorInterceptorService } from '../shared/services/error-interceptor.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ApiRequestService {
 
-  protected http: HttpClient; 
-  
+  protected http: HttpClient;
   protected errorIntrcptr: ErrorInterceptorService;
 
   private asyncStatus: Subject<boolean> = new Subject<boolean>();
@@ -29,7 +28,7 @@ export class ApiRequestService {
     this.errorIntrcptr.httpError$.subscribe(res => {
       console.log(JSON.stringify(res));
         this.asyncStatus.next(false);
-        this.onMessaged.next({ message: res, result: Result.Error }); 
+        this.onMessaged.next({ Message: res, Result: Result.Error }); 
       return throwError(res);
   })
   }
@@ -48,6 +47,20 @@ export class ApiRequestService {
     })));
   }
 
+  public put(url: string, data: any): Observable<any> {
+
+    this.asyncStatus.next(true);
+
+    return this.http.put<ResponseObject<any>>(url, data).pipe(map(res => {
+
+      this.asyncStatus.next(false);
+      this.onMessaged.next(res);
+      return res;
+    }, catchError(err => {
+      return throwError(err);
+    })));
+  }
+  
   private mapUrlWithQueryString(url: string, data?: any) {
 
     if (data) {

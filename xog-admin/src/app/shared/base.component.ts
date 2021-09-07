@@ -96,8 +96,8 @@ export class BaseComponent implements OnInit, OnDestroy {
     }
 
     showMessage(res: any) {
-        if (res.message != null && res.message.trim() != "") {
-            alert(res.message);
+        if (res.Message != null && res.Message.trim() != "") {
+            alert(res.Message);
             // this.snackBar.open(res.message, "",
             //     {
             //         duration: 3000,

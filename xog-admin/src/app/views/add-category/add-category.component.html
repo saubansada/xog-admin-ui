@@ -1,12 +1,13 @@
 <div class="uk-width-expand@m">
   <div class="uk-card uk-padding-small uk-card-body">
     <p class="container-header uk-margin-remove">
-      Add Categories
+      {{ isEdit ? "Edit" : "Add" }} Categories
     </p>
     <ul class="uk-breadcrumb xo-breadcrumb uk-align-left uk-margin-remove">
       <li><a routerLink="">Home</a></li>
       <li><a routerLink="/categories">Categories</a></li>
-      <li class="uk-active"><a routerLink="/add-category">Add Categories</a></li>
+      <li class="uk-active" *ngIf="!isEdit"><a routerLink="/categories/add">Add Categories</a></li>
+      <li class="uk-active" *ngIf="isEdit"><a routerLink="/categories/edit">Edit Categories</a></li>
     </ul>
     <br>
     <div class="uk-text-center uk-margin uk-grid-small uk-grid-match" uk-grid>
@@ -46,14 +47,15 @@
       </div>
       <div class="uk-width-expand@m">
         <div class="uk-card product-info-grid uk-padding-small uk-padding-remove-top uk-card-body uk-text-middle">
-          <form class="uk-grid-small uk-text-left" uk-grid>
+          <form #form [formGroup]="formInstance" class="uk-grid-small uk-text-left" uk-grid>
             <div class="uk-width-1-1">
               <label class="uk-form-label product-input-label" for="form-stacked-text">Category Name *</label>
-              <input class="uk-input product-input" type="text" placeholder="">
+              <input [formControlName]="'CategoryName'" class="uk-input product-input" type="text" placeholder="">
             </div>
             <div class="uk-width-1-1@s">
               <label class="uk-form-label product-input-label" for="form-stacked-text">Category Details *</label>
-              <textarea class="uk-textarea ap-product-textarea" rows="8" placeholder=""></textarea>
+              <textarea [formControlName]="'CategoryDescription'" class="uk-textarea ap-product-textarea" rows="8"
+                placeholder=""></textarea>
             </div>
           </form>
         </div>
@@ -61,5 +63,5 @@
     </div>
   </div>
 </div>
-<button class="uk-button ap-success-btn">Upload</button>
+<button class="uk-button ap-success-btn" (click)="submitForm()">Upload</button>
 <button class="uk-button ap-button-danger">clear</button>

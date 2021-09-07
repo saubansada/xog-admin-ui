@@ -1,28 +1,37 @@
 import { KeyValue } from '@angular/common';
 
+export class BaseFiler{
+    
+    public SortBy!: string; 
+    public SortOrder!: string; 
+    public SearchKey!: string; 
+    public PageNumber!: number; 
+    public PageSize!: number; 
+}
+
 export class MenuItems {
-    orderNumber: number;
-    text: string;
-    url: string;
-    icon: string;
+    orderNumber!: number;
+    text!: string;
+    url!: string;
+    icon!: string;
     iconPosition?: string = "left";
-    isActive: boolean;
+    isActive!: boolean;
     visible?: boolean = true;
     isDefault?: boolean = false;
 }
 
 export class SideNavigation {
-    orderNumber: number;
-    name: string;
-    menuItems: MenuItems[];
+    orderNumber!: number;
+    name!: string;
+    menuItems!: MenuItems[];
     visible?: boolean = false;
 }
 
 export class ResponseObject<T> {
-    isSuccess?: boolean = false;
-    result: Result;
-    message: string;
-    data?: T;
+    IsSuccess?: boolean = false;
+    Result!: Result;
+    Message!: string;
+    Data?: T;
 }
 
 export enum Result {
@@ -31,8 +40,19 @@ export enum Result {
     Failure = 2,
     Error = 3
 }
+
+export enum ProductDivision { 
+    None = -1,
+    Grocery = 0,
+    HygineAndCleaning = 1,
+    PersonalCare = 2,
+    BabiesAndKids = 3,
+    Stationeries = 4,
+    SportsAndFitnes = 5,
+    HouseHoldItems = 6
+}
     
-export function enumToKeyValueArray(enumme) {
+export function enumToKeyValueArray(enumme: any) {
     return Object.keys(enumme)
         .filter(StringIsNotNumber)
         .map(k => {
@@ -40,4 +60,4 @@ export function enumToKeyValueArray(enumme) {
         });
 }
 
-export const StringIsNotNumber = value => isNaN(Number(value)) === true;
+export const StringIsNotNumber = (value:any) => isNaN(Number(value)) === true;
