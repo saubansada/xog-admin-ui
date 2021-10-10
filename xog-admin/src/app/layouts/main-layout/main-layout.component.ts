@@ -32,6 +32,8 @@ export class MainLayoutComponent implements OnInit {
 
   navOpen: boolean = true;
 
+  loadSpinner: string = "loadSpinner";
+  
   constructor() { }
 
   ngOnInit(): void {

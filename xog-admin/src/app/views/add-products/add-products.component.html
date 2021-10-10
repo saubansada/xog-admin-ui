@@ -1,103 +1,133 @@
- <div class="uk-width-expand@m">
-   <div class="uk-card uk-padding-small uk-card-body">
-     <p class="container-header uk-margin-remove">
-       Add products
-     </p>
-     <ul class="uk-breadcrumb xo-breadcrumb uk-align-left uk-margin-remove">
-       <li><a routerLink="">Home</a></li>
-       <li><a routerLink="/products">Products</a></li>
-       <li class="uk-active"><a routerLink="/add-products">Return</a></li>
-     </ul>
-     <br>
-     <div class="uk-text-center uk-margin uk-grid-collapse uk-grid-match" uk-grid>
-       <div class="uk-width-1-3@m">
-         <div class="uk-card img-upload-grid uk-padding-small uk-card-body">
-           <p class="upload-title uk-margin-medium-top uk-margin-remove-bottom">
-             upload your files
-           </p>
-           <p class="upload-img-note uk-margin-remove-top">file should be 256x256</p>
-           <div class="js-upload uk-placeholder uk-text-center upload-file-grid uk-width-1-1" uk-form-custom>
-             <span class="uk-text-middle"></span>
-             <span class="uk-text-right"></span>
-             <span class="material-icons-round ap-img-icon">
-               folder
-             </span>
-             <br> <span class="ap-img-title ">Drag & Drop your files here</span>
-             <input type="file" accept="image/png" multiple>
-           </div>
-         </div>
-       </div>
-       <div class="uk-width-expand@m">
-         <div class="uk-card product-info-grid uk-padding-small uk-padding-remove-top uk-card-body uk-text-middle">
-           <form class="uk-grid-small uk-text-left" uk-grid>
-             <div class="uk-width-1-1">
-               <label class="uk-form-label product-input-label" for="form-stacked-text">Product Name *</label>
-               <input class="uk-input product-input" type="text" placeholder="">
-             </div>
-             <div class="uk-width-1-3@s">
-               <label class="uk-form-label product-input-label" for="form-stacked-text">Select Category *</label>
-               <select class="uk-select product-select" id="form-horizontal-select">
-                 <option>Option 01</option>
-                 <option>Option 02</option>
-               </select>
-             </div>
-             <div class="uk-width-1-3@s">
-               <label class="uk-form-label product-input-label" for="form-stacked-text">Sub-Category *</label>
-               <select class="uk-select product-select" id="form-horizontal-select">
-                 <option>Option 01</option>
-                 <option>Option 02</option>
-               </select>
-             </div>
-             <div class="uk-width-1-3@s">
-               <label class="uk-form-label product-input-label" for="form-stacked-text">Brand *</label>
-               <select class="uk-select product-select" id="form-horizontal-select">
-                 <option>Option 01</option>
-                 <option>Option 02</option>
-               </select>
-             </div>
-             <div class="uk-width-1-1@s">
-               <label class="uk-form-label product-input-label" for="form-stacked-text">Product Details *</label>
-               <textarea class="uk-textarea ap-product-textarea" rows="5" placeholder=""></textarea>
-             </div>
-           </form>
-         </div>
-       </div>
-     </div>
-     <form class="uk-grid-small uk-text-left" uk-grid>
-       <div class="uk-width-1-6@s">
-         <label class="uk-form-label product-input-label" for="form-stacked-text">Measurement *</label>
-         <input class="uk-input product-input" type="text" placeholder="">
-       </div>
-       <div class="uk-width-1-6@s">
-         <label class="uk-form-label product-input-label" for="form-stacked-text">Unit *</label>
-         <select class="uk-select product-select" id="form-stacked-select">
-           <option>Option 01</option>
-           <option>Option 02</option>
-         </select>
-       </div>
-       <div class="uk-width-1-6@s">
-         <label class="uk-form-label product-input-label" for="form-stacked-text">Price *</label>
-         <input class="uk-input product-input" type="text" placeholder="">
-       </div>
-       <div class="uk-width-1-6@s">
-         <label class="uk-form-label product-input-label" for="form-stacked-text">Discount Price *</label>
-         <input class="uk-input product-input" type="text">
-       </div>
-       <div class="uk-width-1-6@s">
-         <label class="uk-form-label product-input-label" for="form-stacked-text">Status *</label>
-         <select class="uk-select product-select" id="form-stacked-select">
-           <option>Available</option>
-           <option>Option 02</option>
-         </select>
-       </div>
-       <div class="uk-width-1-6@s">
-         <label class="uk-form-label product-input-label" for="form-stacked-text">&nbsp; </label>
-         <button class="uk-button product-button uk-width-1-1">
-           add
-         </button>
-       </div>
-     </form>
-   </div>
- </div>
- <button class="uk-button ap-success-btn">Upload</button>
- <button class="uk-button ap-button-danger">clear</button>
+<div class="uk-width-expand@m">
+
+  <form [formGroup]="formInstance" class="uk-card uk-padding-small uk-card-body">
+    <p class="container-header uk-margin-remove">
+      {{ isEdit ? "Edit" : "Add" }} Products
+    </p>
+    <ul class="uk-breadcrumb xo-breadcrumb uk-align-left uk-margin-remove">
+      <li><a routerLink="">Home</a></li>
+      <li><a routerLink="/products">Products</a></li>
+      <li class="uk-active" *ngIf="!isEdit"><a routerLink="/products/add">Add Products</a></li>
+      <li class="uk-active" *ngIf="isEdit"><a routerLink="/products/edit">Edit Products</a></li>
+    </ul>
+    <br>
+    <br>
+    <div class="uk-text-center uk-margin uk-grid-collapse uk-grid-match" uk-grid>
+      <div class="uk-width-1-3@m">
+        <xog-file-upload [formControlName]="'ProductImages'" storageType="product" [maxFiles]="2"
+          uploadUrl="product/upload-images" class="uk-card img-upload-grid uk-padding-small uk-card-body">
+        </xog-file-upload>
+      </div>
+      <div class="uk-width-expand@m">
+        <div class="uk-card product-info-grid uk-padding-small uk-padding-remove-top uk-card-body uk-text-middle">
+          <div class="uk-grid-small uk-text-left" uk-grid>
+            <div class="uk-width-1-3@s">
+              <label class="uk-form-label product-input-label" for="form-stacked-text">Product Code *</label>
+              <input [formControlName]="'ProductCode'" class="uk-input product-input" type="text"
+                placeholder="Product Code">
+            </div>
+            <div class="uk-width-2-3@s">
+              <label class="uk-form-label product-input-label" for="form-stacked-text">Product Name *</label>
+              <input [formControlName]="'ProductName'" class="uk-input product-input" type="text"
+                placeholder="Product Name">
+            </div>
+            <div class="uk-width-1-4@s">
+              <label class="uk-form-label product-input-label" for="form-stacked-text">Category *</label>
+              <select [formControlName]="'CategoryId'" class="uk-select product-select" id="form-horizontal-select">
+                <option [value]="-1">--Select--</option>
+                <option *ngFor="let item of categoryList" [value]="item.Value">{{ item.Text }}</option>
+              </select>
+            </div>
+            <div class="uk-width-1-4@s">
+              <label class="uk-form-label product-input-label" for="form-stacked-text">Sub-Category *</label>
+              <select [formControlName]="'SubCategoryId'" class="uk-select product-select" id="form-horizontal-select">
+                <option [value]="-1">--Select--</option>
+                <option *ngFor="let item of subCategoryList | filterId: categoryId?.value: subCategoryId"
+                  [value]="item.Value">{{ item.Text }}</option>
+              </select>
+            </div>
+            <div class="uk-width-1-4@s">
+              <label class="uk-form-label product-input-label" for="form-stacked-text">Product Group</label>
+              <select [formControlName]="'ProductGroupId'" class="uk-select product-select" id="form-horizontal-select">
+                <option [value]="-1">--Select--</option>
+                <option *ngFor="let item of productGroupList | filterId: subCategoryId?.value: productGroupId"
+                  [value]="item.Value">{{ item.Text }}</option>
+              </select>
+            </div>
+            <div class="uk-width-1-4@s">
+              <label class="uk-form-label product-input-label" for="form-stacked-text">Brand *</label>
+              <select [formControlName]="'BrandId'" class="uk-select product-select" id="form-horizontal-select">
+                <option [value]="-1">--Select--</option>
+                <option *ngFor="let item of brandList" [value]="item.Value">{{ item.Text }}</option>
+              </select>
+            </div>
+            <div class="uk-width-1-1@s">
+              <label class="uk-form-label product-input-label" for="form-stacked-text">Product Description *</label>
+              <textarea [formControlName]="'Description'" class="uk-textarea ap-product-textarea" rows="5"
+                placeholder="Description"></textarea>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <hr />
+    <div formArrayName="ProductVariants" *ngFor="let item of productVariants; let i = index;">
+
+      <div [formGroupName]="i" class="uk-grid-small uk-text-left uk-padding-small" uk-grid>
+
+        <div class="uk-width-1-6@s">
+          <label class="uk-form-label product-input-label" for="form-stacked-text">Price *</label>
+          <input [formControlName]="'Mrp'" class="uk-input product-input" type="number" placeholder="Mrp">
+        </div>
+        <div class="uk-width-1-6@s">
+          <label class="uk-form-label product-input-label" for="form-stacked-text">Measure *</label>
+          <select [formControlName]="'MeasureId'" placeholder="Measure" class="uk-select product-select"
+            id="form-stacked-select">
+            <option [value]="-1">--Select--</option>
+            <option *ngFor="let item of measureList" [value]="item.Value" [title]="item.Extras.FullName">{{ item.Text }}</option>
+          </select>
+        </div>
+        <div class="uk-width-1-6@s">
+          <label class="uk-form-label product-input-label" for="form-stacked-text">Volume *</label>
+          <input [formControlName]="'Volume'" placeholder="Volume" class="uk-input product-input" type="number">
+        </div>
+        <!-- <div class="uk-width-1-6@s">
+          <label class="uk-form-label product-input-label" for="form-stacked-text">Stock *</label>
+          <input class="uk-input product-input" type="text">
+        </div> -->
+        <div class="uk-width-1-6@s">
+          <label class="uk-form-label product-input-label" for="form-stacked-text">Tax *</label>
+           <select [formControlName]="'Gst'" placeholder="Gst" class="uk-select product-select"
+            id="form-stacked-select">
+            <option [value]="0">--Select--</option>
+            <option *ngFor="let item of taxList" [value]="item">{{ item }}</option>
+          </select>
+        </div>
+        <div class="uk-width-1-6@s">
+          <label class="uk-form-label product-input-label" for="form-stacked-text">Max Retail *</label>
+          <input [formControlName]="'MaxPurchase'" placeholder="Max Purshases" class="uk-input product-input"
+            type="number">
+        </div>
+        <!-- <div class="uk-width-1-7@s">
+          <label class="uk-form-label product-input-label" for="form-stacked-text">Cost *</label>
+          <input class="uk-input product-input" type="number">
+        </div> -->
+        <div class="uk-width-1-6@s">
+          <label class="uk-form-label product-input-label" for="form-stacked-text">Discount % *</label>
+          <input [formControlName]="'DiscountPercentage'" placeholder="Discount %" class="uk-input product-input"
+            type="number">
+        </div>
+      </div>
+    </div>
+    <br />
+    <div class="uk-text-right uk-padding-small uk-padding-remove-vertical">
+      <button class="uk-button product-button" (click)="addItem()">
+        Add Variant
+      </button>
+      &nbsp;
+      <button class="uk-button ap-success-btn" (click)="submitForm()">Save</button>
+      &nbsp;
+      <button class="uk-button ap-button-danger" (click)="resetForm()">clear</button>
+    </div>
+  </form>
+</div>

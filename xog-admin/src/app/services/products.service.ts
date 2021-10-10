@@ -1,7 +1,8 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable, Injector } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { environment } from 'src/environments/environment';
+import { environment } from '../../environments/environment';
+import { Product, ProductFilter } from '../models/product';
 import { ApiRequestService } from './api-request.service';
 
 @Injectable({
@@ -9,27 +10,37 @@ import { ApiRequestService } from './api-request.service';
 })
 export class ProductsService {
 
-  private product_dropdown_url = environment.api_url + "products/get-dropdown"; 
-  private save_product_url = environment.api_url + "products/save-product";
-  private get_products_url = environment.api_url + "products/get-products"; 
-  private delete_product_url = environment.api_url + "products/delete-product";
-  
-  constructor(protected apiService:  ApiRequestService) { 
+  private product_dropdown_url = environment.apiUrl + "/product/get-select-list";
+  private add_product_url = environment.apiUrl + "product/add";
+  private edit_product_url = environment.apiUrl + "product/edit";
+  private get_product_url = environment.apiUrl + "product/get";
+  private get_products_url = environment.apiUrl + "product/get-list";
+  private delete_product_url = environment.apiUrl + "product/delete";
+
+  constructor(protected apiService: ApiRequestService) {
   }
-  //saveProductInfo
-  public getProductsDropdown(): Observable<any>{
+
+  public getProductsDropdown(): Observable<any> {
     return this.apiService.get(this.product_dropdown_url);
   }
- 
-  public saveProductInfo(productInfo): Observable<any> {
-    return this.apiService.post(this.save_product_url, productInfo);
+
+  public addProductInfo(productInfo: Product): Observable<any> {
+    return this.apiService.post(this.add_product_url, productInfo);
   }
- 
-  public getProductList(productfilter): Observable<any> {
-    return this.apiService.get(this.get_products_url, productfilter);
+
+  public getProductInfo(id: number): Observable<any> {
+    return this.apiService.get(this.get_product_url + "/" + id);
   }
-  
-  public deleteProduct(deleteInfo): Observable<any> {
-    return this.apiService.delete(this.delete_product_url, deleteInfo);
+
+  public editProductInfo(productInfo: Product): Observable<any> {
+    return this.apiService.put(this.edit_product_url, productInfo);
+  }
+
+  public getProductList(productFilter: ProductFilter): Observable<any> {
+    return this.apiService.get(this.get_products_url, productFilter);
+  }
+
+  public deleteProduct(productId: number): Observable<any> {
+    return this.apiService.delete(this.delete_product_url + "/" + productId);
   }
 }

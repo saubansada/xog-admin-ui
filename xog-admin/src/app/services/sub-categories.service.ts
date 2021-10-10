@@ -13,6 +13,7 @@ export class SubCategoriesService {
   private subcategory_dropdown_url = environment.apiUrl + "/subcategory/get-select-list";
   private add_subcategory_url = environment.apiUrl + "subcategory/add";
   private edit_subcategory_url = environment.apiUrl + "subcategory/edit";
+  private get_subcategory_url = environment.apiUrl + "subcategory/get";
   private get_categories_url = environment.apiUrl + "subcategory/get-list";
   private delete_subcategory_url = environment.apiUrl + "subcategory/delete";
 
@@ -25,6 +26,10 @@ export class SubCategoriesService {
 
   public addSubCategoryInfo(subCategoryInfo: SubCategory): Observable<any> {
     return this.apiService.post(this.add_subcategory_url, subCategoryInfo);
+  }
+
+  public getSubCategoryInfo(id: number): Observable<any> {
+    return this.apiService.get(this.get_subcategory_url + "/" + id);
   }
 
   public editSubCategoryInfo(subCategoryInfo: SubCategory): Observable<any> {

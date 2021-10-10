@@ -1,4 +1,5 @@
 <div class="uk-width-expand@m">
+
   <div class="uk-card uk-padding-small uk-card-body">
 
     <a routerLink="/sub-categories/add" class="uk-button xo-button-primary uk-float-right">Add
@@ -12,48 +13,29 @@
     </ul>
     <br>
     <br>
-    <table class="uk-table uk-table-small primary-table">
-      <thead>
-        <tr>
-          <th></th>
-          <th>Category I'd</th>
-          <th>Name</th>
-          <th>Category</th>
-          <th>Details</th>
-          <th>Image</th>
-          <th class="uk-text-right">Action</th>
-        </tr>
-      </thead>
-      <tbody>
-        <ng-container *ngFor="let item of gridData">
-          <tr>
-            <td><label><input class="uk-checkbox" type="checkbox"> </label>
-            </td>
-            <td>{{ item.Id }}</td>
-            <td>{{ item.CategoryName }}</td>
-            <td>{{ item.SubCategoryName }}</td>
-            <td>{{ item.SubCategoryDescription }}</td>
-            <td class="uk-text-left od-product-img">
-              <img src="assets/img/products/aashirvad.jpg" alt="">
-            </td>
-            <td class="uk-text-right">
-              <span class="material-icons-outlined xo-icon">
-                more_vert
-              </span>
-              <div uk-drop="pos: bottom-left">
-                <div class="uk-card uk-card-body uk-width-auto uk-align-right uk-padding-remove">
-                  <div class="uk-width-1-1@s uk-width-1-1@m">
-                    <ul class="uk-nav uk-nav-default primary-table-drop">
-                      <li (click)="editSubCategory(item)"><a>Edit</a></li>
-                      <li><a (click)="deleteSubCategory(item.Id)">Delete</a></li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </td>
-          </tr>
-        </ng-container>
-      </tbody>
-    </table>
+
+    <app-data-grid [columnDefs]="columnDefs" [gridData]="gridData">
+    </app-data-grid>
+
+    <ng-template let-item="item" let-data="data" #imgColumn>
+      <img [attr.src]="'assets/img/products/aashirvad.jpg'" alt="">
+    </ng-template>
+
+    <ng-template let-item let-data="columnVal" #moreColumn>
+      <span class="material-icons-outlined xo-icon">
+        more_vert
+      </span>
+      <div uk-drop="pos: bottom-left">
+        <div class="uk-card uk-card-body uk-width-auto uk-align-right uk-padding-remove">
+          <div class="uk-width-1-1@s uk-width-1-1@m">
+            <ul class="uk-nav uk-nav-default primary-table-drop">
+              <li (click)="editSubCategory(item)"><a>Edit</a></li>
+              <li><a (click)="deleteSubCategory(item.Id)">Delete</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </ng-template>
+
   </div>
 </div>

@@ -13,6 +13,7 @@ export class CategoriesService {
   private category_dropdown_url = environment.apiUrl + "/category/get-select-list";
   private add_category_url = environment.apiUrl + "category/add";
   private edit_category_url = environment.apiUrl + "category/edit";
+  private get_category_url = environment.apiUrl + "category/get";
   private get_categories_url = environment.apiUrl + "category/get-list";
   private delete_category_url = environment.apiUrl + "category/delete";
 
@@ -25,6 +26,10 @@ export class CategoriesService {
 
   public addCategoryInfo(categoryInfo: Category): Observable<any> {
     return this.apiService.post(this.add_category_url, categoryInfo);
+  }
+
+  public getCategoryInfo(id: number): Observable<any> {
+    return this.apiService.get(this.get_category_url + "/" + id);
   }
 
   public editCategoryInfo(categoryInfo: Category): Observable<any> {

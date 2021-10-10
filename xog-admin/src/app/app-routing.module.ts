@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AddBrandsComponent } from './views/add-brands/add-brands.component';
+import { AddBrandComponent } from './views/add-brand/add-brand.component';
 import { AddCategoryComponent } from './views/add-category/add-category.component';
 import { AddOffersComponent } from './views/add-offers/add-offers.component';
 import { AddProductsComponent } from './views/add-products/add-products.component';
@@ -32,6 +32,12 @@ import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component
 import { MainLayoutComponent } from './layouts/main-layout/main-layout.component';
 import { RoleGuardService } from './auth/_helpers/role.guard';
 import { Role } from './auth/_models/role';
+import { ProductGroupsComponent } from './views/product-group/product-groups.component';
+import { AddProductGroupComponent } from './views/add-product-group/add-prodouct-group.component';
+import { SettingsComponent } from './views/settings/settings.component';
+import { QuantityMeasuresComponent } from './views/settings/quantity-measures/quantity-measures.component';
+import { SettingDefaultComponent } from './views/settings/setting-default/setting-default.component';
+import { TaxesComponent } from './views/settings/taxes/taxes.component';
 
 
 const routes: Routes = [
@@ -42,22 +48,26 @@ const routes: Routes = [
     children: [
       { path: '', component: DashboardComponent },
       { path: 'dashboard', redirectTo: '' },
-      { path: 'subcategory', component: SubCategoriesComponent },
       { path: 'orders', component: OrdersComponent },
       { path: 'returns', component: ReturnOrdersComponent },
       { path: 'refunds', component: RefundComponent },
       { path: 'customers', component: CustomersComponent },
       { path: 'products', component: ProductsComponent },
-      { path: 'add-products', component: AddProductsComponent },
+      { path: 'products/add', component: AddProductsComponent },
+      { path: 'products/edit/:id', component: AddProductsComponent },
       { path: 'upload-csv', component: ProductsCsvComponent },
       { path: 'categories', component: CategoriesComponent },
       { path: 'categories/add', component: AddCategoryComponent },
-      { path: 'categories/edit', component: AddCategoryComponent },
+      { path: 'categories/edit/:id', component: AddCategoryComponent },
       { path: 'sub-categories', component: SubCategoriesComponent },
       { path: 'sub-categories/add', component: AddSubComponent },
-      { path: 'sub-categories/edit', component: AddSubComponent },
-      { path: 'add-brands', component: AddBrandsComponent },
+      { path: 'sub-categories/edit/:id', component: AddSubComponent },
+      { path: 'product-groups', component: ProductGroupsComponent },
+      { path: 'product-groups/add', component: AddProductGroupComponent },
+      { path: 'product-groups/edit/:id', component: AddProductGroupComponent },
       { path: 'brands', component: BrandsComponent },
+      { path: 'brands/add', component: AddBrandComponent },
+      { path: 'brands/edit/:id', component: AddBrandComponent },
       { path: 'offers', component: OffersComponent },
       { path: 'add-offers', component: AddOffersComponent },
       { path: 'users', component: UsersComponent },
@@ -66,7 +76,24 @@ const routes: Routes = [
       { path: 'wallet-history', component: WalletHistoryComponent },
       { path: 'payment-request', component: PaymentRequestsComponent },
       { path: 'add-wallet', component: AddWalletComponent },
+      { path: 'finance', component: FinanceStatsComponent },
       { path: 'finance-stats', component: FinanceStatsComponent },
+      {
+        path: 'settings', component: SettingsComponent,
+        children: [
+          { path: '', component: SettingDefaultComponent },
+          {
+            path: 'quantity-measures', component: QuantityMeasuresComponent,
+            children: [
+              { path: 'add', component: QuantityMeasuresComponent },
+              { path: 'edit/:id', component: QuantityMeasuresComponent }
+            ]
+          },
+          {
+            path: 'taxes', component: TaxesComponent
+          },
+        ]
+      },
       {
         path: '**', redirectTo: '/auth/login'
       }
@@ -88,4 +115,4 @@ const routes: Routes = [
 })
 export class AppRoutingModule { }
 
-export const routingComponents = [LoginComponent, ForgetpasswordComponent, PhoneotpComponent, DashboardComponent, OrdersComponent, ReturnOrdersComponent, RefundComponent, CustomersComponent, ProductsComponent, TopnavComponent, SidenavbarComponent, AddProductsComponent, ProductsCsvComponent, CategoriesComponent, AddCategoryComponent, SubCategoriesComponent, AddSubComponent, BrandsComponent, AddBrandsComponent, OffersComponent, AddOffersComponent, UsersComponent, AddUsersComponent, PaymentHistoryComponent, PaymentRequestsComponent, WalletHistoryComponent, AddWalletComponent, FinanceStatsComponent]
+export const routingComponents = [LoginComponent, ForgetpasswordComponent, PhoneotpComponent, DashboardComponent, OrdersComponent, ReturnOrdersComponent, RefundComponent, CustomersComponent, ProductsComponent, TopnavComponent, SidenavbarComponent, AddProductsComponent, ProductsCsvComponent, CategoriesComponent, AddCategoryComponent, SubCategoriesComponent, AddSubComponent, BrandsComponent, AddBrandComponent, OffersComponent, AddOffersComponent, UsersComponent, AddUsersComponent, PaymentHistoryComponent, PaymentRequestsComponent, WalletHistoryComponent, AddWalletComponent, FinanceStatsComponent]

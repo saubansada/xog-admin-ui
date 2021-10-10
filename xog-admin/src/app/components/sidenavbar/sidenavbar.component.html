@@ -1,6 +1,6 @@
 <div class="uk-card sidenav-bar uk-card-body">
 
-  <img [attr.src]="assetUrl + 'assets/img/icon.png'" alt="" class="sidenav-logo">
+  <img [attr.src]="assetUrl + '/icon.png'" alt="" class="sidenav-logo">
 
   <div [ngClass]="{ 'uk-width-1-1@s uk-width-1-1@m uk-margin-top' : true, 'is-closed' : !open }">
 
@@ -59,8 +59,9 @@
 
         <ul class="uk-nav-sub">
           <li class="sidenav-dropdown"><a routerLink="/products">Products</a></li>
-          <li class="sidenav-dropdown"><a routerLink="/add-products">Add Products</a></li>
-          <li class="sidenav-dropdown"><a routerLink="/upload-csv">Upload Csv</a></li>
+          <li class="sidenav-dropdown"><a routerLink="/products/add">Add Products</a></li>
+          <li class="sidenav-dropdown"><a routerLink="/product-groups">Product Groups</a></li>
+          <!-- <li class="sidenav-dropdown"><a routerLink="/upload-csv">Upload Csv</a></li> -->
           <li class="sidenav-dropdown"><a routerLink="/categories">Categories</a></li>
           <li class="sidenav-dropdown"><a routerLink="/sub-categories">Sub-Categories</a></li>
           <li class="sidenav-dropdown"><a routerLink="/brands">Brands</a></li>

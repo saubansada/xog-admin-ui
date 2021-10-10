@@ -1,12 +1,12 @@
 import { KeyValue } from '@angular/common';
 
-export class BaseFiler{
-    
-    public SortBy!: string; 
-    public SortOrder!: string; 
-    public SearchKey!: string; 
-    public PageNumber!: number; 
-    public PageSize!: number; 
+export class BaseFiler {
+
+    public SortBy!: string;
+    public SortOrder!: string;
+    public SearchKey!: string;
+    public PageNumber!: number;
+    public PageSize!: number;
 }
 
 export class MenuItems {
@@ -41,7 +41,7 @@ export enum Result {
     Error = 3
 }
 
-export enum ProductDivision { 
+export enum ProductDivision {
     None = -1,
     Grocery = 0,
     HygineAndCleaning = 1,
@@ -51,7 +51,34 @@ export enum ProductDivision {
     SportsAndFitnes = 5,
     HouseHoldItems = 6
 }
-    
+
+
+// export enum MeasureType {
+//     Unit,
+//     Gram,
+//     Kg,
+//     Liter,
+//     Ml,
+//     Dozen,
+//     Tray,
+//     Large,
+//     Small,
+//     Medium,
+//     LargePack,
+//     SmallPack,
+//     MediumPack,
+//     Bundle
+// }
+
+export enum ProductQueryType {
+    FilterOrNone,
+    Suggestions,
+    Featured,
+    Trending,
+    QuickSlides,
+    Similars
+}
+
 export function enumToKeyValueArray(enumme: any) {
     return Object.keys(enumme)
         .filter(StringIsNotNumber)
@@ -60,4 +87,10 @@ export function enumToKeyValueArray(enumme: any) {
         });
 }
 
-export const StringIsNotNumber = (value:any) => isNaN(Number(value)) === true;
+export function transformCamelToSpaces(text: string) {
+    const result = text.replace(/([A-Z])/g, " $1");
+    const finalResult = result.charAt(0).toUpperCase() + result.slice(1);
+    return finalResult;
+}
+
+export const StringIsNotNumber = (value: any) => isNaN(Number(value)) === true;

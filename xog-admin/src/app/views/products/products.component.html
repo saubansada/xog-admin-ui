@@ -1,46 +1,124 @@
- <div class="uk-width-expand@m">
-   <div class="uk-card uk-padding-small uk-card-body">
-     <p class="container-header uk-margin-remove">
-       Product List
+<div class="uk-width-expand@m">
 
-     </p>
-     <ul class="uk-breadcrumb xo-breadcrumb uk-align-left  uk-margin-small-bottom">
-       <li><a href="#">Home</a></li>
-       <li><a href="#">Orders</a></li>
-       <li class="uk-active"><a href="#">Return</a></li>
-     </ul>
-     <br>
-     <form class="uk-grid-small uk-margin-small-top" uk-grid>
-       <div class="uk-width-1-2@s">
-         <div class="uk-inline uk-width-1-1 xo-searchbar">
-           <a class="uk-form-icon" href="#"><span class="material-icons-outlined">
-               search
-             </span></a>
-           <input class="uk-input uk-width-1-1 " placeholder="Search by number, name or address" type="text">
-         </div>
-       </div>
-       <div class="uk-width-1-6@s">
-         <input class="uk-input xo-datepicker" type="text" placeholder="Pick date" ngxDaterangepickerMd>
-       </div>
-       <div class="uk-width-1-6@s">
-         <div class="uk-form-controls">
-           <select class="uk-select xo-select" id="form-stacked-select">
-             <option>Categories</option>
-             <option>Refundable</option>
-             <option>Non Refundable</option>
-           </select>
-         </div>
-       </div>
-       <div class="uk-width-1-6@s">
-         <div class="uk-form-controls">
-           <select class="uk-select xo-select" id="form-stacked-select">
-             <option>Availibility</option>
-             <option>Refundable</option>
-             <option>Non Refundable</option>
-           </select>
-         </div>
-       </div>
-     </form>
+  <div class="uk-card uk-padding-small uk-card-body">
+
+    <a routerLink="/products/add" class="uk-button xo-button-primary uk-float-right">Add
+      products</a>
+    <p class="container-header uk-margin-remove">
+      Products
+    </p>
+    <ul class="uk-breadcrumb xo-breadcrumb uk-align-left uk-margin-remove">
+      <li><a routerLink="/">Home</a></li>
+      <li><a routerLink="/products">Products</a></li>
+    </ul>
+    <br />
+
+    <form [formGroup]="formInstance" (ngSubmit)="loadData()" class="uk-grid-small uk-margin-small-top" uk-grid>
+      <div class="uk-width-1-3@s">
+
+        <small>&nbsp;</small>
+        <div class="uk-inline uk-width-1-1 xo-searchbar">
+          <a class="uk-form-icon" href="#"><span class="material-icons-outlined">
+            </span></a>
+          <input class="uk-input uk-width-1-1 " [formControlName]="'Search'"
+            placeholder="Search by number, name or address" type="text">
+        </div>
+      </div>
+      <!-- <div class="uk-width-1-6@s">
+        <input class="uk-input xo-datepicker" type="text" placeholder="Pick date" ngxDaterangepickerMd>
+      </div> -->
+      <div class="uk-width-1-6@s">
+        <div class="uk-form-controls">
+          <small>Category</small>
+          <ng-select class="xo-select" [items]="categoryList" placeholder="Category" formControlName="CategoryId">
+          </ng-select>
+        </div>
+      </div>
+
+      <div class="uk-width-1-6@s">
+        <div class="uk-form-controls">
+          <small>Sub Category</small>
+          <ng-select class="xo-select" [items]="subCategoryList" placeholder="Sub Category"
+            formControlName="SubCategoryId">
+          </ng-select>
+        </div>
+      </div>
+
+      <div class="uk-width-1-6@s">
+        <div class="uk-form-controls">
+          <small>Brand</small>
+          <ng-select class="xo-select" [items]="brandList" placeholder="Brands" formControlName="BrandId">
+          </ng-select>
+        </div>
+      </div>
+
+      <div class="uk-width-1-6@s">
+        <small style="opacity:0;">search</small><br/>
+        <button type="submit" class="uk-button xo-sample-btn">Search</button>
+      </div>
+    </form>
+
+    <br />
+
+    <app-data-grid [columnDefs]="columnDefs" [gridData]="gridData">
+    </app-data-grid>
+
+    <ng-template let-item let-data="columnVal" #measureColumn>
+      {{ item.Volume }} {{ item.MeasureName }}{{ item.Volume > 1 ? "s" : ""}}
+    </ng-template>
+
+    <!-- 
+    <ng-template let-item="item" let-data="columnVal" #urlColumn>
+      <a [attr.href]='data' target="_bkank">{{ data }}</a>
+    </ng-template> -->
+
+    <ng-template let-item let-cols="columnVal" #moreColumn>
+      <span class="material-icons-outlined xo-icon">
+        more_vert
+      </span>
+      <div uk-drop="pos: bottom-left">
+        <div class="uk-card uk-card-body uk-width-auto uk-align-right uk-padding-remove">
+          <div class="uk-width-1-1@s uk-width-1-1@m">
+            <ul class="uk-nav uk-nav-default primary-table-drop">
+              <li (click)="editProduct(item)"><a>Edit</a></li>
+              <li><a (click)="deleteProduct(item.Id)">Delete</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </ng-template>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 
+
      <table class="uk-table uk-table-small primary-table">
        <thead>
          <tr>
@@ -95,6 +173,4 @@
            <td>Table Data</td>
          </tr>
        </tbody>
-     </table>
-   </div>
- </div>
+     </table>  -->

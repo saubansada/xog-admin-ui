@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Injector, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { NgxSpinnerService } from 'ngx-spinner';
 import { first } from 'rxjs/operators';
+import { BaseComponent } from 'src/app/shared/base.component';
 import { environment } from 'src/environments/environment';
 import { AuthenticationService } from '../_services/authentication.service';
 
@@ -10,11 +12,9 @@ import { AuthenticationService } from '../_services/authentication.service';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent extends BaseComponent implements OnInit {
 
   submitted: boolean = true;
-
-  loading: boolean = true;
 
   assetUrl: string = environment.assetsUrl;
 
@@ -25,8 +25,10 @@ export class LoginComponent implements OnInit {
     Password: ['', Validators.required]
   })
 
-  constructor(private fb: FormBuilder, private router: Router,
-    private authenticationService: AuthenticationService) { }
+  constructor(protected injector: Injector,
+    private authenticationService: AuthenticationService) {
+    super(injector);
+  }
 
   ngOnInit(): void {
   }
@@ -52,18 +54,19 @@ export class LoginComponent implements OnInit {
       return;
     }
 
-    this.loading = true;
+    this.showFullSpinner();
     this.authenticationService.login(this.email?.value, this.password?.value)
       .pipe(first())
       .subscribe(
         () => {
+          this.hideFullSpinner();
           this.router.navigate(["/"]);
-          this.loading = false;
         },
         (error: any) => {
           setTimeout(() => {
-            this.loading = false;
-          }, 500); 
+            this.hideFullSpinner();
+            this.spinner.hide();
+          }, 500);
         });
   }
-} 
+}

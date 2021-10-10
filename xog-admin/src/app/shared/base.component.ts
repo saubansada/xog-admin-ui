@@ -6,20 +6,19 @@ import { Observable, of, Subscription } from "rxjs";
 import { map, catchError } from "rxjs/operators";
 import { environment } from "src/environments/environment";
 import { ErrorInterceptorService } from "./services/error-interceptor.service";
-import { Router } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
 import { AuthenticationService } from '../auth/_services/authentication.service';
-
-export enum Result {
-    ValidationError = 1,
-    Success = 2,
-    Failure = 3,
-    Error = 4
-}
+import { NgxSpinnerService } from "ngx-spinner";
+import { NotifierService } from "angular-notifier";
+import { ResponseObject, Result } from "../models/common";
+import { ApiRequestService } from "../services/api-request.service";
 
 @Component({
     template: ''
 })
 export class BaseComponent implements OnInit, OnDestroy {
+
+    public messageShown: boolean = false;
 
     protected subscription!: Subscription;
 
@@ -29,11 +28,17 @@ export class BaseComponent implements OnInit, OnDestroy {
 
     loading: boolean = false;
 
+    loadSpinner: string = "loadSpinner";
+
     protected fb!: FormBuilder;
     protected http: HttpClient;
     protected router: Router;
     protected errorIntrcptr: ErrorInterceptorService;
     protected auth: AuthenticationService;
+    protected spinner: NgxSpinnerService;
+    protected route: ActivatedRoute;
+    protected notifierService: NotifierService;
+    protected apiRequestService: ApiRequestService;
 
     constructor(protected injector: Injector) {
 
@@ -42,70 +47,40 @@ export class BaseComponent implements OnInit, OnDestroy {
         this.router = injector.get(Router);
         this.errorIntrcptr = injector.get(ErrorInterceptorService);
         this.auth = injector.get(AuthenticationService);
-    }
+        this.spinner = injector.get(NgxSpinnerService);
+        this.route = injector.get(ActivatedRoute);
+        this.notifierService = injector.get(NotifierService);
+        this.apiRequestService = injector.get(ApiRequestService);
 
-    protected post<T>(url: string, data: any, _headers?: HttpHeaders): Observable<any> {
 
-        this.loading = true;
-        _headers = _headers != null ? _headers : new HttpHeaders();
-        return this.http.post<T>(url, data, { headers: _headers }).pipe(map(res => {
+        console.log("Subscribing the Interceptor");
+        this.subscription = this.apiRequestService.onMessage$.subscribe(res => {
             this.loading = false;
             this.showMessage(res);
-            return res;
-        }, (error: any) => {
-            this.loading = false;
-            this.showMessage(error);
-            return error;
-        }));
+        })
+
+        this.apiRequestService.onAsyncStatus$.subscribe(res => {
+            if (res) this.showSpinner();
+            else this.hideSpinner();
+        })
     }
 
-    private mapUrlWithQueryString(url: string, data?: any) {
+    showMessage(res: ResponseObject<any>) {
 
-        if (data) {
+        setTimeout(() => {
+            this.messageShown = false;
+        }, 3000);
 
-            let params = new URLSearchParams();
-
-            for (let key in data) {
-                params.set(key, data[key])
+        if (this.messageShown == false) {
+            
+            this.messageShown = true;
+            if (res.Message != null && res.Message.trim() != "") {
+                this.notifierService.notify(
+                    res.Result == Result.Success ? 'success' :
+                        ((res.Result == Result.Failure || res.Result == Result.ValidationError) ? 'warning'
+                            : 'error')
+                    , res.Message);
             }
-
-            url = url
-                + ((url.indexOf("?") < 0 || url.indexOf("?") == url.length - 1) ? "?" : "&")
-                + params.toString();
-        }
-
-        console.log("Url: " + url);
-        return url;
-    }
-
-    protected get<T>(url: string, data?: any): Observable<any> {
-
-        url = this.mapUrlWithQueryString(url, data);
-
-        this.loading = true;
-
-        return this.http.get<any>(url).pipe(map(res => {
-            this.loading = false;
-            this.showMessage(res);
-            return res;
-        }, (error: any) => {
-            this.loading = false;
-            this.showMessage(error);
-            return error;
-        }));
-    }
-
-    showMessage(res: any) {
-        if (res.Message != null && res.Message.trim() != "") {
-            alert(res.Message);
-            // this.snackBar.open(res.message, "",
-            //     {
-            //         duration: 3000,
-            //         panelClass: res.result == Result.Success ? ['snack-success']
-            //             : res.result == (Result.Failure | Result.ValidationError) ? ['snack-warning']
-            //                 : res.result == Result.Error ? ['snack-danger']
-            //                     : []
-            //     });
         }
     }
 
@@ -116,11 +91,6 @@ export class BaseComponent implements OnInit, OnDestroy {
     }
 
     ngOnInit() {
-        console.log("Subscribing the Interceptor");
-        this.subscription = this.errorIntrcptr.httpError$.subscribe(res => {
-            this.loading = false;
-            this.showMessage({ message: res, result: Result.Error });
-        })
     }
 
     ngOnDestroy() {
@@ -144,5 +114,25 @@ export class BaseComponent implements OnInit, OnDestroy {
     //     return dialogRef.afterClosed();
     // }
 
+    showSpinner() {
+        this.spinner.show(this.loadSpinner, {
+            type: "ball-atom", //"square-jelly-box",
+            size: "medium",
+            bdColor: "rgba(0, 0, 0, 0.4)",
+            color: "white",
+            fullScreen: false
+        });
+    }
 
+    hideSpinner() {
+        this.spinner.hide(this.loadSpinner);
+    }
+
+    showFullSpinner() {
+        this.spinner.show();
+    }
+
+    hideFullSpinner() {
+        this.spinner.hide();
+    }
 }

@@ -7,8 +7,10 @@
 @import "mixins-theme.scss";
 @import "uikit-theme.scss";
 @import 'material-icons/iconfont/material-icons.css';
+@import "~@ng-select/ng-select/themes/default.theme.css";
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
+@import "~angular-notifier/styles";
 
 
 .xo-red-color {
@@ -32,8 +34,8 @@
   background-color: orange;
   color: white;
   text-transform: capitalize;
-  height: 44px !important;
-  border-radius: 8px;
+  height: 36px !important;
+  border-radius: 4px;
   font-size: 9pt;
 }
 
@@ -136,23 +138,28 @@ th.month {
   text-transform: capitalize;
 }
 
-.xo-select {
+select.xo-select {
   background-color: #f7f7f7;
   border-radius: 6px;
   color: black !important;
-  border: none !important;
+  border: 1px solid #ccc !important;
   font-size: 10pt;
 }
 
-.xo-select:focus {
-  background-color: #f7f7f7;
+select.xo-select:focus {
+  background-color: #fff;
   border: none;
 }
 
-.xo-select>option {
+.ng-select.xo-select .ng-select-container {
+
+  background-color: #f7f7f7 !important;
+}
+
+select.xo-select>option {
   border: none;
   color: black;
-  background-color: #f1f1f1;
+  background-color: #fff;
 }
 
 td.available {
@@ -322,4 +329,16 @@ th {
 
 .xo-switcher.uk-subnav>li.uk-active>a {
   background-color: #0920fb;
+}
+
+.uk-notification-message {
+  background-color: #5e6eff;
+  color: white;
+  border-radius: 2px;
+}
+
+.uk-submit{
+  background-color: #0920fb;
+  color: white;
+  border-radius: 3px;
 }

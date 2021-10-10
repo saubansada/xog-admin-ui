@@ -28,7 +28,7 @@ export class ApiRequestService {
     this.errorIntrcptr.httpError$.subscribe(res => {
       console.log(JSON.stringify(res));
         this.asyncStatus.next(false);
-        this.onMessaged.next({ Message: res, Result: Result.Error }); 
+        this.onMessaged.next(res); 
       return throwError(res);
   })
   }
@@ -42,9 +42,7 @@ export class ApiRequestService {
       this.asyncStatus.next(false);
       this.onMessaged.next(res);
       return res;
-    }, catchError(err => {
-      return throwError(err);
-    })));
+    }));
   }
 
   public put(url: string, data: any): Observable<any> {
@@ -56,9 +54,7 @@ export class ApiRequestService {
       this.asyncStatus.next(false);
       this.onMessaged.next(res);
       return res;
-    }, catchError(err => {
-      return throwError(err);
-    })));
+    }));
   }
   
   private mapUrlWithQueryString(url: string, data?: any) {
@@ -94,9 +90,7 @@ export class ApiRequestService {
       this.onMessaged.next(res);
 
       return res;
-    }, catchError(err => {
-      return throwError(err);
-    })));
+    }));
   }
 
   public get(url: string, data?: any): Observable<any> {
@@ -112,8 +106,6 @@ export class ApiRequestService {
       this.onMessaged.next(res);
 
       return res;
-    }, catchError(err => {
-      return throwError(err);
-    })));
+    }));
   }
 }

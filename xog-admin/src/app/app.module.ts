@@ -21,7 +21,7 @@ import { AddCategoryComponent } from './views/add-category/add-category.componen
 import { SubCategoriesComponent } from './views/sub-categories/sub-categories.component';
 import { AddSubComponent } from './views/add-sub/add-sub.component';
 import { BrandsComponent } from './views/brands/brands.component';
-import { AddBrandsComponent } from './views/add-brands/add-brands.component';
+import { AddBrandComponent } from './views/add-brand/add-brand.component';
 import { OffersComponent } from './views/offers/offers.component';
 import { AddOffersComponent } from './views/add-offers/add-offers.component';
 import { UsersComponent } from './views/users/users.component';
@@ -39,6 +39,14 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { JwtInterceptor } from './auth/_helpers/jwt.interceptor';
 import { ErrorInterceptor } from './auth/_helpers/error.interceptor';
+import { SharedModule } from './shared/shared.module';
+import { ProductGroupsComponent } from './views/product-group/product-groups.component';
+import { AddProductGroupComponent } from './views/add-product-group/add-prodouct-group.component';
+import { SettingsComponent } from './views/settings/settings.component'; 
+import { QuantityMeasuresComponent } from './views/settings/quantity-measures/quantity-measures.component';
+import { SettingDefaultComponent } from './views/settings/setting-default/setting-default.component';
+import { SettingsNavComponent } from './views/settings/settings-nav/settings-nav.component';
+import { TaxesComponent } from './views/settings/taxes/taxes.component';
 
 @NgModule({
   imports: [
@@ -48,7 +56,8 @@ import { ErrorInterceptor } from './auth/_helpers/error.interceptor';
     BrowserAnimationsModule,
     NgxDaterangepickerMd.forRoot(),
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    SharedModule
   ],
   declarations: [
     AppComponent,
@@ -56,7 +65,7 @@ import { ErrorInterceptor } from './auth/_helpers/error.interceptor';
     SubCategoriesComponent,
     AddSubComponent,
     BrandsComponent,
-    AddBrandsComponent,
+    AddBrandComponent,
     OffersComponent,
     AddOffersComponent,
     UsersComponent,
@@ -82,7 +91,14 @@ import { ErrorInterceptor } from './auth/_helpers/error.interceptor';
     CategoriesComponent,
     AddCategoryComponent,
     MainLayoutComponent,
-    AuthLayoutComponent
+    AuthLayoutComponent,
+    ProductGroupsComponent,
+    AddProductGroupComponent,
+    SettingsComponent,
+    QuantityMeasuresComponent,
+    SettingDefaultComponent,
+    SettingsNavComponent,
+    TaxesComponent
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },

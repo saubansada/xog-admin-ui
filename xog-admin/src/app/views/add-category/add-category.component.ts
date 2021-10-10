@@ -1,6 +1,8 @@
 import { Component, Injector, OnInit } from '@angular/core';
 import { FormGroup, Validators } from '@angular/forms';
-import { ResponseObject } from 'src/app/models/common';
+import { ActivatedRoute } from '@angular/router';
+import { Category } from 'src/app/models/category';
+import { ProductDivision, ResponseObject, enumToKeyValueArray, transformCamelToSpaces } from 'src/app/models/common';
 import { CategoriesService } from 'src/app/services/categories.service';
 import { BaseComponent } from 'src/app/shared/base.component';
 
@@ -13,30 +15,62 @@ export class AddCategoryComponent extends BaseComponent implements OnInit {
 
   isEdit: boolean = false;
 
+  divisionList: any[] = enumToKeyValueArray(ProductDivision);
+
+  camelCaseToSpacedText: typeof transformCamelToSpaces = transformCamelToSpaces;
+
   formInstance: FormGroup = this.fb.group({
+    Id: [],
     CategoryName: ['', Validators.required],
-    CategoryDescription: []
+    CategoryImages: [[]],
+    CategoryBanners: [[]],
+    CategoryDescription: ['']
   });
 
-  constructor(protected injector: Injector, private services: CategoriesService) {
+  constructor(protected injector: Injector,
+    private categoryService: CategoriesService) {
     super(injector);
-    let data = this.router.getCurrentNavigation()?.extras.state?.data;
-    this.formInstance.patchValue(data);
-    this.isEdit = data != null;
+
+    this.route.paramMap.subscribe(res => {
+      var id = <any>res.get("id");
+      this.isEdit = false;
+      if (id != null && !isNaN(id)) {
+        this.loadCategory(id);
+        this.isEdit = true;
+      }
+    });
   }
 
   ngOnInit(): void {
   }
 
+  loadCategory(id: number) {
+    this.categoryService.getCategoryInfo(id).subscribe((res: ResponseObject<any>) => {
+      let data = res.Data;
+      data.CategoryImages = data.CategoryImage == null ? [] : [data.CategoryImage];
+      data.CategoryBanners = data.CategoryBanner == null ? [] : [data.CategoryBanner];
+      this.formInstance.patchValue(data);
+    });
+  }
+
   submitForm() {
+
+    var data = this.formInstance.value;
+    data.CategoryImage = data.CategoryImages?.length > 0 ? data.CategoryImages[0] : null;
+    data.CategoryBanner = data.CategoryBanners?.length > 0 ? data.CategoryBanners[0] : null;
+
     if (this.isEdit) {
-      this.services.editCategoryInfo(this.formInstance.value).subscribe((res: ResponseObject<any>) => {
-        this.showMessage(res);
-      })
+      this.categoryService.editCategoryInfo(data).subscribe();
     } else {
-      this.services.addCategoryInfo(this.formInstance.value).subscribe((res: ResponseObject<any>) => {
-        this.showMessage(res);
-      })
+      this.categoryService.addCategoryInfo(data).subscribe();
+      this.resetForm();
     }
+  }
+
+  resetForm(){
+    this.formInstance.reset({
+      CategoryImages: [],
+      CategoryBanners: []
+    })
   }
 }
