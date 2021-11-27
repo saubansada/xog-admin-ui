@@ -21,9 +21,9 @@ export class UserService {
             return this.apiService.get(`${environment.apiUrl}activities/get-user-details`)
                 .pipe(map((res: ResponseObject<any>) => {
 
-                    localStorage.setItem("userDetails", JSON.stringify(res.data));
+                    localStorage.setItem("userDetails", JSON.stringify(res.Data));
 
-                    return res.data;
+                    return res.Data;
                 }));
         }
         else {

@@ -1,0 +1,52 @@
+<div class="uk-width-expand@m">
+
+  <form #form [formGroup]="formInstance">
+    <div class="uk-card uk-padding-small uk-card-body">
+      <p class="container-header uk-margin-remove">
+        {{ isEdit ? "Edit" : "Add" }} Brands
+      </p>
+      <ul class="uk-breadcrumb xo-breadcrumb uk-align-left uk-margin-remove">
+        <li><a routerLink="">Home</a></li>
+        <li><a routerLink="/brands">Brands</a></li>
+        <li class="uk-active" *ngIf="!isEdit"><a routerLink="/brands/add">Add Brands</a></li>
+        <li class="uk-active" *ngIf="isEdit"><a routerLink="/brands/edit">Edit Brands</a></li>
+      </ul>
+      <br>
+      <div class="uk-text-center uk-margin uk-grid-small uk-grid-match" uk-grid>
+        <div class="uk-width-1-3@m">
+
+          <xog-file-upload [formControlName]="'BrandImages'" storageType="brand" uploadUrl="product/upload-images"
+            class="uk-card img-upload-grid uk-padding-small uk-card-body">
+          </xog-file-upload>
+
+        </div>
+        <div class="uk-width-expand@m">
+          <div class="uk-card product-info-grid uk-padding-small uk-padding-remove-top uk-card-body uk-text-middle">
+            <div class="uk-grid-small uk-text-left" uk-grid>
+              <div class="uk-width-1-1@s">
+                <label class="uk-form-label product-input-label" for="form-stacked-text">Website</label>
+                <input [formControlName]="'BrandUrl'" class="uk-input product-input" type="text"
+                  placeholder="ex: https://some-site@example.com">
+              </div>
+              <div class="uk-width-1-1">
+                <label class="uk-form-label product-input-label" for="form-stacked-text">Brand Name *</label>
+                <input [formControlName]="'BrandName'" class="uk-input product-input" type="text"
+                  placeholder="Brand Name">
+              </div>
+              <div class="uk-width-1-1@s">
+                <label class="uk-form-label product-input-label" for="form-stacked-text">Description</label>
+                <textarea [formControlName]="'BrandDescription'" class="uk-textarea ap-product-textarea" rows="8"
+                  placeholder="Description"></textarea>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="uk-text-right uk-padding-small uk-padding-remove-vertical">
+        <button class="uk-button ap-success-btn" (click)="submitForm()">Save</button>
+        &nbsp;
+        <button class="uk-button ap-button-danger" (click)="resetForm()">clear</button>
+      </div>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,10 @@
+@import url('../../../../styles/_productpage.scss');
+
+::ng-deep .primary-table>tbody>tr>td {
+  background-color: white !important;
+}
+
+::ng-deep .primary-table>tbody>tr>td a.delete-button {
+  padding: 3px;
+  color: rgba(184, 17, 17, 0.576);
+}

@@ -1,0 +1,50 @@
+<div class="uk-width-expand@m">
+  
+  <div class="uk-card uk-padding-small uk-card-body">
+    <p class="container-header uk-margin-remove">
+      Add Product Group
+    </p>
+    <ul class="uk-breadcrumb xo-breadcrumb uk-align-left uk-margin-remove">
+      <li><a routerLink="">Home</a></li>
+      <li><a routerLink="/product-groups">Product Groups</a></li>
+      <li class="uk-active"><a routerLink="/add-sub">Add Categories</a></li>
+    </ul>
+    <br>
+    <div class="uk-text-center uk-margin uk-grid-small uk-grid-match" uk-grid>
+      <div class="uk-width-expand@m">
+        <div class="uk-card product-info-grid uk-padding-small uk-padding-remove-top uk-card-body uk-text-middle">
+          <form #form [formGroup]="formInstance" class="uk-grid-small uk-text-left" uk-grid>
+            <div class="uk-width-1-3@s">
+              <label class="uk-form-label product-input-label" for="form-stacked-text"> Name *</label>
+              <input [formControlName]="'ProductGroupName'" class="uk-input product-input" type="text" placeholder="">
+            </div>
+            <div class="uk-width-1-3@s">
+              <label class="uk-form-label product-input-label" for="form-stacked-text">Category *</label>
+              <select [formControlName]="'CategoryId'" class="uk-select product-select" id="form-horizontal-select">
+                <option [value]="-1">--Select--</option>
+                <option *ngFor="let item of categoryList" [value]="item.Value">{{ item.Text }}</option>
+              </select>
+            </div>
+            <div class="uk-width-1-3@s">
+              <label class="uk-form-label product-input-label" for="form-stacked-text">Sub Category</label>
+              <select [formControlName]="'SubCategoryId'" class="uk-select product-select" id="form-horizontal-select">
+                <option [value]="-1">--Select--</option>
+                <option *ngFor="let item of subCategoryList | filterId: categoryId?.value: subCategoryId" [value]="item.Value">{{ item.Text }}</option>
+              </select>
+            </div>
+            <div class="uk-width-1-1@s">
+              <label class="uk-form-label product-input-label" for="form-stacked-text">Details *</label>
+              <textarea [formControlName]="'ProductGroupDescription'" class="uk-textarea ap-product-textarea" rows="8"
+                placeholder=""></textarea>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="uk-text-right uk-padding-small uk-padding-remove-vertical">
+      <button class="uk-button ap-success-btn" (click)="submitForm()">Save</button>
+      &nbsp;
+      <button class="uk-button ap-button-danger" (click)="resetForm()">clear</button>
+    </div>
+  </div>
+</div>

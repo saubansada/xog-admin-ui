@@ -52,6 +52,15 @@ export enum ProductDivision {
     HouseHoldItems = 6
 }
 
+export enum UserType {
+    Customer,
+    Staff,
+    Admin,
+    SubAdmin,
+    Developer,
+    Any
+}
+
 
 // export enum MeasureType {
 //     Unit,

@@ -1,0 +1,41 @@
+<div class="uk-width-expand@m">
+
+  <div class="uk-card uk-padding-small uk-card-body">
+
+    <a routerLink="/product-groups/add" class="uk-button xo-button-primary uk-float-right">Add
+      product groups</a>
+    <p class="container-header uk-margin-remove">
+      Product Groups
+    </p>
+    <ul class="uk-breadcrumb xo-breadcrumb uk-align-left uk-margin-remove">
+      <li><a routerLink="/">Home</a></li>
+      <li><a routerLink="/product-groups">Product Groups</a></li>
+    </ul>
+    <br>
+    <br>
+
+    <app-data-grid [columnDefs]="columnDefs" [gridData]="gridData">
+    </app-data-grid>
+
+    <ng-template let-item="item" let-data="data" #imgColumn>
+      <img [attr.src]="'assets/img/products/aashirvad.jpg'" alt="">
+    </ng-template>
+
+    <ng-template let-item let-data="columnVal" #moreColumn>
+      <span class="material-icons-outlined xo-icon">
+        more_vert
+      </span>
+      <div uk-drop="pos: bottom-left">
+        <div class="uk-card uk-card-body uk-width-auto uk-align-right uk-padding-remove">
+          <div class="uk-width-1-1@s uk-width-1-1@m">
+            <ul class="uk-nav uk-nav-default primary-table-drop">
+              <li (click)="editProductGroup(item)"><a>Edit</a></li>
+              <li><a (click)="deleteProductGroup(item.Id)">Delete</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </ng-template>
+
+  </div>
+</div>

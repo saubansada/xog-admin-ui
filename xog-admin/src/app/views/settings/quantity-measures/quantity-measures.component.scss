@@ -1,0 +1,9 @@
+@import url('../../../../styles/_productpage.scss');
+
+::ng-deep .primary-table > tbody > tr > td {
+    background-color: white !important;
+}
+
+.uk-modal-title{
+    font-size: 18pt;
+}

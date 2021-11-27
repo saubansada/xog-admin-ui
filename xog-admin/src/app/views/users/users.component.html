@@ -1,59 +1,44 @@
 <div class="uk-width-expand@m">
+
   <div class="uk-card uk-padding-small uk-card-body">
 
-    <a routerLink="/add-users" class="uk-button xo-button-primary uk-float-right">Add Users</a>
-    <p class="container-header uk-margin-remove">
-      Users
-    </p>
-    <ul class="uk-breadcrumb xo-breadcrumb uk-align-left uk-margin-remove">
-      <li><a routerLink="">Home</a></li>
-      <li><a routerLink="/users">Users</a></li>
-    </ul>
-    <br>
-    <table class="uk-table uk-table-small primary-table">
-      <thead>
-        <tr>
-          <th></th>
-          <th>I'd</th>
-          <th>Image</th>
-          <th>Name</th>
-          <th>Email</th>
-          <th>Phone</th>
-          <th>User Type</th>
-          <th>Status</th>
-          <th class="uk-text-right">Action</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr href="#order-details-modal" uk-toggle>
-          <td><label><input class="uk-checkbox" type="checkbox"> </label>
-          </td>
-          <td>#81</td>
-          <td class="uk-text-left od-product-img">
-            <img src="assets/img/products/aashirvad.jpg" alt="">
-          </td>
-          <td>Abdul Kumshey</td>
-          <td>abdulkumshey@gmail.com</td>
-          <td>+91-9900141870</td>
-          <td>Admin</td>
-          <td>Active</td>
-          <td class="uk-text-right">
-            <span class="material-icons-outlined xo-icon">
-              more_vert
-            </span>
-            <div uk-drop="pos: bottom-left">
-              <div class="uk-card uk-card-body uk-width-auto uk-align-right uk-padding-remove">
-                <div class="uk-width-1-1@s uk-width-1-1@m">
-                  <ul class="uk-nav uk-nav-default primary-table-drop">
-                    <li><a href="#order-details-modal" uk-toggle>View</a></li>
-                    <li><a href="#">Delete</a></li>
-                  </ul>
-                </div>
-              </div>
+    <div class="uk-card uk-padding-small uk-card-body">
+
+      <a routerLink="/users/add" class="uk-button xo-button-primary uk-float-right">Add
+        User</a>
+      <p class="container-header uk-margin-remove">
+        Users
+      </p>
+      <ul class="uk-breadcrumb xo-breadcrumb uk-align-left uk-margin-remove">
+        <li><a routerLink="/">Home</a></li>
+        <li><a routerLink="/categories">Users</a></li>
+      </ul>
+      <br>
+      <br />
+      
+      <app-data-grid [columnDefs]="columnDefs" [gridData]="gridData">
+      </app-data-grid>
+ 
+      <ng-template let-item="item" let-data="columnVal" #divisionColumn>
+        {{ camelCaseToSpacedText(UserTypes[data]) }}
+      </ng-template>
+   
+      <ng-template let-item let-cols="columnVal" #moreColumn>
+        <span class="material-icons-outlined xo-icon">
+          more_vert
+        </span>
+        <div uk-drop="pos: bottom-left">
+          <div class="uk-card uk-card-body uk-width-auto uk-align-right uk-padding-remove">
+            <div class="uk-width-1-1@s uk-width-1-1@m">
+              <ul class="uk-nav uk-nav-default primary-table-drop">
+                <li (click)="editUser(item)"><a>Edit</a></li>
+                <li><a (click)="deleteUser(item.Id)">Delete</a></li>
+              </ul>
             </div>
-          </td>
-        </tr>
-      </tbody>
-    </table>
+          </div>
+        </div>
+      </ng-template>
+
   </div>
+
 </div>

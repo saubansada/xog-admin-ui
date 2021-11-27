@@ -1,0 +1,79 @@
+<ngx-spinner [name]="loadSpinner">
+</ngx-spinner>
+
+<app-settings-nav>
+
+  <button routerLink="/settings/quantity-measures/add" class="uk-button xo-button-primary uk-float-right">Add
+    Measures</button>
+
+  <p class="container-header uk-margin-remove">
+    Quantity Measures
+  </p>
+
+  <ul class="uk-breadcrumb xo-breadcrumb uk-align-left uk-margin-remove">
+    <li><a routerLink="/settings">Settings</a></li>
+    <li><a routerLink="/settings/quantity-measures">Quantity Measures</a></li>
+  </ul>
+
+  <br />
+
+  <br />
+  <app-data-grid [columnDefs]="columnDefs" [gridData]="gridData">
+  </app-data-grid>
+
+  <ng-template let-item let-data="columnVal" #moreColumn>
+    <span class="material-icons-outlined xo-icon">
+      more_vert
+    </span>
+    <div uk-drop="pos: bottom-left">
+      <div class="uk-card uk-card-body uk-width-auto uk-align-right uk-padding-remove">
+        <div class="uk-width-1-1@s uk-width-1-1@m">
+          <ul class="uk-nav uk-nav-default primary-table-drop">
+            <li (click)="editQuantityMeasure(item)"><a>Edit</a></li>
+            <li><a (click)="deleteQuantityMeasure(item.Id)">Delete</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </ng-template>
+  <br />
+</app-settings-nav>
+
+
+<div uk-modal id="addModal" bg-close="false">
+
+  <div class="uk-modal-dialog uk-height-auto">
+
+    <div class="uk-modal-header">
+      <h5 class="uk-modal-title">{{ isEditPage ? "Edit" : "Add"}} Quantity Measure</h5>
+    </div>
+
+    <div class="uk-modal-body">
+      <div class="uk-text-center uk-margin uk-grid-small uk-grid-match" uk-grid>
+        <div class="uk-width-expand@m">
+          <div class="uk-card product-info-grid uk-padding-small uk-padding-remove-top uk-card-body uk-text-middle">
+            <form #form [formGroup]="formInstance" class="uk-grid-small uk-text-left" uk-grid>
+              <div class="uk-width-1-3@s">
+                <label class="uk-form-label product-input-label" for="form-stacked-text"> Name *</label>
+                <input [formControlName]="'QuantityMeasureName'" class="uk-input product-input" type="text"
+                  placeholder="Measure Name">
+              </div>
+              <div class="uk-width-1-3@s">
+                <label class="uk-form-label product-input-label" for="form-stacked-text">Acronym *</label>
+                <input [formControlName]="'Acronym'" class="uk-input product-input" type="text" placeholder="Acronym">
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="uk-modal-footer">
+      <div class="uk-text-right uk-padding-small uk-padding-remove-vertical">
+        <button class="uk-button ap-success-btn" (click)="submitForm()">Save</button>
+        &nbsp;
+        <button class="uk-button ap-button-danger" (click)="closeModal()">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>

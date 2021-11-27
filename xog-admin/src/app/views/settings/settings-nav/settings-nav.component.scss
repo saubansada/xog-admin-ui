@@ -1,0 +1,35 @@
+.settings-mgrid {
+    background-color: white;
+    max-height: 90vh;
+    overflow: auto;
+}
+
+.setting-mheading {
+    font-size: 12pt;
+    color: black;
+    text-align: left;
+    margin: 0px;
+}
+
+.settings-menu>ul {
+    margin-top: 10px;
+    background-color: #e6e6e6;
+    border-radius: 10px;
+}
+
+.settings-menu>ul>li {
+    padding: 4px;
+}
+
+.settings-menu>ul>li>a {
+    margin-left: 10px;
+    color: black !important;
+    font-size: 10pt;
+}
+
+.setting-dgrid {
+    background-color: #f1f1f1;
+    height: 87vh;
+    max-height: 87vh;
+    overflow-y: auto;
+}

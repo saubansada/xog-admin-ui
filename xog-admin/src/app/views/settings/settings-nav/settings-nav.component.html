@@ -1,0 +1,28 @@
+<div *ngIf="!menusOnly" class="uk-text-center uk-grid-match uk-grid-collapse" uk-grid>
+  <div class="uk-width-1-5@m">
+    <div class="uk-card uk-padding-small settings-mgrid uk-card-body">
+      <p class="setting-mheading uk-heading-bullet">Settings</p>
+      <div class="uk-width-1-1@s uk-width-1-1@m settings-menu">
+        <ng-container *ngTemplateOutlet="settingMenus"></ng-container>
+      </div>
+    </div>
+  </div>
+  <div class="uk-width-expand@m">
+    <div class="uk-card setting-dgrid uk-card-body">
+      <ng-content></ng-content>
+    </div>
+  </div>
+</div>
+
+<ng-container *ngIf="menusOnly">
+  <ng-container *ngTemplateOutlet="settingMenus"></ng-container>
+</ng-container>
+
+<ng-template #settingMenus>
+  <ul class="uk-nav-default uk-nav-parent-icon" uk-nav>
+    <li><a routerLink="/settings/quantity-measures">Quantity Measure</a></li>
+    <li><a routerLink="/settings/taxes">Taxes</a></li>
+    <li><a routerLink="/settings">Timings</a></li>
+    <li><a routerLink="/settings">Holidays</a></li>
+  </ul>
+</ng-template>

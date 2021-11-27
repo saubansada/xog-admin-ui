@@ -150,12 +150,30 @@ export class AddProductsComponent extends BaseComponent implements OnInit {
       Gst: [0, [Validators.required]],
       Cost: [0, [Validators.required]],
       MaxPurchase: ['', [Validators.required]],
-      DiscountPercentage: ['', [Validators.required]]
+      DiscountPercentage: ['', [Validators.required]],
+      HSNCode: ['', [Validators.required]],
+      Price: ['', [Validators.required]]
     });
   }
 
   addItem(): void {
     this.productVariantsArray = this.formInstance.get('ProductVariants') as FormArray;
     this.productVariantsArray.push(this.createItem(this.productId?.value));
+  }
+
+  updatePrice(item: any) {
+    var discount = item.controls.DiscountPercentage.value;
+    var mrp = item.controls.Mrp.value;
+    item.controls.Price.patchValue((mrp - ((mrp * discount/100))));
+  }
+
+  updatePercent(item: any) {
+    var price = item.controls.Price.value;
+    var mrp = item.controls.Mrp.value;
+    item.controls.DiscountPercentage.patchValue(((mrp - price) / mrp) * 100);
+  }
+
+  isDisabled(item: any, field: string): boolean {
+    return item.controls[field].value == null || item.controls[field].value <= 0;
   }
 }

@@ -1,0 +1,35 @@
+<p class="upload-title uk-margin-medium-top uk-margin-remove-bottom">
+  upload your files
+</p>
+<ngx-spinner [name]="loadSpinner" size="default" color="#fff" type="ball-spin-clockwise" [fullScreen]="false">
+</ngx-spinner>
+
+<p class="upload-img-note uk-margin-remove-top">file should be 256x256</p>
+<div>
+  <ngx-file-drop class="uk-width-1-1 uk-width-1-1" uk-form-custom dropZoneLabel="Drop files here"
+    (onFileDrop)="dropped($event)" (onFileOver)="fileOver($event)" (onFileLeave)="fileLeave($event)">
+    <ng-template ngx-file-drop-content-tmp let-openFileSelector="openFileSelector">
+      <div (click)="openFileSelector()">
+        <span *ngIf="previewImages?.length == 0" class="material-icons-round ap-img-icon">
+          folder
+        </span>
+        <ng-container *ngFor="let prev of previewImages; let ind = index">
+          <div class="preview-box">
+            <ng-container *ngIf="prev?.complete">
+              <img [src]="uploadServerUrl + '/' + prev?.src"> <br />
+            </ng-container>
+            <ng-container *ngIf="!(prev?.complete)">
+              <img [src]="prev?.blob | sanitizerUrl"> <br />
+            </ng-container>
+
+            <div *ngIf="!(prev.complete)" class="status"> {{ prev?.percent }} </div>
+            <button *ngIf="prev.complete" (click)="removeFile($event, ind)" class="uk-button remove-btn"> Remove
+            </button>
+          </div>
+        </ng-container>
+        <br />
+        Drag & Drop your files here
+      </div>
+    </ng-template>
+  </ngx-file-drop>
+</div>

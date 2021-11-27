@@ -1,0 +1,38 @@
+<ngx-spinner [name]="loadSpinner">
+</ngx-spinner>
+
+<app-settings-nav>
+
+
+  <p class="container-header uk-margin-remove">
+    Taxes
+  </p>
+
+  <ul class="uk-breadcrumb xo-breadcrumb uk-align-left uk-margin-remove">
+    <li><a routerLink="/settings">Settings</a></li>
+    <li><a routerLink="/settings/quantity-measures">Taxes</a></li>
+  </ul>
+
+  <br />
+  <br />
+  <div style="width:250px" *ngIf="gridData?.length">
+    <app-data-grid [columnDefs]="columnDefs" [gridData]="gridData">
+    </app-data-grid>
+    <div>
+      <button class="uk-button xo-button-primary uk-button-primary uk-button-small" (click)="add()">Add</button> &nbsp;
+      <button class="uk-button xo-button-primary uk-button-primary uk-button-small" (click)="save()">Save</button>
+    </div>
+  </div>
+  
+  <ng-template let-item let-data="columnVal" #slColumn>
+    <span>{{ data + 1}}</span>
+  </ng-template>
+  <ng-template let-item let-data="columnVal" #deleteColumn>
+    <a class="uk-icon-link delete-button" uk-icon="trash" (click)="remove(item.Id)"></a>
+  </ng-template>
+  <ng-template let-item let-data="columnVal" #inputColumn>
+    <input type="number" class="uk-input uk-form-small" [(ngModel)]="item.Value" />
+  </ng-template>
+
+  <br />
+</app-settings-nav>

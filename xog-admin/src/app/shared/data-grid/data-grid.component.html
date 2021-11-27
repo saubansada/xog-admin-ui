@@ -1,0 +1,27 @@
+<table class="uk-table uk-table-small primary-table">
+  <thead>
+    <tr>
+      <th *ngFor="let column of columnDefs">
+        {{ column.text }}
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <ng-container *ngIf="gridData">
+      <ng-container *ngFor="let item of gridData">
+        <tr>
+          <ng-container *ngFor="let column of columnDefs">
+            <td *ngIf="column.content == null" [attr.class]="column.classes != null ? column.classes : null">
+              {{ item[column.field] }}
+            </td>
+            <td *ngIf="column.content != null" [attr.class]="column.classes != null ? column.classes : null">
+              <ng-container [ngTemplateOutlet]="column.content"
+                [ngTemplateOutletContext]="{ $implicit: item, columnVal: item[column.field] }">
+              </ng-container>
+            </td>
+          </ng-container>
+        </tr>
+      </ng-container>
+    </ng-container>
+  </tbody>
+</table>

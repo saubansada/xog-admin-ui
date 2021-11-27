@@ -75,49 +75,70 @@
 
       <div [formGroupName]="i" class="uk-grid-small uk-text-left uk-padding-small" uk-grid>
 
-        <div class="uk-width-1-6@s">
-          <label class="uk-form-label product-input-label" for="form-stacked-text">Price *</label>
-          <input [formControlName]="'Mrp'" class="uk-input product-input" type="number" placeholder="Mrp">
+        <div class="uk-width-1-2@s">
+          <div class="uk-grid-small" uk-grid>
+
+            <div class="uk-width-1-4@s">
+              <label class="uk-form-label product-input-label" for="form-stacked-text">MRP *</label>
+              <input [formControlName]="'Mrp'" class="uk-input product-input" type="number" placeholder="Mrp">
+            </div>
+
+            <div class="uk-width-1-4@s">
+              <label class="uk-form-label product-input-label" for="form-stacked-text">Price</label>
+              <input [formControlName]="'Price'" (change)="updatePercent(item)" placeholder="Price" class="uk-input product-input" type="number"
+                [attr.disabled]="isDisabled(item, 'Mrp') ? 'disabled': null">
+            </div>
+
+            <div class="uk-width-1-4@s">
+              <label class="uk-form-label product-input-label" for="form-stacked-text">Discount %</label>
+              <input [formControlName]="'DiscountPercentage'" (change)="updatePrice(item)" placeholder="Discount %"
+                [attr.disabled]="isDisabled(item, 'Mrp') ? 'disabled': null"
+                class="uk-input product-input" type="number">
+            </div>
+
+            <div class="uk-width-1-4@s">
+              <label class="uk-form-label product-input-label" for="form-stacked-text">Measure *</label>
+              <select [formControlName]="'MeasureId'" placeholder="Measure" class="uk-select product-select"
+                id="form-stacked-select">
+                <option [value]="-1">--Select--</option>
+                <option *ngFor="let item of measureList" [value]="item.Value" [title]="item.Extras.FullName">
+                  {{ item.Text }}</option>
+              </select>
+            </div>
+          </div>
         </div>
-        <div class="uk-width-1-6@s">
-          <label class="uk-form-label product-input-label" for="form-stacked-text">Measure *</label>
-          <select [formControlName]="'MeasureId'" placeholder="Measure" class="uk-select product-select"
-            id="form-stacked-select">
-            <option [value]="-1">--Select--</option>
-            <option *ngFor="let item of measureList" [value]="item.Value" [title]="item.Extras.FullName">{{ item.Text }}</option>
-          </select>
-        </div>
-        <div class="uk-width-1-6@s">
-          <label class="uk-form-label product-input-label" for="form-stacked-text">Volume *</label>
-          <input [formControlName]="'Volume'" placeholder="Volume" class="uk-input product-input" type="number">
-        </div>
-        <!-- <div class="uk-width-1-6@s">
-          <label class="uk-form-label product-input-label" for="form-stacked-text">Stock *</label>
-          <input class="uk-input product-input" type="text">
-        </div> -->
-        <div class="uk-width-1-6@s">
-          <label class="uk-form-label product-input-label" for="form-stacked-text">Tax *</label>
-           <select [formControlName]="'Gst'" placeholder="Gst" class="uk-select product-select"
-            id="form-stacked-select">
-            <option [value]="0">--Select--</option>
-            <option *ngFor="let item of taxList" [value]="item">{{ item }}</option>
-          </select>
-        </div>
-        <div class="uk-width-1-6@s">
-          <label class="uk-form-label product-input-label" for="form-stacked-text">Max Retail *</label>
-          <input [formControlName]="'MaxPurchase'" placeholder="Max Purshases" class="uk-input product-input"
-            type="number">
-        </div>
-        <!-- <div class="uk-width-1-7@s">
-          <label class="uk-form-label product-input-label" for="form-stacked-text">Cost *</label>
-          <input class="uk-input product-input" type="number">
-        </div> -->
-        <div class="uk-width-1-6@s">
-          <label class="uk-form-label product-input-label" for="form-stacked-text">Discount % *</label>
-          <input [formControlName]="'DiscountPercentage'" placeholder="Discount %" class="uk-input product-input"
-            type="number">
+
+        <div class="uk-width-1-2@s">
+          <div class="uk-grid-small" uk-grid>
+            <div class="uk-width-1-4@s">
+              <label class="uk-form-label product-input-label" for="form-stacked-text">Volume *</label>
+              <input [formControlName]="'Volume'" placeholder="Volume" class="uk-input product-input" type="number">
+            </div>
+
+            <div class="uk-width-1-4@s">
+              <label class="uk-form-label product-input-label" for="form-stacked-text">Tax *</label>
+              <select [formControlName]="'Gst'" placeholder="Gst" class="uk-select product-select"
+                id="form-stacked-select">
+                <option [value]="0">--Select--</option>
+                <option *ngFor="let item of taxList" [value]="item">{{ item }}</option>
+              </select>
+            </div>
+
+            <div class="uk-width-1-4@s">
+              <label class="uk-form-label product-input-label" for="form-stacked-text">HSN Code</label>
+              <input [formControlName]="'HSNCode'" placeholder="HSN Code" class="uk-input product-input" type="number">
+            </div>
+
+            <div class="uk-width-1-4@s">
+              <label class="uk-form-label product-input-label" for="form-stacked-text">Max Retail *</label>
+              <input [formControlName]="'MaxPurchase'" placeholder="Max Purshases" class="uk-input product-input"
+                type="number">
+            </div>
+
+          </div>
         </div>
       </div>
+
     </div>
     <br />
     <div class="uk-text-right uk-padding-small uk-padding-remove-vertical">
