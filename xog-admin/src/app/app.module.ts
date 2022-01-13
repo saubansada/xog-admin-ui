@@ -47,6 +47,8 @@ import { QuantityMeasuresComponent } from './views/settings/quantity-measures/qu
 import { SettingDefaultComponent } from './views/settings/setting-default/setting-default.component';
 import { SettingsNavComponent } from './views/settings/settings-nav/settings-nav.component';
 import { TaxesComponent } from './views/settings/taxes/taxes.component';
+import { DeliveryChargesComponent } from './views/settings/delivery-charges/delivery-charges.component';
+import { OrderDetailsComponent } from './views/order-details/order-details.component';
 
 @NgModule({
   imports: [
@@ -98,7 +100,9 @@ import { TaxesComponent } from './views/settings/taxes/taxes.component';
     QuantityMeasuresComponent,
     SettingDefaultComponent,
     SettingsNavComponent,
-    TaxesComponent
+    TaxesComponent,
+    DeliveryChargesComponent,
+    OrderDetailsComponent
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },

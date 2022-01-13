@@ -13,12 +13,16 @@ import { NotifierService } from "angular-notifier";
 import { ResponseObject, Result } from "../models/common";
 import { ApiRequestService } from "../services/api-request.service";
 
+declare var UIkit: any;
+
 @Component({
     template: ''
 })
-export class BaseComponent implements OnInit, OnDestroy {
+export class BaseComponent implements OnDestroy {
 
     public messageShown: boolean = false;
+
+    public shouldShowSpinner: boolean;
 
     protected subscription!: Subscription;
 
@@ -27,6 +31,20 @@ export class BaseComponent implements OnInit, OnDestroy {
     protected baseUrl: string = environment.apiUrl;
 
     loading: boolean = false;
+
+    dayjsOptions: any = {
+        autoApply: false,
+        alwaysShowCalendars: false,
+        showCancel: false,
+        showClearButton: false,
+        linkedCalendars: true,
+        singleDatePicker: false,
+        showWeekNumbers: false,
+        showISOWeekNumbers: false,
+        customRangeDirection: false,
+        lockStartDate: false,
+        closeOnAutoApply: true
+    };
 
     loadSpinner: string = "loadSpinner";
 
@@ -51,6 +69,7 @@ export class BaseComponent implements OnInit, OnDestroy {
         this.route = injector.get(ActivatedRoute);
         this.notifierService = injector.get(NotifierService);
         this.apiRequestService = injector.get(ApiRequestService);
+        this.shouldShowSpinner = true;
 
 
         console.log("Subscribing the Interceptor");
@@ -60,8 +79,14 @@ export class BaseComponent implements OnInit, OnDestroy {
         })
 
         this.apiRequestService.onAsyncStatus$.subscribe(res => {
-            if (res) this.showSpinner();
-            else this.hideSpinner();
+            if (res && this.shouldShowSpinner) {
+                this.showSpinner();
+            }
+            else {
+                if (this.shouldShowSpinner) {
+                    this.hideSpinner();
+                }
+            }
         })
     }
 
@@ -72,7 +97,7 @@ export class BaseComponent implements OnInit, OnDestroy {
         }, 3000);
 
         if (this.messageShown == false) {
-            
+
             this.messageShown = true;
             if (res.Message != null && res.Message.trim() != "") {
                 this.notifierService.notify(
@@ -88,9 +113,6 @@ export class BaseComponent implements OnInit, OnDestroy {
         form.reset();
         form.markAsPristine();
         form.markAsUntouched();
-    }
-
-    ngOnInit() {
     }
 
     ngOnDestroy() {
@@ -114,8 +136,21 @@ export class BaseComponent implements OnInit, OnDestroy {
     //     return dialogRef.afterClosed();
     // }
 
-    showSpinner() {
-        this.spinner.show(this.loadSpinner, {
+    showModal(name: string) {
+        setTimeout(() => {
+            UIkit.modal(name).show();
+        }, 0);
+    }
+
+    hideModal(name: string) {
+        setTimeout(() => {
+            UIkit.modal(name).hide();
+        }, 0);
+    }
+
+    showSpinner(loadSpinner?: string) {
+        if (loadSpinner == null) loadSpinner = this.loadSpinner;
+        this.spinner.show(loadSpinner, {
             type: "ball-atom", //"square-jelly-box",
             size: "medium",
             bdColor: "rgba(0, 0, 0, 0.4)",
@@ -124,7 +159,8 @@ export class BaseComponent implements OnInit, OnDestroy {
         });
     }
 
-    hideSpinner() {
+    hideSpinner(loadSpinner?: string) {
+        if (loadSpinner == null) loadSpinner = this.loadSpinner;
         this.spinner.hide(this.loadSpinner);
     }
 

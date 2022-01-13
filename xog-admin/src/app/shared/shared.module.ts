@@ -10,6 +10,8 @@ import { NgxFileDropModule } from 'ngx-file-drop';
 import { FileUploadComponent } from './file-upload/file-upload.component';
 import { SanitizerUrlPipe } from './pipes/sanitize-url';
 import { SelectFilterPipe } from './pipes/select-filter';
+import { SafeHtmlPipe } from './pipes/safe-html';
+import { VirtualScrollerModule } from 'ngx-virtual-scroller';
 
 const customNotifierOptions: NotifierOptions = {
   position: {
@@ -58,7 +60,8 @@ const customNotifierOptions: NotifierOptions = {
     DataGridComponent,
     FileUploadComponent,
     SanitizerUrlPipe,
-    SelectFilterPipe
+    SelectFilterPipe,
+    SafeHtmlPipe
   ],
   imports: [
 
@@ -70,6 +73,7 @@ const customNotifierOptions: NotifierOptions = {
     NgxSpinnerModule,
     NgSelectModule,
     NgxFileDropModule,
+    VirtualScrollerModule,
     NotifierModule.withConfig(customNotifierOptions)
     // NgQrScannerModule,
     // QRCodeModule,
@@ -89,7 +93,9 @@ const customNotifierOptions: NotifierOptions = {
     NgxFileDropModule,
     FileUploadComponent,
     SanitizerUrlPipe,
-    SelectFilterPipe
+    SelectFilterPipe,
+    SafeHtmlPipe,
+    VirtualScrollerModule
   ],
   entryComponents: [
   ],

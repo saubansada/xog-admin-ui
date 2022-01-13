@@ -38,6 +38,7 @@ import { SettingsComponent } from './views/settings/settings.component';
 import { QuantityMeasuresComponent } from './views/settings/quantity-measures/quantity-measures.component';
 import { SettingDefaultComponent } from './views/settings/setting-default/setting-default.component';
 import { TaxesComponent } from './views/settings/taxes/taxes.component';
+import { DeliveryChargesComponent } from './views/settings/delivery-charges/delivery-charges.component';
 
 
 const routes: Routes = [
@@ -90,6 +91,7 @@ const routes: Routes = [
               { path: 'edit/:id', component: QuantityMeasuresComponent }
             ]
           },
+          { path: 'delivery-charges', component: DeliveryChargesComponent },
           {
             path: 'taxes', component: TaxesComponent
           },

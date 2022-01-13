@@ -1,27 +1,32 @@
-<table class="uk-table uk-table-small primary-table">
-  <thead>
-    <tr>
-      <th *ngFor="let column of columnDefs">
+<div #scrollingBlock class="table uk-border">
+  <div class="table-header sticky" [style.width]="(sumWidth - 15) + 'px'" [style.min-width]="'100%'">
+    <div class="table-header-row" 
+    [style.transform]="'translateY(100)'">
+      <div class="table-header-cell" *ngFor="let column of columnDefs"
+        [style.width]="'calc(' + column.width + '% - 10px)'">
         {{ column.text }}
-      </th>
-    </tr>
-  </thead>
-  <tbody>
-    <ng-container *ngIf="gridData">
-      <ng-container *ngFor="let item of gridData">
-        <tr>
+      </div>
+    </div>
+  </div>
+  <ng-container *ngIf="gridData">
+    <virtual-scroller #scroll class="table-body" [items]="gridData" [modifyOverflowStyleOfParentScroll]="false"
+      [resizeBypassRefreshThreshold]="100" [style.width]="sumWidth + 'px'" [parentScroll]="scrollingBlock">
+      <ng-container *ngFor="let item of scroll.viewPortItems">
+        <div class="table-row">
           <ng-container *ngFor="let column of columnDefs">
-            <td *ngIf="column.content == null" [attr.class]="column.classes != null ? column.classes : null">
+            <div *ngIf="column.content == null" [attr.class]="column.classes != null ? column.classes : null"
+              [style.width]="'calc(' + column.width + '% - 10px)'">
               {{ item[column.field] }}
-            </td>
-            <td *ngIf="column.content != null" [attr.class]="column.classes != null ? column.classes : null">
+            </div>
+            <div [style.width]="'calc(' + column.width + '% - 10px)'" *ngIf="column.content != null"
+              [attr.class]="column.classes != null ? column.classes : null">
               <ng-container [ngTemplateOutlet]="column.content"
                 [ngTemplateOutletContext]="{ $implicit: item, columnVal: item[column.field] }">
               </ng-container>
-            </td>
+            </div>
           </ng-container>
-        </tr>
+        </div>
       </ng-container>
-    </ng-container>
-  </tbody>
-</table>
+    </virtual-scroller>
+  </ng-container>
+</div>

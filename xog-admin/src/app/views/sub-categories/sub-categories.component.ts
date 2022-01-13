@@ -28,7 +28,7 @@ export class SubCategoriesComponent extends BaseComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.loadData();
+    this.loadData()
   }
 
   loadData() { 

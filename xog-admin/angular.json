@@ -113,16 +113,20 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "xog-admin:build:production"
+              "browserTarget": "xog-admin:build:production",
+              "port": 4201
             },
             "staging": {
-              "browserTarget": "xog-admin:build:staging"
+              "browserTarget": "xog-admin:build:staging",
+              "port": 4201
             },
             "remote-debug": {
-              "browserTarget": "xog-admin:build:remote-debug"
+              "browserTarget": "xog-admin:build:remote-debug",
+              "port": 4201
             },
             "development": {
-              "browserTarget": "xog-admin:build:development"
+              "browserTarget": "xog-admin:build:development",
+              "port": 4201
             }
           },
           "defaultConfiguration": "development"

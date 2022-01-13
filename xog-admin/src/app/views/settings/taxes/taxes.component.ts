@@ -24,7 +24,6 @@ export class TaxesComponent extends BaseComponent implements OnInit {
   constructor(protected injector: Injector, protected settingService: SettingsService) { super(injector); }
 
   ngOnInit(): void {
-    this.showSpinner();
     this.settingService.getTaxes().subscribe(res => {
       let list: string[] = (res.Data ?? "").split(',');
       this.gridData = [];
@@ -36,7 +35,6 @@ export class TaxesComponent extends BaseComponent implements OnInit {
         })
       });
       this.initColumnDefs();
-      this.hideSpinner();
     })
   }
 
@@ -71,7 +69,6 @@ export class TaxesComponent extends BaseComponent implements OnInit {
     var data = {
       Taxes: this.gridData.map(i => i.Value).join(",")
     }
-    this.showSpinner();
     this.settingService.saveTaxes(data).subscribe(() => {
       this.hideSpinner();
     });

@@ -85,7 +85,6 @@ export class QuantityMeasuresComponent extends BaseComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
   }
 
   closeModal() {
