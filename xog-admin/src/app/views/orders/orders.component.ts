@@ -46,7 +46,7 @@ export class OrdersComponent extends BaseComponent implements OnInit {
       this.hideSpinner();
       //this.generateDummyData();
       this.gridData = res.Data ?? [];
-      console.log(JSON.stringify(res.Data));
+      //console.log(JSON.stringify(res.Data));
       this.initColumnDefs();
     });
   }
