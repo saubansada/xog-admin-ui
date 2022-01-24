@@ -1,148 +1,156 @@
 <div class="uk-card sidenav-bar uk-card-body">
 
-  <img [attr.src]="assetUrl + '/icon.png'" alt="" class="sidenav-logo">
+    <img [attr.src]="assetUrl + '/icon.png'" alt="" class="sidenav-logo uk-align-center">
 
-  <div [ngClass]="{ 'uk-width-1-1@s uk-width-1-1@m uk-margin-top' : true, 'is-closed' : !open }">
+    <div [ngClass]="{ 'uk-width-1-1@s uk-width-1-1@m uk-margin-top' : true, 'is-closed' : !open }">
 
-    <ul class="uk-nav-default sidenav-menu uk-nav-parent-icon" uk-nav>
+        <ul class="uk-nav-default sidenav-menu uk-nav-parent-icon " uk-nav>
 
-      <li class="uk-active">
-        <a routerLink="/">
-          <span class="material-icons-outlined">
+            <li class="uk-active ">
+                <a routerLink="/">
+                    <span class="material-icons-two-tone">
             home
-          </span> 
-          <span class="menu-title">Home</span>
-        </a>
-      </li>
+          </span>
+                    <span class="menu-title">Home</span>
+                </a>
+            </li>
 
-      <li class="uk-parent">
-        <a href="#">
-          <span class="material-icons-outlined">
+            <li class="uk-parent">
+                <a href="#">
+                    <span class="material-icons-two-tone">
             local_mall
           </span>
-          <span class="menu-title">
+                    <span class="menu-title">
             Orders
           </span>
-          <span class="material-icons-outlined chev-down">
+                    <span class="material-icons-two-tone chev-down">
             navigate_next
           </span>
-        </a>
-        <ul class="uk-nav-sub">
-          <li class="sidenav-dropdown"><a routerLink="/orders">Orders</a></li>
-          <li class="sidenav-dropdown"><a routerLink="/returns">Return / Cancel</a></li>
-          <li class="sidenav-dropdown"><a routerLink="/refunds">Refund</a></li>
-        </ul>
-      </li>
+                </a>
+                <ul class="uk-nav-sub">
+                    <li class="sidenav-dropdown"><a routerLink="/orders">Orders</a></li>
+                    <li class="sidenav-dropdown"><a routerLink="/returns">Return / Cancel</a></li>
+                    <li class="sidenav-dropdown"><a routerLink="/refunds">Refund</a></li>
+                </ul>
+            </li>
 
-      <li>
-        <a routerLink="/customers">
-          <span class="material-icons-outlined">
+            <li>
+                <a routerLink="/customers">
+                    <span class="material-icons-two-tone">
             people
           </span>
-          <span class="menu-title">
+                    <span class="menu-title">
             Customers
           </span>
-        </a>
-      </li>
+                </a>
+            </li>
 
-      <li class="uk-parent">
+            <li class="uk-parent">
 
-        <a href="#">
-          <span class="material-icons-outlined">
+                <a href="#">
+                    <span class="material-icons-two-tone">
             storefront
           </span>
-          <span class="menu-title">Products</span>
-          <span class="material-icons-outlined chev-down">
+                    <span class="menu-title">Products</span>
+                    <span class="material-icons-two-tone chev-down">
             navigate_next
           </span>
-        </a>
+                </a>
 
-        <ul class="uk-nav-sub">
-          <li class="sidenav-dropdown"><a routerLink="/products">Products</a></li>
-          <li class="sidenav-dropdown"><a routerLink="/products/add">Add Products</a></li>
-          <li class="sidenav-dropdown"><a routerLink="/product-groups">Product Groups</a></li>
-          <!-- <li class="sidenav-dropdown"><a routerLink="/upload-csv">Upload Csv</a></li> -->
-          <li class="sidenav-dropdown"><a routerLink="/categories">Categories</a></li>
-          <li class="sidenav-dropdown"><a routerLink="/sub-categories">Sub-Categories</a></li>
-          <li class="sidenav-dropdown"><a routerLink="/brands">Brands</a></li>
-        </ul>
-      </li>
+                <ul class="uk-nav-sub">
+                    <li class="sidenav-dropdown"><a routerLink="/products">Products</a></li>
+                    <li class="sidenav-dropdown"><a routerLink="/products/add">Add Products</a></li>
+                    <li class="sidenav-dropdown"><a routerLink="/product-groups">Product Groups</a></li>
+                    <!-- <li class="sidenav-dropdown"><a routerLink="/upload-csv">Upload Csv</a></li> -->
+                    <li class="sidenav-dropdown"><a routerLink="/categories">Categories</a></li>
+                    <li class="sidenav-dropdown"><a routerLink="/sub-categories">Sub-Categories</a></li>
+                    <li class="sidenav-dropdown"><a routerLink="/brands">Brands</a></li>
+                </ul>
+            </li>
 
-      <li class="uk-parent">
-        <a href="#">
-          <span class="material-icons-outlined">
-            travel_explore
+            <li class="uk-parent">
+                <a href="#">
+                    <span class="material-icons-two-tone">
+            menu
           </span>
-          <span class="menu-title">Manage Apps</span>
-          <span class="material-icons-outlined chev-down">
+                    <span class="menu-title">Manage Apps</span>
+                    <span class="material-icons-two-tone chev-down">
             navigate_next
           </span>
-        </a>
-        <ul class="uk-nav-sub">
-          <li class="sidenav-dropdown"><a href="#">Payment Request</a></li>
-          <li class="sidenav-dropdown"><a href="#">Payment Request</a></li>
-        </ul>
-      </li>
+                </a>
+                <ul class="uk-nav-sub">
+                    <li class="sidenav-dropdown"><a routerLink="/manage-shared">Shared</a></li>
+                    <li class="sidenav-dropdown"><a routerLink="/manage-mobile">Mobile</a></li>
+                    <li class="sidenav-dropdown"><a routerLink="/manage-desktop">Desktop</a></li>
+                </ul>
+            </li>
 
-      <li>
-        <a routerLink="/offers">
-          <span class="material-icons-round">
-            local_offer
-          </span>
-          <span class="menu-title">Offers</span>
-        </a>
-      </li>
 
-      <li>
-        <a routerLink="/users">
-          <span class="material-icons-round">
+            <li class="uk-parent">
+                <a href="#">
+                    <span class="material-icons-two-tone">
+                    local_offer
+                  </span>
+                    <span class="menu-title">Offers</span>
+                    <span class="material-icons-two-tone chev-down">
+          navigate_next
+        </span>
+                </a>
+                <ul class="uk-nav-sub">
+                    <li class="sidenav-dropdown"><a routerLink="/offers">Offers</a></li>
+                    <li class="sidenav-dropdown"><a routerLink="/offerlists">Offerlists</a></li>
+                </ul>
+            </li>
+            <li>
+                <a routerLink="/users">
+                    <span class="material-icons-two-tone">
             folder_shared
           </span>
-          <span class="menu-title">Users</span>
-        </a>
-      </li>
+                    <span class="menu-title">Users</span>
+                </a>
+            </li>
 
-      <li class="uk-parent">
+            <li class="uk-parent">
 
-        <a routerLink="/finance">
-          <span class="material-icons-round">
+                <a>
+                    <span class="material-icons-two-tone">
             account_balance
           </span>
-          <span class="menu-title"> Finance</span>
-          <span class="material-icons-outlined chev-down">
+                    <span class="menu-title"> Finance</span>
+                    <span class="material-icons-two-tone chev-down">
             navigate_next
           </span>
-        </a>
+                </a>
 
-        <ul class="uk-nav-sub">
-          <li class="sidenav-dropdown"><a routerLink="/payment-history">Payment History</a></li>
-          <li class="sidenav-dropdown"><a routerLink="/wallet-history">Wallet History</a></li>
-          <li class="sidenav-dropdown"><a routerLink="/payment-request">Payment Request</a></li>
-          <li class="sidenav-dropdown"><a routerLink="/add-wallet">Add Wallet</a></li>
-          <li class="sidenav-dropdown"><a routerLink="/finance-stats">Stats</a></li>
-        </ul>
-      </li>
+                <ul class="uk-nav-sub">
+                    <li class="sidenav-dropdown"><a routerLink="/payment-history">Payment History</a></li>
+                    <li class="sidenav-dropdown"><a routerLink="/wallet-history">Wallet History</a></li>
+                    <li class="sidenav-dropdown"><a routerLink="/payment-request">Payment Request</a></li>
+                    <li class="sidenav-dropdown"><a routerLink="/add-wallet">Add Wallet</a></li>
+                    <li class="sidenav-dropdown"><a routerLink="/finance-stats">Stats</a></li>
+                </ul>
+            </li>
 
-      <li>
-        <a routerLink="/insights">
-          <span class="material-icons-round">
+            <li>
+                <a routerLink="/insights">
+                    <span class="material-icons-two-tone">
             insights
           </span>
-          <span class="menu-title">Reports</span>
-        </a>
-      </li>
+                    <span class="menu-title">Reports</span>
+                </a>
+            </li>
 
-      <li>
-        <a routerLink="/settings">
-          <span class="material-icons-round">
+            <li>
+                <a routerLink="/settings">
+                    <span class="material-icons-two-tone">
             settings_suggest
-          </span> 
-          <span class="menu-title">Settings</span>
-        </a>
-      </li>
+          </span>
+                    <span class="menu-title">Settings</span>
+                </a>
+            </li>
 
-    </ul>
+        </ul>
 
-  </div>
+    </div>
 
 </div>

@@ -42,14 +42,26 @@ import { ErrorInterceptor } from './auth/_helpers/error.interceptor';
 import { SharedModule } from './shared/shared.module';
 import { ProductGroupsComponent } from './views/product-group/product-groups.component';
 import { AddProductGroupComponent } from './views/add-product-group/add-prodouct-group.component';
-import { SettingsComponent } from './views/settings/settings.component'; 
+import { SettingsComponent } from './views/settings/settings.component';
 import { QuantityMeasuresComponent } from './views/settings/quantity-measures/quantity-measures.component';
 import { SettingDefaultComponent } from './views/settings/setting-default/setting-default.component';
 import { SettingsNavComponent } from './views/settings/settings-nav/settings-nav.component';
 import { TaxesComponent } from './views/settings/taxes/taxes.component';
 import { DeliveryChargesComponent } from './views/settings/delivery-charges/delivery-charges.component';
 import { OrderDetailsComponent } from './views/order-details/order-details.component';
-
+import { ManageSharedComponent } from './views/manage-shared/manage-shared.component';
+import { ManageHomeBannerComponent } from './views/manage-home-banner/manage-home-banner.component';
+import { ManageFeaturedListComponent } from './views/manage-featured-list/manage-featured-list.component';
+import { ManageTopBrandsComponent } from './views/manage-top-brands/manage-top-brands.component';
+import { ManageMobileComponent } from './views/manage-mobile/manage-mobile.component';
+import { SliderBannersComponent } from './views/slider-banners/slider-banners.component';
+import { AddSliderBannerComponent } from './views/add-slider-banner/add-slider-banner.component';
+import { MobileCustomOfferComponent } from './views/mobile-custom-offer/mobile-custom-offer.component';
+import { ManageDesktopComponent } from './views/manage-desktop/manage-desktop.component';
+import { FourBannersComponent } from './views/four-banners/four-banners.component';
+import { AddFourbannersComponent } from './views/add-fourbanners/add-fourbanners.component';
+import { OfferListsComponent } from './views/offer-lists/offer-lists.component';
+import { AddOfferListComponent } from './views/add-offer-list/add-offer-list.component';
 @NgModule({
   imports: [
     BrowserModule,
@@ -102,7 +114,20 @@ import { OrderDetailsComponent } from './views/order-details/order-details.compo
     SettingsNavComponent,
     TaxesComponent,
     DeliveryChargesComponent,
-    OrderDetailsComponent
+    OrderDetailsComponent,
+    ManageSharedComponent,
+    ManageHomeBannerComponent,
+    ManageFeaturedListComponent,
+    ManageTopBrandsComponent,
+    ManageMobileComponent,
+    SliderBannersComponent,
+    AddSliderBannerComponent,
+    MobileCustomOfferComponent,
+    ManageDesktopComponent,
+    FourBannersComponent,
+    AddFourbannersComponent,
+    OfferListsComponent,
+    AddOfferListComponent
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },

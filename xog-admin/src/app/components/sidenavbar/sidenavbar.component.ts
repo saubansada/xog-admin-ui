@@ -1,6 +1,6 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core'; 
+import { NgClass } from '@angular/common';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { environment } from 'src/environments/environment';
-
 @Component({
   selector: 'app-sidenavbar',
   templateUrl: './sidenavbar.component.html',
@@ -14,7 +14,7 @@ export class SidenavbarComponent implements OnInit {
   @Output() openChange: EventEmitter<boolean> = new EventEmitter<boolean>();
 
   constructor() { }
-  
+
   ngOnInit(): void {
   }
 

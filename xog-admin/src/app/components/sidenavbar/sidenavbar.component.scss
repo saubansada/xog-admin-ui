@@ -1,76 +1,81 @@
+@import '_mixins';
 .sidenav-bar {
-  background-color: #f7f7f7;
-  height: 100vh;
-  overflow-x: auto;
-  padding: 0px;
+    background-color: $gray-color;
+    height: 100vh;
+    overflow-x: auto;
+    padding: 0px;
 }
 
 .sidenav-bar::-webkit-scrollbar {
-  display: none;
+    display: none;
 }
 
 .sidenav-logo {
-  width: 45px;
-  margin-top: 20px;
+    width: 45px;
+    margin-top: 20px;
 }
 
 .sidenav-menu>li {
-  padding: 0px 10px;
-  margin-bottom: 5px;
+    padding: 10px;
+    margin-bottom: 5px;
+    background-color: white;
+    margin: 8px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    border: 1px solid #40404020;
 }
 
 .sidenav-menu>li>a {
-  color: black;
-  font-size: 10pt;
-  font-family: 'Poppins', sans-serif;
+    color: black;
+    font-size: 10pt;
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
 }
 
 .sidenav-menu>li>a::after {
-  display: none;
+    display: none;
 }
 
 .sidenav-menu>li>a>span:first-child {
-  font-size: 14pt !important;
-  margin-right: 20px;
-  padding: 10px;
-  background-color: #ffffff;
-  color: black !important;
-  border-radius: 10px;
+    font-size: 14pt !important;
+    margin-right: 20px;
+    color: black !important;
+    border-radius: 10px;
+    margin-left: 10px;
 }
 
-.sidenav-menu>li:hover>a>span:first-child,
-.sidenav-menu>li.uk-active>a>span:first-child,
-.sidenav-menu>li.uk-open>a>span:first-child {
-  color: #0920fb !important;
+.sidenav-menu>li:hover>a,
+.sidenav-menu>li.uk-active>a,
+.sidenav-menu>li.uk-open>a {
+    color: $primary-color;
 }
 
 .sidenav-menu>li>a>span.chev-down {
-  color: black;
-  font-size: 12pt;
-  margin-left: 30px;
+    color: black;
+    font-size: 12pt;
+    margin-left: 30px;
 }
 
 .sidenav-menu>li.uk-open>a>span.chev-down {
-  transform: rotate(90deg);
+    transform: rotate(90deg);
 }
 
 .is-closed>ul .uk-nav-sub,
 .is-closed>ul span.menu-title,
 .is-closed>ul span.chev-down {
-  display: none !important;
+    display: none !important;
 }
- 
 
 .sidenav-dropdown {
-  padding: 5px;
-  margin-left: 20px;
+    padding: 8px 4px;
 }
 
 .sidenav-dropdown>a {
-  color: black;
-  font-size: 9.5pt;
+    color: black;
+    font-size: 9.5pt;
 }
 
 .uk-nav-sub {
-  margin-left: 20px;
+    margin-left: 20px;
 }

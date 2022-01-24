@@ -39,7 +39,19 @@ import { QuantityMeasuresComponent } from './views/settings/quantity-measures/qu
 import { SettingDefaultComponent } from './views/settings/setting-default/setting-default.component';
 import { TaxesComponent } from './views/settings/taxes/taxes.component';
 import { DeliveryChargesComponent } from './views/settings/delivery-charges/delivery-charges.component';
-
+import { ManageSharedComponent } from './views/manage-shared/manage-shared.component';
+import { ManageHomeBannerComponent } from './views/manage-home-banner/manage-home-banner.component';
+import { ManageFeaturedListComponent } from './views/manage-featured-list/manage-featured-list.component';
+import { ManageTopBrandsComponent } from './views/manage-top-brands/manage-top-brands.component';
+import { ManageMobileComponent } from './views/manage-mobile/manage-mobile.component';
+import { SliderBannersComponent } from './views/slider-banners/slider-banners.component';
+import { AddSliderBannerComponent } from './views/add-slider-banner/add-slider-banner.component';
+import { MobileCustomOfferComponent } from './views/mobile-custom-offer/mobile-custom-offer.component';
+import { ManageDesktopComponent } from './views/manage-desktop/manage-desktop.component';
+import { FourBannersComponent } from './views/four-banners/four-banners.component';
+import { AddFourbannersComponent } from './views/add-fourbanners/add-fourbanners.component';
+import { OfferListsComponent } from './views/offer-lists/offer-lists.component';
+import { AddOfferListComponent } from './views/add-offer-list/add-offer-list.component';
 
 const routes: Routes = [
   {
@@ -80,6 +92,19 @@ const routes: Routes = [
       { path: 'add-wallet', component: AddWalletComponent },
       { path: 'finance', component: FinanceStatsComponent },
       { path: 'finance-stats', component: FinanceStatsComponent },
+      { path: 'manage-shared', component: ManageSharedComponent },
+      { path: 'manage-homebanner', component: ManageHomeBannerComponent },
+      {path: 'featured-lists', component: ManageFeaturedListComponent},
+      {path: 'manage-topbrands', component: ManageTopBrandsComponent},
+      {path: 'manage-mobile', component: ManageMobileComponent},
+      {path: 'slider-banner', component: SliderBannersComponent},
+      {path: 'add-sliderbanner', component: AddSliderBannerComponent},
+      {path: 'mobile-custom-offer', component: MobileCustomOfferComponent},
+      {path: 'manage-desktop', component: ManageDesktopComponent},
+      {path: 'four-banners', component: FourBannersComponent},
+      {path: 'add-fourbanners', component: AddFourbannersComponent},
+      {path: 'offerlists', component: OfferListsComponent},
+      {path: 'add-offerlists', component: AddOfferListComponent},
       {
         path: 'settings', component: SettingsComponent,
         children: [

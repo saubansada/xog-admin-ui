@@ -1,0 +1,86 @@
+<div class="uk-width-expand@m">
+    <div class="uk-card uk-padding-small uk-card-body">
+        <p class="container-header uk-margin-remove">
+            Add Offers
+        </p>
+        <ul class="uk-breadcrumb xo-breadcrumb uk-align-left uk-margin-remove">
+            <li><a routerLink="">Home</a></li>
+            <li><a routerLink="/offers">Offers</a></li>
+            <li class="uk-active"><a routerLink="/add-offers">Add Offers</a></li>
+        </ul>
+        <br>
+        <div class="uk-text-center uk-margin uk-grid-small uk-grid-match" uk-grid>
+
+            <div class="uk-width-expand@m">
+                <div class="uk-card product-info-grid uk-padding-small uk-padding-remove-top uk-card-body uk-text-middle">
+                    <form class="uk-grid-small uk-text-left" uk-grid>
+                        <div class="uk-width-1-2@s">
+                            <label class="uk-form-label product-input-label" for="form-stacked-text"> Name *</label>
+                            <input class="uk-input product-input" type="text" placeholder="">
+                        </div>
+                        <div class="uk-width-1-1@s">
+                            <label class="uk-form-label product-input-label" for="form-stacked-text">Products Name *</label>
+                            <input class="uk-input product-input" type="text" placeholder="">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="uk-width-expand@m">
+    <div class="uk-card uk-padding-small uk-card-body">
+
+
+        <table class="uk-table uk-table-small primary-table">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>I'd</th>
+                    <th>Code </th>
+                    <th>Product Name</th>
+                    <th>Brand</th>
+                    <th>Category </th>
+                    <th class="uk-text-right">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr href="#order-details-modal" uk-toggle>
+                    <td><label><input class="uk-checkbox" type="checkbox"> </label>
+                    </td>
+                    <td>#81</td>
+                    <td class="uk-text-left od-product-img">
+                        #404004
+                    </td>
+                    <td>Aashirvad Atta</td>
+                    <td>Aashirvad</td>
+                    <td>Atta</td>
+                    <td class="uk-text-right">
+                        <span class="material-icons-outlined xo-icon">
+              more_vert
+            </span>
+                        <div uk-drop="pos: bottom-left">
+                            <div class="uk-card uk-card-body uk-width-auto uk-align-right uk-padding-remove">
+                                <div class="uk-width-1-1@s uk-width-1-1@m">
+                                    <ul class="uk-nav uk-nav-default primary-table-drop">
+                                        <li><a href="#order-details-modal" uk-toggle>Edit</a></li>
+                                        <li><a href="#">Delete</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+
+<p class="uk-text-center">
+
+    <button class="uk-button ap-success-btn">Upload</button>
+    <button class="uk-button ap-button-danger">clear</button>
+</p>
