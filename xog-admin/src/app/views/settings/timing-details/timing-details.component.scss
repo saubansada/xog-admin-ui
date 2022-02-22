@@ -1,0 +1,62 @@
+.heading {
+    font-size: 12pt;
+    color: black;
+    margin-bottom: 0px;
+}
+
+.day {
+    font-size: 10pt;
+    color: gray;
+    margin-top: 0px;
+}
+
+.add-grid {
+    border: 1px solid #04040420;
+    border-radius: 8px;
+}
+
+.primary-label {
+    font-size: 9pt;
+    display: inline-block;
+    margin-bottom: 10px;
+}
+
+.uk-select {
+    background-color: #04040410;
+    color: black;
+    font-size: 10pt;
+    border-radius: 4px;
+    border: 1px solid #04040420;
+}
+
+.ent-btn {
+    background-color: rgb(40, 40, 230);
+    color: white;
+    text-transform: capitalize;
+    padding: 3px 40px;
+    border-radius: 8px;
+}
+
+.from {
+    width: 35%;
+    font-size: 11pt;
+    color: black;
+}
+
+.to {
+    width: 35%;
+    font-size: 11pt;
+    color: black;
+}
+
+.delete {
+    width: 30%;
+    text-align: right;
+}
+
+.delete>span {
+    color: red;
+    font-size: 14pt;
+    vertical-align: middle;
+    cursor: pointer;
+}

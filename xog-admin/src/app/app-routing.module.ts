@@ -52,6 +52,8 @@ import { FourBannersComponent } from './views/four-banners/four-banners.componen
 import { AddFourbannersComponent } from './views/add-fourbanners/add-fourbanners.component';
 import { OfferListsComponent } from './views/offer-lists/offer-lists.component';
 import { AddOfferListComponent } from './views/add-offer-list/add-offer-list.component';
+import { DeliveryTimingsComponent } from './views/settings/delivery-timings/delivery-timings.component';
+import { TimingDetailsComponent } from './views/settings/timing-details/timing-details.component';
 
 const routes: Routes = [
   {
@@ -105,6 +107,8 @@ const routes: Routes = [
       {path: 'add-fourbanners', component: AddFourbannersComponent},
       {path: 'offerlists', component: OfferListsComponent},
       {path: 'add-offerlists', component: AddOfferListComponent},
+
+      {path: 'timing-details', component: TimingDetailsComponent},
       {
         path: 'settings', component: SettingsComponent,
         children: [
@@ -117,6 +121,8 @@ const routes: Routes = [
             ]
           },
           { path: 'delivery-charges', component: DeliveryChargesComponent },
+
+      {path: 'delivery-timings', component: DeliveryTimingsComponent},
           {
             path: 'taxes', component: TaxesComponent
           },

@@ -62,6 +62,8 @@ import { FourBannersComponent } from './views/four-banners/four-banners.componen
 import { AddFourbannersComponent } from './views/add-fourbanners/add-fourbanners.component';
 import { OfferListsComponent } from './views/offer-lists/offer-lists.component';
 import { AddOfferListComponent } from './views/add-offer-list/add-offer-list.component';
+import { DeliveryTimingsComponent } from './views/settings/delivery-timings/delivery-timings.component';
+import { TimingDetailsComponent } from './views/settings/timing-details/timing-details.component';
 @NgModule({
   imports: [
     BrowserModule,
@@ -127,7 +129,9 @@ import { AddOfferListComponent } from './views/add-offer-list/add-offer-list.com
     FourBannersComponent,
     AddFourbannersComponent,
     OfferListsComponent,
-    AddOfferListComponent
+    AddOfferListComponent,
+    DeliveryTimingsComponent,
+    TimingDetailsComponent,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
