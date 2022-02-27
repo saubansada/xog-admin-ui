@@ -1,0 +1,106 @@
+<div class="uk-container uk-container-xlarge uk-padding-small">
+    <h2 class="heading">Reports</h2>
+    <p class="subheading">Customers Report
+    </p>
+    <div class="uk-text-center uk-grid-small uk-grid-match" uk-grid>
+
+        <div class="uk-width-expand@m">
+            <div class="uk-card uk-padding-remove uk-text-left uk-card-body">
+                <div class="uk-child-width-1-2@s uk-child-width-1-3@m uk-text-center uk-grid-match" uk-grid>
+                    <div>
+                        <div class="uk-card stats-grid uk-padding-small uk-card-body">
+                            <table class="uk-table uk-margin-remove uk-table-divider uk-text-left">
+
+                                <tbody>
+                                    <tr>
+                                        <td class="stats-icon"><span class="material-icons-round">
+                                        group
+                                        </span></td>
+                                        <td class="stats-info">Total Customers
+                                            <p> 23992 </p>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <table class="uk-table uk-table-small uk-table-divider reports-table">
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Total Customers</th>
+                            <th>Spendings</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>12/02/2022</td>
+                            <td>990010</td>
+                            <td><span class="r-symbol">₹
+                        </span>325.00</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="uk-width-1-4@m">
+            <div class="uk-card uk-padding-small filter-grid uk-card-body">
+                <p class="filter-heading">Filters</p>
+                <!-- <form class="uk-grid-small uk-text-left" uk-grid>
+
+                  <div class="uk-width-1-1">
+                      <label class="uk-form-label type-label" for="form-stacked-text ">Type</label>
+                      <select class="uk-select" id="form-stacked-select">
+                      <option>Customer Order Reports</option>
+                      <option>Sales Reports</option>
+                      <option value="">Products Reports</option>
+                      <option value="">Customer Reports</option>
+                      <option value="">Brand Reports</option>
+                      <option value="">Category Reports</option>
+                      <option value="">Sub Category Report</option>
+                      <option value="">Taxed Products Reports</option>
+                      <option value="">Transaction Reports</option>
+                      <option value="">Wallet Reports</option>
+                      <option value="">Wallet Redeem Reports</option>
+                  </select>
+
+                  </div>
+              </form> -->
+                <form class="uk-grid-small uk-text-left uk-margin-remove-top" uk-grid>
+
+                    <div class="uk-width-1-1">
+                        <label class="uk-form-label primary-label" for="form-stacked-text ">Date Start</label>
+                        <input class="uk-input" type="date" placeholder="50">
+                    </div>
+                    <div class="uk-width-1-1">
+                        <label class="uk-form-label primary-label" for="form-stacked-text ">Date End</label>
+                        <input class="uk-input" type="date" placeholder="50">
+                    </div>
+                    <div class="uk-width-1-1">
+                        <label class="uk-form-label type-label" for="form-stacked-text ">Group</label>
+                        <select class="uk-select" id="form-stacked-select">
+                  <option>Days</option>
+                  <option>Weeks</option>
+                  <option value="">Months</option>
+                  <option value="">Years</option>
+                  <option value="">All</option>
+              </select>
+                    </div>
+                    <div class="uk-width-1-1 uk-text-right">
+                        <button class="uk-button uk-width-1-2 s-btn">Apply</button>
+                    </div>
+
+                    <div class="uk-width-1-1@s uk-text-right">
+                        <button class="uk-button filter-button" uk-tooltip="title: Download PDF; pos: bottom"><span class="material-icons-round">
+                    download
+                    </span></button>
+                        <button class="uk-button filter-button" uk-tooltip="title: Download CSV; pos: bottom"><span class="material-icons-round">
+                    article
+                    </span></button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

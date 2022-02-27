@@ -64,6 +64,13 @@ import { OfferListsComponent } from './views/offer-lists/offer-lists.component';
 import { AddOfferListComponent } from './views/add-offer-list/add-offer-list.component';
 import { DeliveryTimingsComponent } from './views/settings/delivery-timings/delivery-timings.component';
 import { TimingDetailsComponent } from './views/settings/timing-details/timing-details.component';
+import { ReportsComponent } from './desktop/views/reports/reports.component';
+import { CustomerOrderComponent } from './desktop/reports/customer-order/customer-order.component';
+import { SalesReportsComponent } from './desktop/reports/sales-reports/sales-reports.component';
+import { ProductReportsComponent } from './desktop/reports/product-reports/product-reports.component';
+import { CustomerReportsComponent } from './desktop/reports/customer-reports/customer-reports.component';
+import { BrandReportsComponent } from './desktop/reports/brand-reports/brand-reports.component';
+import { TransReportsComponent } from './desktop/reports/trans-reports/trans-reports.component';
 @NgModule({
   imports: [
     BrowserModule,
@@ -132,6 +139,13 @@ import { TimingDetailsComponent } from './views/settings/timing-details/timing-d
     AddOfferListComponent,
     DeliveryTimingsComponent,
     TimingDetailsComponent,
+    ReportsComponent,
+    CustomerOrderComponent,
+    SalesReportsComponent,
+    ProductReportsComponent,
+    CustomerReportsComponent,
+    BrandReportsComponent,
+    TransReportsComponent,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
