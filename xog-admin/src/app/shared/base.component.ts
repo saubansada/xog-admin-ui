@@ -94,7 +94,7 @@ export class BaseComponent implements OnDestroy {
 
         setTimeout(() => {
             this.messageShown = false;
-        }, 3000);
+        }, 5000);
 
         if (this.messageShown == false) {
 

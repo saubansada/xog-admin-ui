@@ -1,93 +1,220 @@
 <div [id]="id" uk-modal>
-    
+
     <div class="uk-modal-dialog uk-height-1-1 uk-modal-body">
         <ngx-spinner [name]="loadSpinner">
         </ngx-spinner>
         <button class="uk-modal-close-outside" type="button" uk-close></button>
         <div class="uk-text-center uk-grid-small uk-grid-match" uk-grid>
-            <div class="uk-width-expand@m">
-                <div class="uk-card od-products-grid uk-card-body uk-padding-small">
-                    <table class="uk-table uk-table-small od-products-table uk-table-divider" 
-                                *ngIf="order != null">
-                        <thead>
-                            <tr>
-                                <th>#</th>
-                                <th></th>
-                                <th>Name</th>
-                                <th>Qty</th>
-                                <th>₹</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr *ngFor="let item of order?.Purchases; let i = index">
-                                <td>{{ i+1 }}</td>
-                                <td class="uk-text-left od-product-img">
-                                    <img src="assets/img/products/aashirvad.jpg" alt="">
-                                </td>
-                                <td class="od-product-name">{{ item.ProductName }}<span>5 KG</span> </td>
-                                <td class="od-product-qty">{{ item.Quantity }}</td>
-                                <td class="od-product-price">{{ item.Total }} </td>
-                                <td class="od-product-cancel"><span class="material-icons-round">
-                                        highlight_off
-                                    </span></td>
-                            </tr>
-                        </tbody>
-                    </table>
+            <div class="uk-width-expand@m" *ngIf="returns.length > 0 || purchases.length > 0">
+
+                <div class="uk-width-1-1 order-container">
+                    <ul class="main-switch" uk-tab>
+                        <li *ngIf="purchases.length > 0 && !isReturnedOrder"><a>Ordered Items</a></li>
+                        <li *ngIf="returns.length > 0"><a [class.uk-active]="purchases.length == 0">Return Products</a>
+                        </li>
+                    </ul>
+
+                    <ul class="uk-switcher uk-margin">
+                        <li *ngIf="purchases.length > 0 && !isReturnedOrder">
+                            <div *ngIf="mainPageIndex == 0"
+                                class="uk-card od-products-grid  uk-card-body uk-padding-small">
+                                <table class="uk-table uk-table-small od-products-table uk-table-divider"
+                                    *ngIf="order != null">
+                                    <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th></th>
+                                            <th>Name</th>
+                                            <th>₹</th>
+                                            <th>Disc.%</th>
+                                            <th>Disc.₹</th>
+                                            <th>Qty</th>
+                                            <th>T.₹</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <ng-container *ngFor="let item of purchases; let i = index">
+                                            <ng-container>
+                                                <tr>
+                                                    <td>{{ i+1 }}</td>
+                                                    <td class="uk-text-left od-product-img">
+                                                        <img *ngIf="item.ProductImage != null"
+                                                            [attr.src]="uploadsUrl + item.ProductImage?.ImageUrl">
+                                                    </td>
+                                                    <td class="od-product-name">
+                                                        {{ item.ProductName }}
+                                                        <span> {{ item.OrderedQuantity }} {{ item.UnitType.Acronym }}
+                                                        </span>
+                                                    </td>
+                                                    <td class="od-product-qty">{{ item.Price | number: '1.1-2' }}</td>
+                                                    <td class="od-product-qty">{{ item.Discount | number: '1.1-2' }}
+                                                    </td>
+                                                    <td class="od-product-qty">{{ item.DiscPrice | number: '1.1-2' }}
+                                                    </td>
+                                                    <td class="od-product-qty">
+                                                        {{ item.OrderedQuantity - item.TotalReturnedQuantity -
+                                                        item.ReturnedQuantity }}
+                                                    </td>
+                                                    <td class="od-product-price">
+                                                        {{ item.OrderedTotal * (item.OrderedQuantity -
+                                                        item.TotalReturnedQuantity - item.ReturnedQuantity) | number:
+                                                        '1.1-2' }}
+                                                    </td>
+                                                    <td class="od-product-cancel">
+                                                        <span class="material-icons-round"
+                                                            style="cursor:pointer; color: rgb(8, 150, 0)"
+                                                            (click)="add(item)"
+                                                            [style.color]="item.ReturnedQuantity > 0 ? 'rgb(8, 150, 0)' : '#bbb'">
+                                                            add
+                                                        </span>
+                                                        <span class="material-icons-round"
+                                                            style="cursor:pointer; color: #830202"
+                                                            (click)="remove(item)"
+                                                            [style.color]="item.ReturnedQuantity &lt; item.TotalQuantity ? '#830202' : '#bbb'">
+                                                            remove
+                                                        </span>
+                                                    </td>
+                                                </tr>
+                                            </ng-container>
+                                        </ng-container>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </li>
+                        <li *ngIf="returns.length > 0">
+                            <div
+                                class="uk-container uk-container-xlarge uk-text-left uk-padding-remove return-container">
+                                <div class="return-grid">
+                                    <div class="return-footer" style="padding:10px">
+                                        <table
+                                            class="uk-table return-thead uk-table-small uk-margin-remove-bottom uk-table-divider">
+                                            <thead>
+                                                <tr>
+                                                    <th>#</th>
+                                                    <th class="uk-text-left od-product-img">
+                                                    </th>
+                                                    <th class="header-name">Name
+                                                        <div style="height: 0px; opacity: 0">{{ getMaxLengtName }}</div>
+                                                    </th>
+                                                    <th>₹ </th>
+                                                    <th>Disc.% </th>
+                                                    <th>Disc.₹ </th>
+                                                    <th>Qty </th>
+                                                    <th>T.₹ </th>
+                                                </tr>
+                                            </thead>
+                                        </table>
+                                    </div>
+                                    <div class="return-items uk-margin-small-top" *ngFor="let returnOrder of returns">
+
+                                        <p class="uk-heading-bullet return-date"> {{ returnOrder.orderKey }} <span
+                                                class="uk-badge tr-span uk-float-right">Total Return Amount:
+                                                <span class="r-symbol">
+                                                    ₹ {{ returnOrder.TotalAmount }}
+                                                </span>
+                                            </span>
+                                        </p>
+                                        <div class="return-products">
+                                            <table
+                                                class="uk-table uk-table-small return-body uk-table-divider uk-margin-remove">
+
+                                                <tbody>
+                                                    <ng-container
+                                                        *ngFor="let item of returnOrder.orderDetail; let i = index">
+                                                        <tr *ngIf="item.ReturnedQuantity > 0">
+                                                            <td>{{ i + 1 }}</td>
+                                                            <td class="uk-text-left od-product-img">
+                                                                <img *ngIf="item.ProductImage != null"
+                                                                    [attr.src]="uploadsUrl + item.ProductImage?.ImageUrl">
+                                                            </td>
+                                                            <td class="header-name">{{ item.ProductName }} {{
+                                                                item.UnitType.Acronym }}</td>
+                                                            <td>{{ item.Price | number: '1.1-2' }}</td>
+                                                            <td>{{ item.Discount | number: '1.1-2' }}</td>
+                                                            <td>{{ item.DiscPrice | number: '1.1-2' }}</td>
+                                                            <td>{{ item.ReturnedQuantity }}
+                                                            </td>
+                                                            <td>{{ item.ReturnTotalSum }}</td>
+                                                        </tr>
+                                                    </ng-container>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </li>
+                    </ul>
+                </div>
+
+
+
+                <div *ngIf="mainPageIndex == 1" class="uk-card od-products-grid uk-card-body uk-padding-small">
+
                 </div>
             </div>
-            <div class="uk-width-1-3@m">
+            <div class="uk-width-1-3@m"
+                *ngIf="(isReturnedOrder && returns.length > 0) || (!isReturnedOrder && purchases.length > 0)">
                 <div class="uk-card od-info-grid uk-padding-small uk-card-body">
-                    <div class="od-invoice-grid">
 
-                        <ul class="uk-subnav uk-subnav-pill uk-flex-center od-switcher"
-                            uk-switcher="animation: uk-animation-slide-left-medium, uk-animation-slide-right-medium">
-                            <li><a href="#">Order Details</a></li>
-                            <li><a href="#">Cancelled/Return</a></li>
+                    <div class="od-invoice-grid uk-paddin-large" *ngIf="order != null">
+
+                        <ul class="uk-subnav uk-subnav-pill uk-flex-center od-switcher">
+                            <li [class.uk-active]="index == 0" (click)="index = isModified ? 1 : 0;"><a>Order
+                                    Details</a></li>
+                            <li *ngIf="!isReturnedOrder && isModified" [class.uk-active]="index == 1" (click)="index = 1;">
+                                <a>Cancelled / Return</a>
+                            </li>
                         </ul>
 
-                        <ul class="uk-switcher uk-margin">
-                            <li>
-                                <p class="od-info-title">Invoice for <span class="uk-float-right">#{{ order?.Id }}</span></p>
+                        <ul class=" uk-margin" style="list-style-type:none; padding-left: 0px;">
+                            <li *ngIf="index == 0">
+                                <p class="od-info-title">Invoice for <span class="uk-float-right">#{{ order?.Id
+                                        }}</span></p>
                                 <p class="od-customer-no">+91-{{ order?.PhoneNumber }}</p>
                                 <p class="od-customer-name">{{ order?.Address?.FullName }}</p>
                                 <p class="od-customer-address" [innerHtml]="getAddress() | safeHtml"></p>
                                 <p class="od-order-time">14.07.2021 - <span>21:00</span></p>
                                 <p class="od-delivery-type"> <span class="od-delivery-time">26.07.2021 | 2:00 -
-                                        4:00</span> <span class="od-order-type uk-float-right">{{ order?.IsDelivery ? "Delivery" : "Self Pickup" }}</span></p>
-                                <hr class="uk-divider-icon uk-margin-remove-bottom">
+                                        4:00</span> <span class="od-order-type uk-float-right">{{ order?.IsDelivery ?
+                                        "Delivery" : "Self Pickup" }}</span></p>
                                 <table
                                     class="uk-table uk-table-small od-invoice-table uk-margin-remove-top uk-table-divider">
                                     <tbody>
                                         <tr>
                                             <td>Bill Amount</td>
-                                            <td>₹ 390</td>
+                                            <td>₹{{ order?.TotalBill }}</td>
                                         </tr>
                                         <tr>
                                             <td>Delivery Charges</td>
-                                            <td>₹ 60</td>
+                                            <td>₹0</td>
                                         </tr>
                                         <tr>
                                             <td>Wallet Used</td>
-                                            <td>₹ 40</td>
+                                            <td>₹0</td>
                                         </tr>
                                     </tbody>
                                 </table>
-                                <p class="od-payable-amount"> <span>Total Payable:</span> ₹ 40</p>
+                                <p class="od-payable-amount"> <span>Total Payable:</span> ₹{{ order?.TotalBill }} </p>
                                 <p class="od-type-status"><span class="od-payment-status moderate-badge">Partial
                                         Paid</span> <span class="od-payment-type uk-float-right">COD & Wallet</span></p>
-                                <form class="uk-grid-small" uk-grid>
-                                    <div class="uk-width-1-1">
-                                        <select class="uk-select xo-select" id="form-horizontal-select">
-                                            <option>Pending</option>
-                                            <option>Confirmed</option>
+                                <div class="uk-grid-small" uk-grid>
+                                    <div class="uk-width-1-2">
+                                        <select class="uk-select xo-select" id="form-horizontal-select"
+                                            [(ngModel)]="orderState" [attr.res-value]="orderState">
+                                            <option *ngFor="let en of orderStatusList" [ngValue]="en.id">{{ en.name }}
+                                            </option>
                                         </select>
                                     </div>
-                                    <div class="uk-width-1-1@s">
-                                        <button class="uk-button uk-width-1-1 xo-button-primary">Update</button>
+                                    <div class="uk-width-1-2@s">
+                                        <button class="uk-button uk-width-1-1 xo-button-primary"
+                                            (click)="updateOrderStatus()">Update</button>
                                     </div>
-                                </form>
+                                </div>
                             </li>
-                            <li class="uk-active">
+
+                            <li *ngIf="index == 1 && isModified">
                                 <table class="uk-table uk-table-small uk-table-divider">
                                     <thead class="odr-table-heading">
                                         <tr>
@@ -98,22 +225,17 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td class="odr-slno">1</td>
-                                            <td class="odr-productname">Aashirvaad Organic Whole Wheat Atta 5 KG </td>
-                                            <td class="odr-qty">1</td>
-                                            <td class="odr-cancel"><span class="material-icons-round">
-                                                    cancel
-                                                </span></td>
-                                        </tr>
-                                        <tr>
-                                            <td class="odr-slno">1</td>
-                                            <td class="odr-productname">Aashirvaad Organic Whole Wheat Atta 5 KG </td>
-                                            <td class="odr-qty">1</td>
-                                            <td class="odr-cancel"><span class="material-icons-round">
-                                                    cancel
-                                                </span></td>
-                                        </tr>
+                                        <ng-container *ngFor="let item of purchases; let i = index">
+                                            <tr *ngIf="item.ReturnedQuantity > 0">
+                                                <td class="odr-slno">1</td>
+                                                <td class="odr-productname"> {{ item.ProductName }} {{
+                                                    item.UnitType.Acronym }}</td>
+                                                <td class="odr-qty">{{ item.ReturnedQuantity }}</td>
+                                                <td class="odr-cancel"><span class="material-icons-round">
+                                                        minus
+                                                    </span></td>
+                                            </tr>
+                                        </ng-container>
                                     </tbody>
                                 </table>
                                 <div class="odr-details-grid uk-padding-remove">
@@ -121,25 +243,22 @@
                                         <tbody>
                                             <tr>
                                                 <td>total bill amount</td>
-                                                <td>₹ 1489</td>
+                                                <td>₹{{ order?.TotalBill }}</td>
                                             </tr>
                                             <tr>
                                                 <td>Return/Cancel Amount</td>
-                                                <td class="xo-red-color">₹ 574</td>
-                                            </tr>
+                                                <td class="xo-red-color">₹{{ returnSum }}</td>
+                                            </tr> 
                                             <tr>
-                                                <td>Paid Amount</td>
-                                                <td>₹ 1489</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Refund Amount</td>
-                                                <td>₹ 574</td>
+                                                <td>Total Return Amount</td>
+                                                <td>₹{{ returnSum }}</td>
                                             </tr>
                                         </tbody>
                                     </table>
                                 </div>
-                                <div class="uk-width-1-1@s">
-                                    <button class="uk-button uk-width-1-1 xo-button-primary">Return/Cancel</button>
+                                <div class="uk-width-1-1@s" *ngIf="isModified">
+                                    <button class="uk-button uk-width-1-1 xo-button-primary"
+                                        (click)="returnOrder()">Return/Cancel</button>
                                 </div>
                             </li>
                         </ul>

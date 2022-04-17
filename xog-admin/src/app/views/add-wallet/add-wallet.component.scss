@@ -1,1 +1,31 @@
 @import url(../add-products/add-products.component.scss);
+ 
+ng-select.ng-select::ng-deep .ng-select-container {
+    border-radius: 8px;
+    background-color: #f7f7f7;
+    color: black;
+    font-size: 9.5pt;
+    border: 1px solid #ccc !important;
+    -webkit-appearance: none;
+    -moz-appearance: none;    
+    background-image: url(data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2224%22%20height%3D%2216%22%20viewBox%3D%220%200%2024%2016%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%20%20%20%20%3Cpolygon%20fill%3D%22%23666%22%20points%3D%2212%201%209%206%2015%206%22%20%2F%3E%0A%20%20%20%20%3Cpolygon%20fill%3D%22%23666%22%20points%3D%2212%2013%209%208%2015%208%22%20%2F%3E%0A%3C%2Fsvg%3E%0A);
+    background-repeat: no-repeat;
+    background-position: 100% 50%;
+    background-color: #f7f7f7;
+    border-radius: 8px;
+    font-size: 10pt;
+    height: 44px !important;
+    border: 1px solid #ccc !important;
+    vertical-align: middle;
+}
+ng-select.ng-select::ng-deep .ng-select-container input{
+    height: 44px;
+    padding-right: 20px;
+    padding: 0 10px;
+}
+ng-select.ng-select::ng-deep .ng-select-container .ng-arrow-wrapper {
+    display: none;
+}
+ng-select.ng-select::ng-deep .ng-select-container .ng-clear-wrapper {
+    margin-right: 0px;
+}

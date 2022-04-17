@@ -1,4 +1,4 @@
-<div #scrollingBlock class="table uk-border">
+<div class="table" *ngIf="gridData.length > 0" #scrollingBlock>
   <div class="table-header sticky" [style.width]="(sumWidth - 15) + 'px'" [style.min-width]="'100%'">
     <div class="table-header-row" 
     [style.transform]="'translateY(100)'">
@@ -9,7 +9,7 @@
     </div>
   </div>
   <ng-container *ngIf="gridData">
-    <virtual-scroller #scroll class="table-body" [items]="gridData" [modifyOverflowStyleOfParentScroll]="false"
+    <virtual-scroller #scroll class="table-body" [items]="gridData"
       [resizeBypassRefreshThreshold]="100" [style.width]="sumWidth + 'px'" [parentScroll]="scrollingBlock">
       <ng-container *ngFor="let item of scroll.viewPortItems">
         <div class="table-row">

@@ -1,12 +1,13 @@
 import { Component, Injector, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import * as dayjs from 'dayjs';
-import { enumToKeyValueArray, ResponseObject } from 'src/app/models/common';
+import { enumToKeyValueArray, ProductDivision, ResponseObject, transformCamelToSpaces } from 'src/app/models/common';
 import { Order, OrderFilter, OrderStatus } from 'src/app/models/order';
 import { OrderService } from 'src/app/services/order.service';
 import { BaseComponent } from 'src/app/shared/base.component';
 import { AppGridColDef } from 'src/app/shared/data-grid/data-grid.component';
 import { environment } from 'src/environments/environment';
 
+declare var UIkit: any;
 
 @Component({
   selector: 'app-orders',
@@ -26,6 +27,10 @@ export class OrdersComponent extends BaseComponent implements OnInit {
   @ViewChild('timePeriodColumn', { read: TemplateRef }) timePeriodColumnRef!: TemplateRef<any>;
   @ViewChild('moreColumn', { read: TemplateRef }) moreColumnRef!: TemplateRef<any>;
 
+  divisionList: any[] = enumToKeyValueArray(ProductDivision);
+
+  camelCaseToSpacedText: typeof transformCamelToSpaces = transformCamelToSpaces;
+
   constructor(protected injector: Injector, private orderService: OrderService) {
     super(injector);
   }
@@ -38,6 +43,8 @@ export class OrdersComponent extends BaseComponent implements OnInit {
 
   orderStatus: any = enumToKeyValueArray(OrderStatus);
 
+  OrderStatus: typeof OrderStatus = OrderStatus;
+
   ngOnInit(): void {
     this.shouldShowSpinner = false;
     this.showSpinner();
@@ -48,7 +55,20 @@ export class OrdersComponent extends BaseComponent implements OnInit {
       this.gridData = res.Data ?? [];
       //console.log(JSON.stringify(res.Data));
       this.initColumnDefs();
-    });
+    }); 
+  }
+
+  initModal() {
+    setTimeout(() => {
+      let behaviour_id = "#" + this.orderDetailModal;
+      let behaviour = UIkit.modal(behaviour_id);
+      while (behaviour == undefined || behaviour == null) {
+        behaviour = UIkit.modal(behaviour_id);
+      }
+      UIkit.util.on(behaviour_id, 'hidden', () => {
+        this.selectedOrderId = -1;
+      });
+    }, 0);
   }
 
   getAddress(order: Order): string {
@@ -63,9 +83,9 @@ export class OrdersComponent extends BaseComponent implements OnInit {
     }
   }
 
-  getOrderState(order: Order): string {
+  getOrderState(order: number): string {
     if (order != null) {
-      return OrderStatus[<number>order?.OrderState];
+      return this.orderStatus.filter((i: any) => i.id = order)[0].name
     } else {
       return "NA";
     }
@@ -77,13 +97,14 @@ export class OrdersComponent extends BaseComponent implements OnInit {
   }
 
   viewOrder(order: Order) {
+    this.initModal();
     if (order != null) {
       this.selectedOrderId = order?.Id;
       this.showModal("#" + this.orderDetailModal);
     }
   }
 
-  gridData: Order[]; 
+  gridData: Order[];
 
   initColumnDefs() {
     this.columnDefs = [
@@ -91,11 +112,11 @@ export class OrdersComponent extends BaseComponent implements OnInit {
       { text: "Ordered User", field: "PhoneNumber" },
       { text: "Deliver To", field: "PhoneNumber" },
       { text: "Delivery Type", field: "IsDelivery", content: this.isDeliveryColumnRef },
-      { text: "P. Mode", field: "IsDelivery" },
+      //{ text: "P. Mode", field: "IsDelivery" },
       { text: "Delivery Time", field: "TimePeriod", content: this.timePeriodColumnRef },
       { text: "Total ₹", field: "TotalBill" },
-      { text: "Status", field: "IsDelivery", content: this.orderStateColumnRef },
-      { text: "P. Status", field: "IsDelivery" },
+      { text: "Status", field: "OrderState", content: this.orderStateColumnRef },
+      //{ text: "P. Status", field: "IsDelivery", content: this.isDeliveryColumnRef },
       {
         text: "", field: "Menu", classes: "uk-text-right", content: this.moreColumnRef
       }
@@ -104,69 +125,69 @@ export class OrdersComponent extends BaseComponent implements OnInit {
 
 
 
-  
-  generateDummyData() {// let obj: Order =
-    let obj = {
-      Id: 5,
-      UserId: "",
-      PhoneNumber: "58585585858",
-      TimePeriod: 0,
-      RelDay: 0,
-      IsDelivery: true,
-      //OrderDate: "2021-12-06T01:49:29.367",
-      OrderState: 2,
-      // DispatchedDate: "2021-12-06T01:49:29.367",
-      // DeliveryDate: "2021-12-06T01:49:29.367",
-      Purchases: [
-        {
-          Id: 3,
-          ProductName: "Tata Moong Daal",
-          Quantity: 2,
-          Price: 175,
-          Discount: 0,
-          Gst: 18,
-          Total: 350
-        },
-        {
-          Id: 4,
-          ProductName: "Masoor Daal",
-          Quantity: 1,
-          Price: 32,
-          Discount: 26,
-          Gst: 18,
-          Total: 23.68
-        }
-      ],
-      SumAmount: 373.68,
-      Gst: 0,
-      TotalBill: 373.68,
-      Address: {
-        Id: 1,
-        AddressOfUserId: "cf63163d-f691-45fe-bd24-b65ecf0b0014",
-        FullName: "sada",
-        PhoneNumber: "8867177465",
-        AreaCode: "",
-        AddressLine1: "some house",
-        AddressLine2: "some address",
-        LandMark: "some landmark",
-        Country: "India",
-        GPS: "",
-        IsDefault: true,
-      },
-      "Enabled": true,
-      OrderDate: new Date(),
-      DispatchedDate: new Date(),
-      DeliveryDate: new Date()
-    };
 
-    setTimeout(() => {
-      let data = [];
-      for (let j = 0; j < 700000; j++) {
-        let val = Object.assign({}, obj)
-        val.Id = j;
-        data.push(val);
-      }
-      this.gridData = data;
-    })
-  }
+  // generateDummyData() {// let obj: Order =
+  //   let obj = {
+  //     Id: 5,
+  //     UserId: "",
+  //     PhoneNumber: "58585585858",
+  //     TimePeriod: 0,
+  //     RelDay: 0,
+  //     IsDelivery: true,
+  //     //OrderDate: "2021-12-06T01:49:29.367",
+  //     OrderState: 2,
+  //     // DispatchedDate: "2021-12-06T01:49:29.367",
+  //     // DeliveryDate: "2021-12-06T01:49:29.367",
+  //     Purchases: [
+  //       {
+  //         Id: 3,
+  //         ProductName: "Tata Moong Daal",
+  //         Quantity: 2,
+  //         Price: 175,
+  //         Discount: 0,
+  //         Gst: 18,
+  //         Total: 350
+  //       },
+  //       {
+  //         Id: 4,
+  //         ProductName: "Masoor Daal",
+  //         Quantity: 1,
+  //         Price: 32,
+  //         Discount: 26,
+  //         Gst: 18,
+  //         Total: 23.68
+  //       }
+  //     ],
+  //     SumAmount: 373.68,
+  //     Gst: 0,
+  //     TotalBill: 373.68,
+  //     Address: {
+  //       Id: 1,
+  //       AddressOfUserId: "cf63163d-f691-45fe-bd24-b65ecf0b0014",
+  //       FullName: "sada",
+  //       PhoneNumber: "8867177465",
+  //       AreaCode: "",
+  //       AddressLine1: "some house",
+  //       AddressLine2: "some address",
+  //       LandMark: "some landmark",
+  //       Country: "India",
+  //       GPS: "",
+  //       IsDefault: true,
+  //     },
+  //     "Enabled": true,
+  //     OrderDate: new Date(),
+  //     DispatchedDate: new Date(),
+  //     DeliveryDate: new Date()
+  //   };
+
+  //   setTimeout(() => {
+  //     let data = [];
+  //     for (let j = 0; j < 700000; j++) {
+  //       let val = Object.assign({}, obj)
+  //       val.Id = j;
+  //       data.push(val);
+  //     }
+  //     this.gridData = data;
+  //   })
+  //}
 }

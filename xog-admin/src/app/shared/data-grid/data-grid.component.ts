@@ -55,7 +55,7 @@ export class DataGridComponent implements OnInit {
   public get gridData(): any[] {
     return this._gridData ?? [];
   }
- 
+
 
   @Input()
   set columnDefs(_columnDefs: AppGridColDef[]) {
@@ -67,7 +67,7 @@ export class DataGridComponent implements OnInit {
     }
     this._columnDefs = _columnDefs;
   }
-  
+
   get columnDefs(): AppGridColDef[] {
     return this._columnDefs;
   }

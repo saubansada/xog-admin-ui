@@ -37,17 +37,18 @@
     <app-data-grid [columnDefs]="columnDefs" [gridData]="gridData">
     </app-data-grid> 
 
-    <ng-template let-item="item" let-data="data" #timePeriodColumn> 
+    <ng-template let-item let-data="data" #timePeriodColumn> 
       <span [innerHtml]="getTimePeriod(item) | safeHtml"></span>
     </ng-template>
 
-    <ng-template let-item="item" let-data="data" #orderStateColumn> 
-      {{ getOrderState(item) }}
+    <ng-template let-item let-data="data" #orderStateColumn> 
+      {{ camelCaseToSpacedText(OrderStatus[item.OrderState]) }} 
     </ng-template>
 
-    <ng-template let-item="item" let-data="data" #isDeliveryColumn> 
+    <ng-template let-item let-data="data" #isDeliveryColumn> 
       {{ item?.IsDelivery ? "Delivery" : "Self Pickup" }}
     </ng-template>
+ 
 
     <ng-template  let-item let-data="columnVal" #moreColumn>
       <span class="material-icons-outlined xo-icon">
@@ -68,4 +69,4 @@
   </div>
 </div>
 
-<app-order-details [id]="orderDetailModal" [orderId]="selectedOrderId"></app-order-details>
+<app-order-details *ngIf="selectedOrderId > -1" (updated)="ngOnInit()" [id]="orderDetailModal" [orderId]="selectedOrderId"></app-order-details>

@@ -35,6 +35,13 @@ export class Product {
   ProductVariants!: ProductVariant[];
 }
 
+
+export class ProductImage {
+  Id: number;
+  ProductId: number;
+  ImageUrl: string;
+}
+
 export class ProductVariant {
   Id!: number;
   ProductId!: number;

@@ -1,16 +1,21 @@
 <div class="uk-width-expand@m">
  
   <form #form [formGroup]="formInstance">
+
     <div class="uk-card uk-padding-small uk-card-body">
+      
+
       <p class="container-header uk-margin-remove">
         {{ isEdit ? "Edit" : "Add" }} Categories
       </p>
+
       <ul class="uk-breadcrumb xo-breadcrumb uk-align-left uk-margin-remove">
         <li><a routerLink="">Home</a></li>
         <li><a routerLink="/categories">Categories</a></li>
         <li class="uk-active" *ngIf="!isEdit"><a routerLink="/categories/add">Add Categories</a></li>
         <li class="uk-active" *ngIf="isEdit"><a routerLink="/categories/edit">Edit Categories</a></li>
       </ul>
+
       <br>
       <div class="uk-text-center uk-margin uk-grid-small uk-grid-match" uk-grid>
 
@@ -36,21 +41,30 @@
                   placeholder="Category Name">
               </div>
               
+              
               <div class="uk-width-1-1@s">
                 <label class="uk-form-label product-input-label" for="form-stacked-text">Description</label>
                 <textarea [formControlName]="'CategoryDescription'" class="uk-textarea ap-product-textarea" rows="8"
-                  placeholder="Description"></textarea>
+                  placeholder="Description">
+                </textarea>
               </div>
 
             </div>
           </div>
         </div>
+
       </div>
+
+
       <div class="uk-text-right uk-padding-small uk-padding-remove-vertical">
         <button class="uk-button ap-success-btn" (click)="submitForm()">Save</button>
         &nbsp;
         <button class="uk-button ap-button-danger" (click)="resetForm()">clear</button>
       </div>
+
+
     </div>
+
   </form>
+
 </div>

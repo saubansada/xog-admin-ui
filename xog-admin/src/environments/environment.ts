@@ -9,7 +9,7 @@ export const environment = {
   appName: 'Xog Admin',
   assetsUrl: '/assets/img/',
   baseUrl: "https://localhost:44317/",
-  uploadsUrl: "https://localhost:44317/",
+  uploadsUrl: "https://modernmartsupermarket.com/", 
   apiUrl: 'https://localhost:44317/api/',
   appAuthUrl: 'https://localhost:44317/token',
   azureClientId: "f8af8402-0170-4cd1-9c57-1cc8680f1d17",

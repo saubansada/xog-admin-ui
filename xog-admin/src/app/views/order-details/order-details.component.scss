@@ -2,18 +2,17 @@
     background: none;
     border: none;
   }
-  
+   #order-details-modal {
+    z-index: 99999;
+   }
+
   #order-details-modal>div {
     width: 85% !important;
     overflow: auto;
     border-radius: 8px;
     background-color: #eef1fb;
   }
-  
-  #order-details-modal>div::-webkit-scrollbar {
-    display: none;
-  }
-  
+   
   #order-details-modal>div>button.uk-modal-close-outside {
     color: white;
   }
@@ -21,6 +20,7 @@
   .od-products-grid {
     background-color: white;
     border-radius: 8px;
+    padding-top: 0px !important;
   }
   
   
@@ -46,7 +46,7 @@
   }
   
   .od-product-name {
-    width: 55%;
+    width: 41%;
     text-align: left;
     font-size: 10pt;
     color: black;
@@ -62,7 +62,7 @@
     font-size: 10pt;
     color: black;
     text-align: left;
-    width: 7%;
+    width: 10%;
   }
   
   .od-product-price {
@@ -73,7 +73,9 @@
   }
   
   .od-product-cancel {
-    width: 7%;
+    padding-top: 0;
+    padding-bottom: 0;
+    width: 10%;
   }
   
   .od-product-cancel>span {
@@ -272,3 +274,73 @@
     text-transform: capitalize;
   }
   
+  .order-container {
+    background-color: white;
+    border-radius: 8px;
+    padding: 8px;
+  }
+
+  .main-switch {
+    margin-bottom: 10px;
+  }
+
+  .main-switch>li>a {
+    color: black;
+    text-align: left;
+    text-transform: capitalize;
+    font-family: 'Poppins', sans-serif;
+    font-size: 9pt;
+  }
+
+  .return-grid {
+    padding: 20px;
+    padding-top: 0px !important;
+  }
+
+  .return-date {
+    font-size: 10pt;
+    color: black;
+    margin: 0px;
+  }
+
+  .return-footer {
+    background-color: #40404005;
+    padding: 2px;
+    border-radius: 8px;
+
+  }
+
+  .return-thead>thead>tr>th:not(.header-name) {
+    color: black;
+    width: 45px !important;
+  }
+
+  .return-body>tbody>tr>td {
+    color: black;
+    text-align: left;
+    font-size: 10pt;
+  }
+  .return-products tbody tr td:not(.header-name) { 
+    width: 45px !important;
+  }
+
+  
+
+  .return-products{
+    padding: 2px;
+    background-color: #40404002;
+    border-radius: 8px;
+  }
+
+  .return-items {
+    padding: 8px;
+    border: 1px solid #40404025;
+    border-radius: 8px;
+    background-color: #40404005;
+  }
+
+  .tr-span {
+    padding: 12px;
+    background-color: #5d6dff20;
+    color: #0920fb !important;
+  } 

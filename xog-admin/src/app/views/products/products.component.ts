@@ -87,7 +87,11 @@ export class ProductsComponent extends BaseComponent implements OnInit {
   }
 
   loadData() {
-    this.productService.getProductList(this.formInstance.value).subscribe((res: ResponseObject<Product[]>) => {
+    var data = this.formInstance.value;
+    data.PageNumber = 0;
+    data.PageSize = 20;
+    
+    this.productService.getProductList(data).subscribe((res: ResponseObject<Product[]>) => {
 
       this.productsData = res.Data ?? [];
 
@@ -117,7 +121,6 @@ export class ProductsComponent extends BaseComponent implements OnInit {
       { text: "Volume/Unit", field: "Measure", content: this.measureColumnRef },
       { text: "Mrp", field: "Mrp" },
       { text: "SubCategory", field: "SubCategoryName" },
-      { text: "Description", field: "Description" },
       {
         text: "", field: "Menu",
         classes: "uk-text-right",
