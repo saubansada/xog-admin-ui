@@ -54,6 +54,13 @@ import { OfferListsComponent } from './views/offer-lists/offer-lists.component';
 import { AddOfferListComponent } from './views/add-offer-list/add-offer-list.component';
 import { DeliveryTimingsComponent } from './views/settings/delivery-timings/delivery-timings.component';
 import { TimingDetailsComponent } from './views/settings/timing-details/timing-details.component';
+import { ReportsComponent } from './desktop/views/reports/reports.component';
+import { CustomerOrderComponent } from './desktop/reports/customer-order/customer-order.component';
+import { SalesReportsComponent } from './desktop/reports/sales-reports/sales-reports.component';
+import { ProductReportsComponent } from './desktop/reports/product-reports/product-reports.component';
+import { CustomerReportsComponent } from './desktop/reports/customer-reports/customer-reports.component';
+import { BrandReportsComponent } from './desktop/reports/brand-reports/brand-reports.component';
+import { TransReportsComponent } from './desktop/reports/trans-reports/trans-reports.component';
 
 const routes: Routes = [
   {
@@ -107,8 +114,13 @@ const routes: Routes = [
       {path: 'add-fourbanners', component: AddFourbannersComponent},
       {path: 'offerlists', component: OfferListsComponent},
       {path: 'add-offerlists', component: AddOfferListComponent},
-
+      { path: 'co-reports', component: CustomerOrderComponent},
+      { path: 'sales-reports', component: SalesReportsComponent},
+      { path: 'product-reports', component: ProductReportsComponent},
       {path: 'timing-details', component: TimingDetailsComponent},
+      {path: 'customer-reports', component: CustomerReportsComponent},
+      {path: 'brand-reports', component: BrandReportsComponent},
+      {path: 'trans-reports', component: TransReportsComponent},
       {
         path: 'settings', component: SettingsComponent,
         children: [
@@ -128,6 +140,7 @@ const routes: Routes = [
           },
         ]
       },
+
       {
         path: '**', redirectTo: '/auth/login'
       }

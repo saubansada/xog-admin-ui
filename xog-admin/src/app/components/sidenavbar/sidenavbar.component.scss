@@ -45,6 +45,13 @@
     margin-left: 10px;
 }
 
+.is-closed>.sidenav-menu>li>a>span:first-child {
+    margin-left: 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .sidenav-menu>li:hover>a,
 .sidenav-menu>li.uk-active>a,
 .sidenav-menu>li.uk-open>a {

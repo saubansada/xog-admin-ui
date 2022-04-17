@@ -1,0 +1,145 @@
+.heading {
+    font-size: 14pt;
+    font-weight: 500;
+    margin-bottom: 4px;
+}
+
+.subheading {
+    font-size: 11pt;
+    color: black;
+    margin-top: 0px;
+}
+
+.reports-table>thead>tr>th {
+    color: black;
+    font-size: 11pt;
+    font-weight: 500;
+}
+
+.reports-table>tbody>tr>td {
+    font-size: 10pt;
+    color: black;
+    font-weight: 400;
+}
+
+.filter-grid {
+    border-left: 1px solid #04040420;
+}
+
+.filter-heading {
+    font-size: 12pt;
+    color: black;
+    text-align: left;
+}
+
+.type-label {
+    font-size: 10pt;
+    color: black !important;
+    text-align: left;
+    display: inline-block;
+    margin-bottom: 12px !important;
+}
+
+.uk-input {
+    background-color: #04040410;
+    height: 44px;
+    border-radius: 6px;
+    color: black;
+    font-size: 10pt;
+    border: 1px solid #04040420;
+}
+
+.uk-select {
+    background-color: #04040410;
+    color: black;
+    font-size: 10pt;
+    border-radius: 6px;
+    border: 1px solid #04040420;
+}
+
+.filter-button {
+    vertical-align: middle;
+    background-color: white;
+    padding: 4px;
+    text-align: center;
+    margin-right: 10px;
+}
+
+.filter-button>span {
+    vertical-align: middle;
+    display: flex;
+    padding: 6px;
+    font-size: 14pt;
+}
+
+.filter-button:hover {
+    background-color: #04040420;
+    border-radius: 25px;
+}
+
+.primary-label {
+    font-size: 9pt;
+    color: black;
+    display: inline-block;
+    margin-bottom: 10px;
+}
+
+.s-btn {
+    background-color: #118026;
+    text-transform: capitalize;
+    color: white;
+    padding: 2px;
+    border-radius: 4px;
+}
+
+.stats-grid {
+    background-color: #04040402;
+    border: 1px solid #04040420;
+    border-radius: 16px;
+}
+
+td {
+    cursor: pointer;
+}
+
+.stats-icon {
+    padding: 0px;
+    width: 30%;
+    vertical-align: middle;
+    text-align: left;
+    padding: 4px;
+    padding-right: 0px;
+}
+
+.stats-icon>span {
+    font-size: 20pt;
+    padding: 12px;
+    vertical-align: middle;
+    border-radius: 8px;
+    color: black;
+    background-color: #54d3cd23;
+}
+
+.stats-info {
+    width: auto;
+    padding: 4px 10px;
+    font-size: 9pt;
+    padding-left: 0px;
+    color: black;
+    text-align: left;
+    vertical-align: middle;
+}
+
+.stats-info>p {
+    font-size: 12pt;
+    font-weight: 600;
+}
+
+.stats-grid:hover {
+    background-color: #1827f5c5;
+}
+
+.stats-grid:hover>table>tbody>tr>td,
+.stats-grid:hover>table>tbody>tr>td>span {
+    color: white !important;
+}
