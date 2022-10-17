@@ -5,38 +5,36 @@
 
 
     <p class="container-header uk-margin-remove">
-        Taxes
+        Timings
     </p>
     <div>
         <ul class="uk-breadcrumb xo-breadcrumb uk-align-left uk-margin-remove">
             <li><a routerLink="/settings">Settings</a></li>
-            <li><a routerLink="/settings/quantity-measures">Taxes</a></li>
+            <li><a routerLink="/settings/delivery-timings">Timings</a></li>
         </ul>
     </div> <br>
     <div class="uk-container uk-container-xlarge uk-padding-small">
-        <div class="uk-child-width-1-2@s uk-child-width-1-6@m uk-grid-small uk-text-center" uk-grid>
-            <div>
-                <div routerLink="/timing-details" class="uk-card time-grid uk-card-body">
-                    <p class="day-title">Saturday</p>
-                </div>
+        <div uk-grid>
+            <div class="uk-width-1-5 days-panel">
+                <ul class="uk-nav-default uk-nav-parent-icon" uk-nav>
+                    <ng-container *ngFor="let day of days">
+                        <li><a [attr.active]="day.name == selectedDay" routerLink="/settings/delivery-timings/{{ day.name.toLowerCase() }}">{{ day.name }} </a>
+                        </li>
+                    </ng-container>
+                </ul>
+                <!--  <ng-container *ngFor="let day of days">
+                    <div routerLink="/settings/delivery-timings/{{ day.name.toLowerCase() }}"
+                        class="uk-card time-grid uk-card-body">
+                        <label class="day-title">{{ day.name }} </label>
+                    </div>
+                    <br />
+                </ng-container> -->
             </div>
-            <div>
-                <div class="uk-card time-grid uk-card-body">
-                    <p class="day-title">Sunday</p>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="uk-container uk-container-xlarge uk-padding-small uk-text-left">
-        <div class="uk-width-1-6@s">
-            <label class="uk-form-label primary-label" for="form-horizontal-select">show result in</label>
 
-            <div class="uk-form-controls">
-                <select class="uk-select" id="form-horizontal-select">
-          <option>1</option>
-      <option>2</option>
-  </select>
+            <div class="uk-width-4-5">
+                <router-outlet></router-outlet>
             </div>
         </div>
+
     </div>
 </app-settings-nav>

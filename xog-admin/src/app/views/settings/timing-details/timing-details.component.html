@@ -1,73 +1,68 @@
-<div class="uk-container uk-container-xlarge uk-padding-small">
-    <p class="heading">Timing Details</p>
-    <p class="day">Saturday</p>
-    <div class="uk-child-width-1-2@s uk-child-width-1-2@m uk-text-center uk-grid-small" uk-grid>
-        <div>
-            <div class="uk-card add-grid uk-padding-small uk-text-left uk-card-body">
-                <form class="uk-grid-small" uk-grid>
-                    <div class="uk-width-1-2@s">
-                        <label class="uk-form-label primary-label" for="form-horizontal-select">From</label>
+<div class="uk-text-left">
+    <ngx-spinner>
+    </ngx-spinner>
 
-                        <div class="uk-form-controls">
-                            <select class="uk-select" id="form-horizontal-select">
-                            <option>01:00 AM</option>
-                            <option>Option 02</option>
-                        </select>
-                        </div>
-                    </div>
-                    <div class="uk-width-1-2@s">
-                        <label class="uk-form-label primary-label" for="form-horizontal-select">To</label>
+    <h4 class="uk-margin-small uk-margin-remove-top">{{ parent.days[selectedDay?.value]?.name | titlecase }}</h4>
 
-                        <div class="uk-form-controls">
-                            <select class="uk-select" id="form-horizontal-select">
-                              <option>02:00 AM</option>
-                          <option>Option 02</option>
-                      </select>
-                        </div>
-                    </div>
-                    <div class="uk-width-1-1@s uk-text-right">
-                        <button class="uk-button ent-btn uk-width-1-5">Add</button>
-                    </div>
-                </form>
-                <div class="view-grid uk-margin-small">
-                    <table class="uk-table view-table uk-table-small uk-table-divider">
+    <div class="uk-width-1-6">
+        <select class="uk-select" id="form-horizontal-select" [(ngModel)]="isActive">
+            <option value="true">Active</option>
+            <option value="false">In-ACtive</option>
+        </select>
+    </div>
 
-                        <tbody>
-                            <tr>
-                                <td class="from">01:00 AM</td>
-                                <td class="to">02:00 AM</td>
-                                <td class="delete">
-                                    <span class="material-icons-outlined">
-                                    remove_circle
-                                    </span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="from">01:00 AM</td>
-                                <td class="to">02:00 AM</td>
-                                <td class="delete">
-                                    <span class="material-icons-outlined">
-                                  remove_circle
-                                  </span>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
+    {{ timeForm.value | json }}
+    <div>
+        <div class="uk-card add-grid uk-padding-small uk-text-left uk-card-body">
+            <form class="uk-grid-small" uk-grid [formGroup]="timeForm" (ngSubmit)="timeForm.valid && addTiming()">
+
+                <div class="uk-width-1-4@s">
+                    <label class="uk-form-label primary-label" for="form-horizontal-select">Status</label>
+
+                    <select class="uk-select" id="form-horizontal-select" formControlName="isActive">
+                        <option [ngValue]="true">Active</option>
+                        <option [ngValue]="false">In-ACtive</option>
+                    </select>
                 </div>
-            </div>
-        </div>
-        <div>
-            <div class="uk-card uk-padding-small uk-text-left uk-card-body">
-                <div class="uk-width-1-2@s">
-                    <label class="uk-form-label primary-label" for="form-horizontal-select">Active</label>
+                <div class="uk-width-1-4@s">
+                    <label class="uk-form-label primary-label" for="form-horizontal-select">From</label>
 
                     <div class="uk-form-controls">
-                        <select class="uk-select" id="form-horizontal-select">
-                      <option>Active</option>
-                  <option>In-ACtive</option>
-              </select>
+                        <input [attr.disabled]="isActive ? null: true" formControlName="fromTime" class="uk-input"
+                            type="time" />
                     </div>
                 </div>
+                <div class="uk-width-1-4@s">
+                    <label class="uk-form-label primary-label" for="form-horizontal-select">To</label>
+
+                    <div class="uk-form-controls">
+                        <input formControlName="toTime" class="uk-input" [attr.disabled]="isActive ? null: true"
+                            type="time" />
+                    </div>
+                </div>
+                <div>
+                    <label class="uk-form-label primary-label" for="form-horizontal-select">&nbsp;</label>
+                    <br />
+                    <input type="submit" class="uk-button" [attr.disabled]="isActive ? null: true"
+                        class="uk-button ent-btn" value="Add" />
+                </div>
+            </form>
+            <div class="view-grid uk-margin-small">
+                <!-- {{ timingList | json }} -->
+                <table class="uk-table view-table uk-table-small uk-table-divider">
+
+                    <tbody>
+                        <tr *ngFor="let timing of timingList">
+                            <td class="from">{{ tConvert(timing.FromHours, timing.FromMinutes) }}</td>
+                            <td class="to">{{ tConvert(timing.ToHours, timing.ToMinutes) }} </td>
+                            <td class="delete">
+                                <span class="material-icons-outlined">
+                                    remove_circle
+                                </span>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>

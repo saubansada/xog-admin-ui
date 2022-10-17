@@ -103,24 +103,23 @@ const routes: Routes = [
       { path: 'finance-stats', component: FinanceStatsComponent },
       { path: 'manage-shared', component: ManageSharedComponent },
       { path: 'manage-homebanner', component: ManageHomeBannerComponent },
-      {path: 'featured-lists', component: ManageFeaturedListComponent},
-      {path: 'manage-topbrands', component: ManageTopBrandsComponent},
-      {path: 'manage-mobile', component: ManageMobileComponent},
-      {path: 'slider-banner', component: SliderBannersComponent},
-      {path: 'add-sliderbanner', component: AddSliderBannerComponent},
-      {path: 'mobile-custom-offer', component: MobileCustomOfferComponent},
-      {path: 'manage-desktop', component: ManageDesktopComponent},
-      {path: 'four-banners', component: FourBannersComponent},
-      {path: 'add-fourbanners', component: AddFourbannersComponent},
-      {path: 'offerlists', component: OfferListsComponent},
-      {path: 'add-offerlists', component: AddOfferListComponent},
-      { path: 'co-reports', component: CustomerOrderComponent},
-      { path: 'sales-reports', component: SalesReportsComponent},
-      { path: 'product-reports', component: ProductReportsComponent},
-      {path: 'timing-details', component: TimingDetailsComponent},
-      {path: 'customer-reports', component: CustomerReportsComponent},
-      {path: 'brand-reports', component: BrandReportsComponent},
-      {path: 'trans-reports', component: TransReportsComponent},
+      { path: 'featured-lists', component: ManageFeaturedListComponent },
+      { path: 'manage-topbrands', component: ManageTopBrandsComponent },
+      { path: 'manage-mobile', component: ManageMobileComponent },
+      { path: 'slider-banner', component: SliderBannersComponent },
+      { path: 'add-sliderbanner', component: AddSliderBannerComponent },
+      { path: 'mobile-custom-offer', component: MobileCustomOfferComponent },
+      { path: 'manage-desktop', component: ManageDesktopComponent },
+      { path: 'four-banners', component: FourBannersComponent },
+      { path: 'add-fourbanners', component: AddFourbannersComponent },
+      { path: 'offerlists', component: OfferListsComponent },
+      { path: 'add-offerlists', component: AddOfferListComponent },
+      { path: 'co-reports', component: CustomerOrderComponent },
+      { path: 'sales-reports', component: SalesReportsComponent },
+      { path: 'product-reports', component: ProductReportsComponent },
+      { path: 'customer-reports', component: CustomerReportsComponent },
+      { path: 'brand-reports', component: BrandReportsComponent },
+      { path: 'trans-reports', component: TransReportsComponent },
       {
         path: 'settings', component: SettingsComponent,
         children: [
@@ -132,12 +131,12 @@ const routes: Routes = [
               { path: 'edit/:id', component: QuantityMeasuresComponent }
             ]
           },
+          { path: 'taxes', component: TaxesComponent },
           { path: 'delivery-charges', component: DeliveryChargesComponent },
-
-      {path: 'delivery-timings', component: DeliveryTimingsComponent},
           {
-            path: 'taxes', component: TaxesComponent
-          },
+            path: 'delivery-timings', component: DeliveryTimingsComponent,
+            children: [{ path: ':day', component: TimingDetailsComponent }]
+          }
         ]
       },
 

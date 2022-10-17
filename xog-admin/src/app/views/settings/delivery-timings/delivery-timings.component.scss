@@ -23,3 +23,13 @@
     display: inline-block;
     margin-bottom: 10px;
 }
+
+.days-panel{
+    border:1px solid #ccc;
+    border-radius: 5px;
+    padding-top:20px;
+}
+
+li.active {
+    color: black;
+}
