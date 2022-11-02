@@ -20,7 +20,7 @@ export class TimingDetailsComponent extends BaseComponent implements OnInit {
   }
 
   isActive: boolean = true;
-  timingList: any[];
+  timingList: any[] = [];
 
   get selectedDay(): AbstractControl | null {
     return this.timeForm.get('dayId');
@@ -36,25 +36,31 @@ export class TimingDetailsComponent extends BaseComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(res => {
-
-      let filter: DeliveryTimingFilter = new DeliveryTimingFilter();
       let dayName = res.get('day');
+      
       let index = this.parent.days.findIndex((i: any) => i.name.toLowerCase() == dayName);
-      let dayInfo: any;
-      if (index > -1) {
-        dayInfo = this.parent.days[index];
-        this.selectedDay?.setValue(dayInfo.id);
-        this.isActive = dayInfo.isActive;
-        filter.Ids = [dayInfo.id];
-      }
-      console.log(this.selectedDay?.value)
-      console.log("data");
-      this.services.getDeliveryTimingsList(filter).subscribe((res: ResponseObject<any[]>) => {
-        this.timingList = res.Data ?? [];
-        console.log(res.Data);
-      })
+      this.loadData(index);
     });
 
+  }
+
+  loadData(index: number, callback?: any) {
+
+    let filter: DeliveryTimingFilter = new DeliveryTimingFilter();
+
+    let dayInfo: any;
+    if (index > -1) {
+      dayInfo = this.parent.days[index];
+      this.selectedDay?.setValue(dayInfo.id);
+      this.isActive = dayInfo.isActive;
+      filter.Ids = [dayInfo.id];
+    }
+    console.log(this.selectedDay?.value);
+    this.timingList = [];
+    this.services.getDeliveryTimingsList(filter).subscribe((res: ResponseObject<any[]>) => {
+      this.timingList = res.Data ?? [];
+      console.log(res.Data);
+    });
   }
 
   addTiming() {
@@ -84,6 +90,9 @@ export class TimingDetailsComponent extends BaseComponent implements OnInit {
     }
     this.services.addDeliveryTimingsInfo(formData).subscribe((res: ResponseObject<any>) => {
       console.log('successfully added');
+      this.loadData(this.selectedDay?.value, ()=> {
+        this.isActive = true;
+      });
     });
   }
 

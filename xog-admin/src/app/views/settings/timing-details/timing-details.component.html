@@ -10,8 +10,7 @@
             <option value="false">In-ACtive</option>
         </select>
     </div>
-
-    {{ timeForm.value | json }}
+    <br />
     <div>
         <div class="uk-card add-grid uk-padding-small uk-text-left uk-card-body">
             <form class="uk-grid-small" uk-grid [formGroup]="timeForm" (ngSubmit)="timeForm.valid && addTiming()">
@@ -51,7 +50,7 @@
                 <!-- {{ timingList | json }} -->
                 <table class="uk-table view-table uk-table-small uk-table-divider">
 
-                    <tbody>
+                    <tbody *ngIf="timingList != null && timingList.length > 0">
                         <tr *ngFor="let timing of timingList">
                             <td class="from">{{ tConvert(timing.FromHours, timing.FromMinutes) }}</td>
                             <td class="to">{{ tConvert(timing.ToHours, timing.ToMinutes) }} </td>
