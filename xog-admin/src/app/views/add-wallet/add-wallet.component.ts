@@ -24,7 +24,7 @@ export class AddWalletComponent extends BaseComponent implements OnInit {
   formInstance: FormGroup = this.fb.group({
     Id: [],
     UserId: ['', Validators.required],
-    TransactionType: [''],
+    RequestType: [0],
     Amount: [],
     Description: []
   });

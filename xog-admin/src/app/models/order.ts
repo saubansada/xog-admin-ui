@@ -25,6 +25,11 @@ export class Order {
     Address: Address;
 }
 
+export class ReturnOrder extends Order {
+    OrderId: number;
+    ReturnTotal: number;
+}
+
 export class OrderDetail { 
     Id: number;
     ReturnDetailId: number;

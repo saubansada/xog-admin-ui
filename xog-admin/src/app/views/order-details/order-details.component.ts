@@ -128,7 +128,7 @@ export class OrderDetailsComponent extends BaseComponent implements OnInit {
             if (order != null && order.Purchases[ind].ProductImage != null) {
               order.Purchases[ind].ProductImage.ImageUrl = element.ProductImage.ImageUrl.replace('~', '');
             }
-            if (this.purchases.findIndex(i => i.Id == element.Id) == -1 && (element.OrderedQuantity - element.TotalReturnedQuantity - element.ReturnedQuantity) > 0) {
+            if (this.purchases.findIndex(i => i.Id == element.Id) == -1 && (element.OrderedQuantity != element.TotalReturnedQuantity)) {
               let purchased = Object.assign({}, element);
               purchased.ReturnedQuantity = 0;
               this.purchases.push(purchased);

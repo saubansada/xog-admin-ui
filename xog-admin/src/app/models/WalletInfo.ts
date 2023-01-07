@@ -2,10 +2,12 @@ import { BaseFiler } from "./common";
 
 export class Wallet {
       Id!: number;
-      UserName!: string;
+      UserId!: string;
       Amount!: string;
-      BrandUrl!: string;
-      BrandDescription!: string;
+      OrderAction!: string;
+      TransactionType!: number;
+      TimeStamp!: Date;
+      TransactionId!: string;
 } 
 
 export class WalletFilter {

@@ -49,6 +49,7 @@ export class OrdersComponent extends BaseComponent implements OnInit {
     this.shouldShowSpinner = false;
     this.showSpinner();
     let filter: OrderFilter = new OrderFilter();
+    filter.IsReturnedOrder = false;
     this.orderService.getOrderList(filter).subscribe((res: ResponseObject<Order[]>) => {
       this.hideSpinner();
       //this.generateDummyData();

@@ -12,7 +12,7 @@
       <thead>
         <tr>
           <th>#</th>
-          <th>Order I'd</th>
+          <th>Order Action</th>
           <th>User I'd</th>
           <th>Transaction I'd</th>
           <th>Type</th>
@@ -21,14 +21,14 @@
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>1</td>
-          <td>#819913889</td>
-          <td>127121888</td>
-          <td>9900141870122</td>
-          <td><span class="uk-badge success-badge">Debit</span></td>
-          <td>1489</td>
-          <td>18.09.2021</td>
+        <tr *ngFor="let item of gridData; let i = index">
+          <td>{{ i }}</td>
+          <td>{{ item.OrderAction }}</td>
+          <td>#{{ item.UserId }}</td>
+          <td>{{ item.TransactionId }}</td>
+          <td><span class="uk-badge " [class.success-badge]="item.TransactionType == 1" [class.danger-badge]="item.TransactionType != 1">{{ item.TransactionType == 1 ? 'Debit' : 'Credit' }}</span></td>
+          <td>{{ item.Amount }}</td>
+          <td>{{ item.TimeStamp }}</td>
         </tr>
       </tbody>
     </table>

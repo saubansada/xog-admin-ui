@@ -22,9 +22,9 @@
               </div>
               <div class="uk-width-1-4@s">
                 <label class="uk-form-label product-input-label" for="form-stacked-text">Select Type *</label>
-                <select [formControlName]="'TransactionType'" class="uk-select product-select" id="form-stacked-select">
-                  <option [value]="1">Credit</option>
-                  <option [value]="0">Debit</option>
+                <select [formControlName]="'RequestType'" class="uk-select product-select" id="form-stacked-select">
+                  <option [ngValue]="1">Credit</option>
+                  <option [ngValue]="0">Debit</option>
                 </select>
               </div>
               <div class="uk-width-1-4@s">

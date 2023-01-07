@@ -1,7 +1,7 @@
 import { Component, Injector, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import * as dayjs from 'dayjs';
 import { enumToKeyValueArray, ProductDivision, ResponseObject, transformCamelToSpaces } from 'src/app/models/common';
-import { Order, OrderFilter, OrderStatus } from 'src/app/models/order';
+import { ReturnOrder, OrderFilter, OrderStatus } from 'src/app/models/order';
 import { OrderService } from 'src/app/services/order.service';
 import { BaseComponent } from 'src/app/shared/base.component';
 import { AppGridColDef } from 'src/app/shared/data-grid/data-grid.component';
@@ -69,7 +69,7 @@ export class ReturnOrdersComponent extends BaseComponent implements OnInit {
     let filter: OrderFilter = new OrderFilter();
     filter.IsReturnedOrder = true;
     filter.OrderState = status;
-    this.orderService.getOrderList(filter).subscribe((res: ResponseObject<Order[]>) => {
+    this.orderService.getOrderList(filter).subscribe((res: ResponseObject<ReturnOrder[]>) => {
       this.hideSpinner();
       //this.generateDummyData();
       this.gridData = res.Data ?? [];
@@ -79,7 +79,7 @@ export class ReturnOrdersComponent extends BaseComponent implements OnInit {
     });
   }
 
-  getAddress(order: Order): string {
+  getAddress(order: ReturnOrder): string {
     if (order != null && order.Address != null) {
       let address = order.Address;
       return (address.FullName + " - " + address.AddressLine1 + ", " +
@@ -91,7 +91,7 @@ export class ReturnOrdersComponent extends BaseComponent implements OnInit {
     }
   }
 
-  getOrderState(order: Order): string {
+  getOrderState(order: ReturnOrder): string {
     if (order != null) {
       return OrderStatus[<number>order?.OrderState];
     } else {
@@ -100,25 +100,25 @@ export class ReturnOrdersComponent extends BaseComponent implements OnInit {
   }
 
 
-  getTimePeriod(order: Order) {
+  getTimePeriod(order: ReturnOrder) {
     return "15.07.2022- <span>4:00 to 12:00</span>";
   }
 
-  viewOrder(order: Order) {
+  viewOrder(order: ReturnOrder) {
     if (order != null) {
       this.selectedOrderId = order?.ReturnId;
       this.showModal("#" + this.orderDetailModal);
     }
   }
 
-  gridData: Order[];
+  gridData: ReturnOrder[];
 
   initColumnDefs() {
     this.columnDefs = [
       { text: "Return Id", field: "ReturnId" },
-      { text: "Ordered Id", field: "Id" },
+      { text: "Ordered Id", field: "OrderId" },
       { text: "Name", field: "PhoneNumber" },
-      { text: "Total Bill", field: "TotalBill", content: this.isDeliveryColumnRef },
+      { text: "Return Amount", field: "ReturnTotal", content: this.isDeliveryColumnRef },
       { text: "P. Mode", field: "IsDelivery" },
       {
         text: "", field: "Menu", classes: "uk-text-right", content: this.moreColumnRef
