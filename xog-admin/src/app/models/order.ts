@@ -9,6 +9,7 @@ export class Order {
     ReturnId: number;
     UserId: string;
     TimePeriod: number;
+    TimePeriodText: string;
     RelDay: number;
     IsDelivery: boolean;
     OrderDate: Date;
@@ -16,6 +17,7 @@ export class Order {
     OrderState: OrderStatus;
     DispatchedDate: Date;
     DeliveryDate: Date;
+    DeliveredDate: Date;
     Purchases: OrderDetail[];
     Returns: OrderDetail[];
     SumAmount: number;

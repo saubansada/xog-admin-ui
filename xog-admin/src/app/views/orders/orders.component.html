@@ -38,7 +38,7 @@
     </app-data-grid> 
 
     <ng-template let-item let-data="data" #timePeriodColumn> 
-      <span [innerHtml]="getTimePeriod(item) | safeHtml"></span>
+      <span [innerHtml]="getDate(item.OrderDate) | safeHtml"></span>
     </ng-template>
 
     <ng-template let-item let-data="data" #orderStateColumn> 

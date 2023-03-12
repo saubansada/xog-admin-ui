@@ -93,8 +93,8 @@ export class OrdersComponent extends BaseComponent implements OnInit {
   }
 
 
-  getTimePeriod(order: Order) {
-    return "15.07.2022- <span>4:00 to 12:00</span>";
+  getDate(orderedDate: Date) {
+    return orderedDate.toString().split('T')[0];
   }
 
   viewOrder(order: Order) {
@@ -114,7 +114,8 @@ export class OrdersComponent extends BaseComponent implements OnInit {
       { text: "Deliver To", field: "PhoneNumber" },
       { text: "Delivery Type", field: "IsDelivery", content: this.isDeliveryColumnRef },
       //{ text: "P. Mode", field: "IsDelivery" },
-      { text: "Delivery Time", field: "TimePeriod", content: this.timePeriodColumnRef },
+      { text: "Ordered Date", field: "OrderedDate", content: this.timePeriodColumnRef },
+      { text: "Delivery Time", field: "TimePeriodText" },
       { text: "Total ₹", field: "TotalBill" },
       { text: "Status", field: "OrderState", content: this.orderStateColumnRef },
       //{ text: "P. Status", field: "IsDelivery", content: this.isDeliveryColumnRef },
