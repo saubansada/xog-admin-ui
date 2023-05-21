@@ -12,6 +12,7 @@ import { SanitizerUrlPipe } from './pipes/sanitize-url';
 import { SelectFilterPipe } from './pipes/select-filter';
 import { SafeHtmlPipe } from './pipes/safe-html';
 import { VirtualScrollerModule } from 'ngx-virtual-scroller';
+import { RemoveCommaPipe } from './pipes/decimal-pipe';
 
 const customNotifierOptions: NotifierOptions = {
   position: {
@@ -61,6 +62,7 @@ const customNotifierOptions: NotifierOptions = {
     FileUploadComponent,
     SanitizerUrlPipe,
     SelectFilterPipe,
+    RemoveCommaPipe,
     SafeHtmlPipe
   ],
   imports: [
@@ -80,6 +82,7 @@ const customNotifierOptions: NotifierOptions = {
   ],
   exports: [
     CommonModule,
+    RemoveCommaPipe,
     // NgQrScannerModule,
     // QRCodeModule,
     ReactiveFormsModule,

@@ -24,7 +24,7 @@ export class FileUploadComponent implements ControlValueAccessor, Validator, OnI
 
   @Input() maxFiles: number = 1;
 
-  @Input() storageType!: "product" | "category" | "subcategory" | "brand";
+  @Input() storageType!: "product" | "category" | "subcategory" | "brand" | "offerbanner";
 
   uploadServerUrl: string = environment.uploadsUrl;
 

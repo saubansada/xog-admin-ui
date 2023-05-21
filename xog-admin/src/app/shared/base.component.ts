@@ -83,9 +83,7 @@ export class BaseComponent implements OnDestroy {
                 this.showSpinner();
             }
             else {
-                if (this.shouldShowSpinner) {
-                    this.hideSpinner();
-                }
+                this.hideSpinner();
             }
         })
     }

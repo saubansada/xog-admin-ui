@@ -1,14 +1,11 @@
 <div class="uk-width-expand@m">
     <div class="uk-card uk-padding-small uk-card-body">
 
-        <a routerLink="/add-offerlists" class="uk-button xo-button-primary uk-float-right">Add
-            List</a>
-        <p class="container-header uk-margin-remove">
-            List
-        </p>
+        <a routerLink="/offer-lists/add" class="uk-button xo-button-primary uk-float-right">Add Offer List</a>
+        <p class="container-header uk-margin-remove"> Offer Lists </p>
         <ul class="uk-breadcrumb xo-breadcrumb uk-align-left uk-margin-remove">
             <li><a routerLink="">Home</a></li>
-            <li><a routerLink="/offers">Offers</a></li>
+            <li><a routerLink="/offers">Offer Lists</a></li>
         </ul>
         <br>
         <table class="uk-table uk-table-small primary-table">
@@ -18,33 +15,32 @@
                     <th>I'd</th>
                     <th>Name</th>
                     <th>Details</th>
-                    <th>Link</th>
-                    <th>total products</th>
-                    <th>status</th>
-                    <th>Created Date</th>
+                    <th>Total Oroducts</th>
+                    <th>Status</th>
+                    <!-- <th>Created Date</th> -->
                     <th class="uk-text-right">Action</th>
                 </tr>
             </thead>
             <tbody>
-                <tr href="#order-details-modal" uk-toggle>
+                <tr *ngFor="let offer of offers">
 
-                    <td>#81</td>
-                    <td>80% off</td>
-                    <td>80% off on vegetables</td>
-                    <td>url</td>
-                    <td>18</td>
-                    <td>Active</td>
-                    <td>17.09.2020</td>
+                    <td>#{{offer.Id}}</td>
+                    <td>{{offer.DisplayName}}</td>
+                    <td>{{offer.Description}}</td>
+                    <td>{{ offer.OfferDetails.length }}</td>
+                    <td>{{ offer.OfferStatus == 1 ? 'Active' : 'Inactive'}}</td>
+                    <!-- <td>17.09.2020</td> -->
                     <td class="uk-text-right">
                         <span class="material-icons-outlined xo-icon">
-                    more_vert
-                  </span>
+                            more_vert
+                        </span>
                         <div uk-drop="pos: bottom-left">
                             <div class="uk-card uk-card-body uk-width-auto uk-align-right uk-padding-remove">
                                 <div class="uk-width-1-1@s uk-width-1-1@m">
                                     <ul class="uk-nav uk-nav-default primary-table-drop">
-                                        <li><a href="#order-details-modal" uk-toggle>Edit</a></li>
-                                        <li><a href="#">Delete</a></li>
+                                        <li><a (click)="openDetail(offer)">View</a></li>
+                                        <li><a [routerLink]="['/offer-lists/edit', offer.Id]" uk-toggle>Edit</a></li>
+                                        <li><a (click)="confirmModalDialog(offer)">Delete</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -53,5 +49,75 @@
                 </tr>
             </tbody>
         </table>
+    </div>
+</div>
+
+<div id="delete-confirmation" class="uk-flex-top" uk-modal>
+    <div class="uk-modal-dialog uk-modal-body uk-margin-auto-vertical">
+
+        <button class="uk-modal-close-default" type="button" uk-close></button>
+        <div class="uk-modal-header">
+            <h3>
+                Confirm Delete?
+            </h3>
+        </div>
+
+        <div class="uk-modal-body" *ngIf="selectedOffer != null">
+            <p>Offer Title: <b>{{ selectedOffer?.DisplayName }}</b> </p>
+            <p>Are you sure to delete the offer list?</p>
+        </div>
+
+        <div class="uk-modal-footer uk-text-center">
+            <button class="uk-button ap-button-danger" (click)="cancelDelete()">
+                Cancel
+            </button> &nbsp;
+            <button class="uk-button ap-success-btn" (click)="confirmDelete()">
+                Ok
+            </button>
+        </div>
+    </div>
+</div>
+
+<div id="detail-modal" class="uk-flex-top" uk-modal>
+    <div class="uk-modal-dialog uk-modal-body uk-margin-auto-vertical">
+
+        <button class="uk-modal-close-default" type="button" uk-close></button>
+        <div class="uk-modal-header" *ngIf="selectedOffer != null">
+            <h3>
+                {{ selectedOffer.DisplayName }}
+            </h3>
+        </div>
+        <div class="uk-modal-body">
+            <div> {{ selectedOffer?.Description }}
+                <small class="uk-float-right" [class.active]="selectedOffer?.OfferStatus == 1"
+                    [class.inactive]="selectedOffer?.OfferStatus == 2">
+                    {{ selectedOffer?.OfferStatus ? "Active" : "Inactive" }}
+                </small>
+            </div>
+            <ng-container *ngIf="selectedOffer != null">
+                <table class="uk-table uk-table-hover uk-table-middle uk-table-divider uk-table-small">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Brand</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let item of selectedOffer.OfferDetails">
+                            <td> {{ item.Product?.ProductName }} </td>
+                            <td> {{ item.Product?.BrandName }}</td>
+                            <td> {{ item.Product?.Description }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <a class="uk-button uk-button-small uk-button-link uk-align-right" (click)="navigateEdit(selectedOffer)">
+                    Edit
+                </a>
+            </ng-container>
+            <ng-container *ngIf="selectedOffer == null">
+                No Offer Selected
+            </ng-container>
+        </div>
     </div>
 </div>

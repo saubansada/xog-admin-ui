@@ -1,62 +1,72 @@
 <div class="uk-width-expand@m">
     <div class="uk-card uk-padding-small uk-card-body">
         <p class="container-header uk-margin-remove">
-            Add Offers
+            {{ isEdit ? "Edit" : "Add" }} Offer Display
         </p>
         <ul class="uk-breadcrumb xo-breadcrumb uk-align-left uk-margin-remove">
             <li><a routerLink="">Home</a></li>
-            <li><a routerLink="/offers">Offers</a></li>
-            <li class="uk-active"><a routerLink="/add-offers">Add Offers</a></li>
+            <li><a routerLink="/offers">Offer Display</a></li>
+            <li class="uk-active"><a routerLink="/add-offers">{{ isEdit ? "Edit" : "Add" }} Offer Display</a></li>
         </ul>
-        <br>
-        <div class="uk-text-center uk-margin uk-grid-small uk-grid-match" uk-grid>
+        <br/>
+        <br/>
+        <form #form [formGroup]="formInstance" (ngSubmit)="formInstance.valid && addOfferBanner()"
+            class="uk-text-center uk-margin uk-grid-small uk-grid-match" uk-grid>
             <div class="uk-width-1-3@m">
-                <div class="uk-card img-upload-grid uk-padding-small uk-card-body">
-                    <p class="upload-title uk-margin-medium-top uk-margin-remove-bottom">
-                        Upload Img
-                    </p>
-                    <p class="upload-img-note uk-margin-remove-top">file should be 256x256</p>
-                    <div class="js-upload uk-placeholder uk-text-center upload-file-grid uk-width-1-1" uk-form-custom>
-                        <span class="uk-text-middle"></span>
-                        <span class="uk-text-right"></span>
-                        <span class="material-icons-round ap-img-icon">
-              folder
-            </span>
-                        <br> <span class="ap-img-title ">Drag & Drop your files here</span>
-                        <input type="file" accept="image/png" multiple>
-                    </div>
-                </div>
+                <xog-file-upload [formControlName]="'BannerImageUrls'" storageType="offerbanner"
+                    uploadUrl="product/upload-images" class="uk-card img-upload-grid uk-padding-small uk-card-body">
+                </xog-file-upload>
             </div>
             <div class="uk-width-expand@m">
-                <div class="uk-card product-info-grid uk-padding-small uk-padding-remove-top uk-card-body uk-text-middle">
-                    <form class="uk-grid-small uk-text-left" uk-grid>
+                <div
+                    class="uk-card product-info-grid uk-padding-small uk-padding-remove-top uk-card-body uk-text-middle">
+                    <div class="uk-grid-small uk-text-left" uk-grid>
                         <div class="uk-width-1-1@s">
                             <label class="uk-form-label product-input-label" for="form-stacked-text"> Name *</label>
-                            <input class="uk-input product-input" type="text" placeholder="">
+                            <input formControlName="DisplayName" class="uk-input product-input" type="text"
+                                placeholder="Display Name">
                         </div>
                         <div class="uk-width-1-2@s">
                             <label class="uk-form-label product-input-label" for="form-stacked-text"> URL *</label>
-                            <input class="uk-input product-input" type="text" placeholder="">
+                            <input formControlName="OfferUrl" class="uk-input product-input" type="text"
+                                placeholder="URL">
                         </div>
                         <div class="uk-width-1-2@s">
                             <label class="uk-form-label product-input-label" for="form-stacked-text">Status *</label>
-                            <select class="uk-select product-select" id="form-stacked-select">
-                <option>Available</option>
-                <option>Option 02</option>
-              </select>
+                            <select formControlName="OfferStatus" class="uk-select product-select"
+                                id="form-stacked-select">
+                                <option *ngFor="let item of statusList" [ngValue]="item.id">{{ item.name }}</option>
+                            </select>
+                        </div>
+                        <div class="uk-width-1-2@s">
+                            <label class="uk-form-label product-input-label" for="form-stacked-text"> Offer List</label>
+                            <select formControlName="OfferStatus" class="uk-select product-select"
+                                id="form-stacked-select">
+                                <option *ngFor="let item of offerList" [ngValue]="item.Id">{{ item.DisplayName }}</option>
+                            </select>
+                        </div>
+                        <div class="uk-width-1-2@s">
+                            <label class="uk-form-label product-input-label" for="form-stacked-text"> Placement </label>
+                            <select formControlName="Placement" class="uk-select product-select"
+                                id="form-stacked-select">
+                                <option *ngFor="let item of placementList" [ngValue]="item.id">{{ camelCaseToSpacedText(item.name) }}</option>
+                            </select>
                         </div>
                         <div class="uk-width-1-1@s">
                             <label class="uk-form-label product-input-label" for="form-stacked-text">Details *</label>
-                            <textarea class="uk-textarea ap-product-textarea" rows="3" placeholder=""></textarea>
+                            <textarea formControlName="Description" class="uk-textarea ap-product-textarea" rows="3"
+                                placeholder="Description"></textarea>
                         </div>
-                    </form>
+                    </div>
                 </div>
             </div>
-        </div>
+            <div class="uk-width-1-1">
+                <div>
+                    <br />
+                    <button type="submit" class="uk-button ap-success-btn"> {{ isEdit ? "Update" : "Create" }}</button>
+                    <button class="uk-button ap-button-danger">clear</button>
+                </div>
+            </div>
+        </form>
     </div>
 </div>
-<p class="uk-text-center">
-    <button class="uk-button ap-success-btn">Upload</button>
-    <button class="uk-button ap-button-danger">clear</button>
-
-</p>

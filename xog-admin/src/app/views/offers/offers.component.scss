@@ -1,0 +1,34 @@
+
+@import url('../../../styles/_productpage.scss');
+
+.uk-modal .detail-modal .uk-modal-body{
+    min-height: 50vh;
+}
+
+.uk-modal-body p {
+    font-size: 0.9rem;
+}
+
+small.active { 
+    padding: 2px;
+    color: green;
+}
+
+small.inactive { 
+    padding: 2px;
+    color: red;
+}
+
+.image-anner { 
+    width: 100%;
+    height: auto;
+}
+
+.uk-card-body  {
+ p.paragraph{ 
+    display: -webkit-box; 
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  } 
+}

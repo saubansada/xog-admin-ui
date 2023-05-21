@@ -1,63 +1,123 @@
- 
-      <div class="uk-width-expand@m">
-        <div class="uk-card uk-padding-small uk-card-body">
+<div class="uk-width-expand@m">
+  <div class="uk-card uk-padding-small uk-card-body">
 
-          <a routerLink="/add-offers" class="uk-button xo-button-primary uk-float-right" >Add
-            Offers</a>
-          <p class="container-header uk-margin-remove">
-            Offers
-          </p>
-          <ul class="uk-breadcrumb xo-breadcrumb uk-align-left uk-margin-remove">
-            <li><a routerLink="">Home</a></li>
-            <li><a routerLink="/offers">Offers</a></li>
-          </ul>
-          <br>
-          <table class="uk-table uk-table-small primary-table">
-            <thead>
-              <tr>
-                <th></th>
-                <th>I'd</th>
-                <th>Image</th>
-                <th>Name</th>
-                <th>Details</th>
-                <th>Link</th>
-                <th>Created Date</th>
-                <th>Status</th>
-                <th class="uk-text-right">Action</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr href="#order-details-modal" uk-toggle>
-                <td><label><input class="uk-checkbox" type="checkbox"> </label>
-                </td>
-                <td>#81</td>
-                <td class="uk-text-left od-product-img">
-                  <img src="assets/img/products/aashirvad.jpg" alt="">
-                </td>
-                <td>80% off</td>
-                <td>80% off on vegetables</td>
-                <td>url</td>
-                <td>17.09.2020</td>
-                <td>Active</td>
-                <td class="uk-text-right">
-                  <span class="material-icons-outlined xo-icon">
-                    more_vert
-                  </span>
-                  <div uk-drop="pos: bottom-left">
-                    <div class="uk-card uk-card-body uk-width-auto uk-align-right uk-padding-remove">
-                      <div class="uk-width-1-1@s uk-width-1-1@m">
-                        <ul class="uk-nav uk-nav-default primary-table-drop">
-                          <li><a href="#order-details-modal" uk-toggle>View</a></li>
-                          <li><a href="#">Delete</a></li>
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
-                </td>
-              </tr>
-            </tbody>
-          </table>
+    <a routerLink="/offers/add" class="uk-button xo-button-primary uk-float-right">Add
+      Offer Display</a>
+    <p class="container-header uk-margin-remove">
+      Offers Displays
+    </p>
+    <ul class="uk-breadcrumb xo-breadcrumb uk-align-left uk-margin-remove">
+      <li><a routerLink="">Home</a></li>
+      <li><a routerLink="/offers">Offer Displays</a></li>
+    </ul>
+    <br>
+    <table class="uk-table uk-table-small primary-table">
+      <thead>
+        <tr>
+          <!-- <th></th> -->
+          <th>I'd</th>
+          <th>Image</th>
+          <th>Name</th>
+          <th>Details</th>
+          <th>Placement</th>
+          <th>Status</th>
+          <th class="uk-text-right">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let offer of offers">
+          <!-- <td><label><input class="uk-checkbox" type="checkbox"> </label>
+          </td> -->
+          <td>#{{offer.Id}}</td>
+          <td class="uk-text-left od-product-img">
+            <img [src]="baseUrl + offer.BannerImageUrl" alt="">
+          </td>
+          <td>{{ offer.DisplayName }}</td>
+          <td>{{ offer.Description }}</td>
+          <td>{{ camelCaseToSpacedText(bannerPlacement[offer.Placement].toString()) }}</td>
+          <td>{{ offer.OfferStatus == 1 ? 'Active' : 'Inactive'}}</td>
+          <td class="uk-text-right">
+            <span class="material-icons-outlined xo-icon">
+              more_vert
+            </span>
+            <div uk-drop="pos: bottom-left">
+              <div class="uk-card uk-card-body uk-width-auto uk-align-right uk-padding-remove">
+                <div class="uk-width-1-1@s uk-width-1-1@m">
+                  <ul class="uk-nav uk-nav-default primary-table-drop">
+                    <li><a (click)="openDetail(offer)">View</a></li>
+                    <li><a [routerLink]="['/offers/edit', offer.Id]">Edit</a></li>
+                    <li><a (click)="confirmModalDialog(offer)">Delete</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+
+<div id="delete-confirmation" class="uk-flex-top" uk-modal>
+  <div class="uk-modal-dialog uk-modal-body uk-margin-auto-vertical">
+
+    <button class="uk-modal-close-default" type="button" uk-close></button>
+    <div class="uk-modal-header">
+      <h3>
+        Confirm Delete?
+      </h3>
+    </div>
+
+    <div class="uk-modal-body" *ngIf="selectedOfferBanner != null">
+      <p>Offer Title: <b>{{ selectedOfferBanner?.DisplayName }}</b> </p>
+      <p>Are you sure to delete the offer display?</p>
+    </div>
+
+    <div class="uk-modal-footer uk-text-center">
+      <button class="uk-button ap-button-danger" (click)="cancelDelete()">
+        Cancel
+      </button> &nbsp;
+      <button class="uk-button ap-success-btn" (click)="confirmDelete()">
+        Ok
+      </button>
+    </div>
+  </div>
+</div>
+
+
+<div id="detail-modal" class="uk-flex-top" uk-modal>
+  <ng-container *ngIf="selectedOfferBanner != null">
+    <div class="uk-modal-dialog uk-margin-top-small" style="width: 50vw">
+
+      <div class="uk-modal-body uk-grid-collapse uk-child-width-1-2@s uk-margin" uk-grid>
+        <div class="uk-card-media-left uk-cover-container">
+          <img [src]="baseUrl + selectedOfferBanner.BannerImageUrl" uk-cover>
+          <canvas width="600" height="400"></canvas>
+        </div>
+        <div>
+          <div class="uk-card-body">
+            <button class="uk-modal-close-default" type="button" uk-close></button>
+            <h3 class="uk-card-title">{{ selectedOfferBanner?.DisplayName }}</h3>
+            <p class="paragraph">{{ selectedOfferBanner?.Description }}</p>
+            <br />
+            <p>Link: <a [href]="selectedOfferBanner?.OfferUrl" target="_blank">{{ selectedOfferBanner?.OfferUrl }}</a>
+            </p>
+            <a class="uk-button uk-button-small uk-button-link uk-align-right" (click)="navigateEdit(selectedOfferBanner)">
+              Edit
+            </a>
+          </div>
         </div>
       </div>
-   
+    </div>
 
+  </ng-container>
+
+  <ng-container *ngIf="selectedOfferBanner == null">
+    <div class="uk-modal-dialog">
+      <div class="uk-modal-body">
+        No Offer Selected
+      </div>
+    </div>
+  </ng-container>
+</div>

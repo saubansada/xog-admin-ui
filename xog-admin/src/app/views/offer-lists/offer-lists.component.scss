@@ -1,0 +1,20 @@
+
+@import url('../../../styles/_productpage.scss');
+
+.uk-modal .detail-modal .uk-modal-body{
+    min-height: 50vh;
+}
+
+.uk-modal-body p {
+    font-size: 0.9rem;
+}
+
+small.active { 
+    padding: 2px;
+    color: green;
+}
+
+small.inactive { 
+    padding: 2px;
+    color: red;
+}
